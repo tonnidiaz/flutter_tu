@@ -49,6 +49,7 @@ ThemeData tuTheme({bool dark = true}) {
               //disabledForegroundColor: Colors.white,
               )),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: TuColors.bg1(),
           selectedItemColor: TuColors.primary,
           showUnselectedLabels: true,
           unselectedItemColor: TuColors.text2(dark: dark),
@@ -59,5 +60,6 @@ ThemeData tuTheme({bool dark = true}) {
       inputDecorationTheme: const InputDecorationTheme(),
       dialogTheme: DialogTheme(
           backgroundColor: TuColors.bg1(dark: dark),
-          titleTextStyle: Styles.h4(isLight: true, dark: dark)));
+          titleTextStyle: Styles.h4(isLight: true, dark: dark)),
+      iconTheme: IconThemeData(size: iconSize, color: TuColors.text2()));
 }

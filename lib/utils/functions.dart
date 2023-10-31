@@ -23,8 +23,9 @@ void setupWindowManager() async {
   await windowManager.ensureInitialized();
 
   WindowOptions windowOptions = WindowOptions(
-    minimumSize: isMobile ? const Size(288, 533) : const Size(700, 400),
-    maximumSize: isMobile ? const Size(288, 533) : const Size(700, 400),
+    minimumSize: isMobile ? const Size(288, 533) : null,
+    maximumSize: isMobile ? const Size(288, 533) : null,
+    size: isMobile ? null : const Size(700, 400),
     center: true,
     //skipTaskbar: false,
     //titleBarStyle: TitleBarStyle.hidden

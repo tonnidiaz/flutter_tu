@@ -1,9 +1,5 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:tu/tu.dart";
-import "../utils/colors.dart";
-import "../utils/styles.dart";
-import "tu.dart";
 
 class TuDialogView extends StatelessWidget {
   final bool isForm;

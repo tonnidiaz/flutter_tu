@@ -25,7 +25,7 @@ const double sidebarW = 45;
 const double iconSize = 25;
 const double splashRadius = iconSize;
 
-final bool isMobile = Platform.isAndroid || Platform.isIOS || true;
+final bool isMobile = Platform.isAndroid || Platform.isIOS;
 const defaultPadding = EdgeInsets.all(8);
 Size screenSize(BuildContext context) {
   return MediaQuery.of(context).size;
