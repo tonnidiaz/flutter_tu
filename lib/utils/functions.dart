@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:via_logger/log_record.dart';
 import 'package:via_logger/logger.dart';
 import 'package:via_logger/output.dart';
-import 'package:via_logger/output_console.dart';
 import '../widgets/tu.dart';
 import '/utils/constants.dart';
 import 'package:window_manager/window_manager.dart';
 
-void clog(Object p) {
+void clog(dynamic p) {
   debugPrint("$tag: $p");
 }
 
@@ -44,6 +44,14 @@ String formatDate(String dateString) {
 String camelToSentence(String text) {
   return text.replaceAllMapped(RegExp(r"^([a-z])|[A-Z]"),
       (Match m) => m[1] == null ? " ${m[0]}" : m[1]!.toUpperCase());
+}
+
+class Console extends Output {
+  @override
+  void output(LogRecord record) {
+    ///Custom print style
+    debugPrint('[${record.path}:${record.lineNumber}] ${record.message}');
+  }
 }
 
 setupLogger() {

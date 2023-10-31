@@ -17,7 +17,7 @@ class TuPage {
 
 bool backEnabled = true;
 
-const String tag = "Tunedbass";
+const String tag = "Tu";
 const String package = "com.tb.tmeta";
 const double bottomSheetH = 150;
 const double bottomBarH = 45;
