@@ -1,6 +1,11 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:tu/tu.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:tu/utils/classes.dart';
+import 'package:tu/utils/colors.dart';
+
+import '../utils/index.dart';
 
 Widget mY(double h) {
   return SizedBox(height: h);
@@ -17,21 +22,28 @@ Widget h3(String txt) {
   );
 }
 
-Widget NavItem({String text = "", void Function()? onClick}) {
-  return InkWell(
-    onTap: onClick,
-    child: Container(
-      width: double.infinity,
-      //color: const Color.fromRGBO(30, 30, 30, .2),
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-      margin: const EdgeInsets.symmetric(vertical: 2),
-      child: Text(
-        text,
-        textAlign: TextAlign.left,
-        style: const TextStyle(fontSize: 15),
+class NavItem extends StatelessWidget {
+  final String text;
+  final Function()? onClick;
+  const NavItem({super.key, this.text = "", this.onClick});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onClick,
+      child: Container(
+        width: double.infinity,
+        //color: const Color.fromRGBO(30, 30, 30, .2),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+        margin: const EdgeInsets.symmetric(vertical: 2),
+        child: Text(
+          text,
+          textAlign: TextAlign.left,
+          style: const TextStyle(fontSize: 15),
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 Widget sizedText(String text,
@@ -47,57 +59,6 @@ Widget sizedText(String text,
           color: color,
         ),
       ));
-}
-
-class TDropdownButton extends StatelessWidget {
-  Object? value;
-  void Function(Object?)? onChanged;
-  String? label = "Dropdown";
-  Function(Object)? itemLabel;
-  double? width;
-  bool disabled;
-  List<Object>? items = [];
-  TDropdownButton(
-      {Key? key,
-      this.items,
-      this.value,
-      this.label,
-      this.width,
-      this.onChanged,
-      this.itemLabel,
-      this.disabled = false})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    width ??= screenSize(context).width;
-    return Container(
-      width: width,
-      height: 45,
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      margin: const EdgeInsets.symmetric(vertical: 2.5),
-      decoration: BoxDecoration(
-          color: TuColors.btnBG,
-          border: Border.all(color: TuColors.titlebarBG, width: 2),
-          borderRadius: BorderRadius.circular(10)),
-      child: DropdownButton(
-          value: value, // ?? formats[0],
-          dropdownColor: TuColors.btnBG,
-          underline: Container(),
-          isExpanded: true,
-          borderRadius: BorderRadius.circular(5),
-          hint: SizedBox(child: Text("$label")),
-          items: items!.map((e) {
-            return DropdownMenuItem(
-              value: e.toString().toLowerCase(),
-              child: Text(itemLabel != null
-                  ? itemLabel!(e)
-                  : e.toString().toUpperCase()),
-            );
-          }).toList(),
-          onChanged: disabled ? null : onChanged),
-    );
-  }
 }
 
 Widget iconText(String text, IconData icon,
@@ -130,4 +91,137 @@ Widget none() {
     width: 0,
     height: 0,
   );
+}
+
+Widget tuColumn(
+    {List<Widget> children = const [], bool min = false, bool center = true}) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    mainAxisSize: min ? MainAxisSize.min : MainAxisSize.max,
+    mainAxisAlignment:
+        center ? MainAxisAlignment.center : MainAxisAlignment.start,
+    children: children,
+  );
+}
+
+Widget tuRow({List<Widget> children = const [], bool min = false}) {
+  return Row(
+    mainAxisSize: min ? MainAxisSize.min : MainAxisSize.max,
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: children,
+  );
+}
+
+class InfoItem extends StatelessWidget {
+  final Function()? onTap;
+  final Widget? child;
+  final bool darkMode;
+  const InfoItem({super.key, this.onTap, this.child, this.darkMode = true});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+          width: double.infinity,
+          height: 50,
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+          margin: const EdgeInsets.symmetric(vertical: .5),
+          decoration: BoxDecoration(
+              color: TuColors.bg1(dark: darkMode),
+              border: const Border(
+                  bottom: BorderSide(
+                      color: Color.fromRGBO(10, 10, 10, 0.05), width: 1))),
+          child: child),
+    );
+  }
+}
+
+Widget devider() => Container(height: 1, color: Colors.black12);
+Widget svgIcon(
+        {required String name,
+        Color? color,
+        double size = 20,
+        double? width,
+        double? height}) =>
+    SvgPicture.asset(
+      "assets/icons/$name.svg",
+      color: color,
+      semanticsLabel: "icon",
+      width: width ?? size,
+      height: height ?? size,
+      colorBlendMode: BlendMode.srcIn,
+    );
+
+class TuScrollview extends StatelessWidget {
+  final Widget? child;
+  const TuScrollview({super.key, this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      child: child,
+    );
+  }
+}
+
+class ProgressSheet extends StatefulWidget {
+  final Color? color;
+  final String? msg;
+  final bool dismissable;
+  const ProgressSheet(
+      {super.key, this.color, this.msg, required this.dismissable});
+
+  @override
+  State<ProgressSheet> createState() => _ProgressSheetState();
+}
+
+class _ProgressSheetState extends State<ProgressSheet> {
+  final _ctrl = Tu.progressCtrl;
+
+  @override
+  void dispose() {
+    backEnabled = true;
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _ctrl.setProgress(null);
+    });
+
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (!widget.dismissable) {
+      backEnabled = false;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Visibility(
+        child: Container(
+            height: 45,
+            color: widget.color ?? TuColors.bg1(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Obx(() => LinearProgressIndicator(
+                      value: _ctrl.progress.value,
+                    )),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [Text(widget.msg ?? "Hang on...")],
+                    ),
+                  ),
+                )
+              ],
+            )));
+  }
 }

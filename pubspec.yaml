@@ -16,7 +16,11 @@ dependencies:
   via_logger: ^1.0.4
   flutter_hooks: ^0.20.3
   google_fonts: ^6.1.0
-
+  flutter_svg: ^1.1.6
+  intl: ^0.18.1
+  another_flushbar: ^1.12.30
+  dio: ^5.3.3
+  package_info_plus: ^4.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

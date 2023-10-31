@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tu/utils/classes.dart';
 
 import '../tu.dart';
-import '../utils/index.dart';
 
 class TuFormField extends StatefulHookWidget {
   final String? label;
@@ -24,7 +24,6 @@ class TuFormField extends StatefulHookWidget {
   final bool showEye;
   final bool hasBorder;
   final bool enabled;
-  final bool darkMode;
   final TextInputType keyboard;
   final double radius;
   final double elevation;
@@ -69,7 +68,6 @@ class TuFormField extends StatefulHookWidget {
       this.readOnly = false,
       this.isPass = false,
       this.showEye = true,
-      this.darkMode = true,
       this.hasBorder = true,
       this.validator,
       this.fill,
@@ -85,7 +83,7 @@ class _TuFormFieldState extends State<TuFormField> {
   final _controller = TextEditingController();
   late FocusNode _focusNode;
   bool _hasFocus = false;
-
+  final _appCtrl = Tu.appCtrl;
   @override
   void dispose() {
     _controller.dispose();
@@ -134,111 +132,115 @@ class _TuFormFieldState extends State<TuFormField> {
             borderSide: BorderSide(color: TuColors.primary, width: 3),
             borderRadius: BorderRadius.circular(widget.radius),
           );
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: widget.my),
-      width: widget.width,
-      child: Material(
-        elevation: widget.elevation,
-        borderRadius: BorderRadius.circular(widget.radius),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            widget.hasBorder && widget.isLegacy
-                ? Text(widget.label!, style: Styles.label())
-                : none(),
-            TextFormField(
-              textAlign: widget.textAlign,
-              maxLength: widget.maxLength,
-              readOnly: widget.readOnly,
-              controller: _controller,
-              autofocus: widget.autofocus,
-              onTap: widget.onTap,
-              onFieldSubmitted: widget.onSubmitted,
+    return Obx(
+      () => Container(
+        margin: EdgeInsets.symmetric(vertical: widget.my),
+        width: widget.width,
+        child: Material(
+          elevation: widget.elevation,
+          borderRadius: BorderRadius.circular(widget.radius),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              widget.hasBorder && widget.isLegacy
+                  ? Text(widget.label!, style: Styles.label())
+                  : none(),
+              TextFormField(
+                textAlign: widget.textAlign,
+                maxLength: widget.maxLength,
+                readOnly: widget.readOnly,
+                controller: _controller,
+                autofocus: widget.autofocus,
+                onTap: widget.onTap,
+                onFieldSubmitted: widget.onSubmitted,
 
-              // autovalidateMode: AutovalidateMode.onUserInteraction,
-              focusNode: _focusNode,
-              onChanged: widget.onChanged,
-              obscureText: widget.isPass && !showPass.value,
-              maxLines: widget.maxLines,
+                // autovalidateMode: AutovalidateMode.onUserInteraction,
+                focusNode: _focusNode,
+                onChanged: widget.onChanged,
+                obscureText: widget.isPass && !showPass.value,
+                maxLines: widget.maxLines,
 
-              validator: widget.validator ??
-                  (val) {
-                    String? msg;
-                    if ((widget.required && val != null && val.isEmpty) ||
-                        val == null) {
-                      msg = "Field is required!";
-                    }
-                    return msg;
-                  },
-              autocorrect: true,
-              keyboardType: widget.keyboard,
-              style: const TextStyle(
-                fontSize: 16,
-              ),
-              decoration: InputDecoration(
-                enabled: widget.enabled,
-                prefixIconColor: _hasFocus
-                    ? TuColors.text3(dark: widget.darkMode)
-                    : TuColors.note(dark: widget.darkMode),
-                suffixIconColor: _hasFocus
-                    ? TuColors.text3(dark: widget.darkMode)
-                    : TuColors.note(dark: widget.darkMode),
-                fillColor:
-                    widget.fill ?? TuColors.fieldBG(dark: widget.darkMode),
-
-                filled: true,
-                isDense: false,
-                contentPadding: EdgeInsets.only(
-                  top: widget.height,
-                  bottom: widget.height,
-                  left: 15,
-                  right: 15,
+                validator: widget.validator ??
+                    (val) {
+                      String? msg;
+                      if ((widget.required && val != null && val.isEmpty) ||
+                          val == null) {
+                        msg = "Field is required!";
+                      }
+                      return msg;
+                    },
+                autocorrect: true,
+                keyboardType: widget.keyboard,
+                style: const TextStyle(
+                  fontSize: 16,
                 ),
+                decoration: InputDecoration(
+                  enabled: widget.enabled,
+                  prefixIconColor: _hasFocus
+                      ? TuColors.text3(dark: _appCtrl.darkMode.value)
+                      : TuColors.note(dark: _appCtrl.darkMode.value),
+                  suffixIconColor: _hasFocus
+                      ? TuColors.text3(dark: _appCtrl.darkMode.value)
+                      : TuColors.note(dark: _appCtrl.darkMode.value),
+                  fillColor: widget.fill ??
+                      TuColors.fieldBG(dark: _appCtrl.darkMode.value),
 
-                prefixIcon: widget.prefixIcon,
-                prefix: widget.prefix,
-                suffix: widget.suffix,
-                suffixIcon: widget.isPass && widget.showEye
-                    ? IconButton(
-                        padding: EdgeInsets.zero,
-                        onPressed: () async {
-                          //SHowHide pass
+                  filled: true,
+                  isDense: false,
+                  contentPadding: EdgeInsets.only(
+                    top: widget.height,
+                    bottom: widget.height,
+                    left: 15,
+                    right: 15,
+                  ),
 
-                          if (!showPass.value &&
-                              widget.onShowHidePass != null) {
-                            // Pass hidden and the event handler is provided
-                            // Invoke the handler
-                            void setShowPass(bool val) {
-                              showPass.value = val;
+                  prefixIcon: widget.prefixIcon,
+                  prefix: widget.prefix,
+                  suffix: widget.suffix,
+                  suffixIcon: widget.isPass && widget.showEye
+                      ? IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () async {
+                            //SHowHide pass
+
+                            if (!showPass.value &&
+                                widget.onShowHidePass != null) {
+                              // Pass hidden and the event handler is provided
+                              // Invoke the handler
+                              void setShowPass(bool val) {
+                                showPass.value = val;
+                              }
+
+                              await widget.onShowHidePass!(setShowPass);
+                            } else {
+                              showPass.value = !showPass.value;
                             }
+                          },
+                          splashRadius: 18,
+                          icon: Icon(!showPass.value
+                              ? CupertinoIcons.eye
+                              : CupertinoIcons.eye_slash))
+                      : widget.suffixIcon,
 
-                            await widget.onShowHidePass!(setShowPass);
-                          } else {
-                            showPass.value = !showPass.value;
-                          }
-                        },
-                        splashRadius: 18,
-                        icon: Icon(!showPass.value
-                            ? CupertinoIcons.eye
-                            : CupertinoIcons.eye_slash))
-                    : widget.suffixIcon,
+                  labelText: !widget.hasBorder || !widget.isLegacy
+                      ? widget.label
+                      : null,
 
-                labelText:
-                    !widget.hasBorder || !widget.isLegacy ? widget.label : null,
-
-                hintText: widget.hint,
-                hintStyle: const TextStyle(fontSize: 12.5),
-                floatingLabelAlignment: widget.labelAlignment,
-                floatingLabelStyle: GoogleFonts.inclusiveSans(
-                    color: TuColors.text(dark: widget.darkMode), fontSize: 18),
-                enabledBorder: border,
-                focusedBorder: focusedBorder,
-                focusedErrorBorder: focusedBorder,
-                errorBorder: border,
-                //border: radius != null ? border : null,
+                  hintText: widget.hint,
+                  hintStyle: const TextStyle(fontSize: 12.5),
+                  floatingLabelAlignment: widget.labelAlignment,
+                  floatingLabelStyle: GoogleFonts.inclusiveSans(
+                      color: TuColors.text(dark: _appCtrl.darkMode.value),
+                      fontSize: 18),
+                  enabledBorder: border,
+                  focusedBorder: focusedBorder,
+                  focusedErrorBorder: focusedBorder,
+                  errorBorder: border,
+                  //border: radius != null ? border : null,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

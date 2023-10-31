@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:tu/tu.dart";
 import "./colors.dart";
 import "package:google_fonts/google_fonts.dart";
 
@@ -27,11 +28,11 @@ class Styles {
         color: color);
   }
 
-  static TextStyle h4({Color? color, bool isLight = false}) {
+  static TextStyle h4({Color? color, bool isLight = false, bool dark = true}) {
     return GoogleFonts.poppins(
         fontSize: 16,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w600,
-        color: color ?? TuColors.text0);
+        color: color ?? TuColors.text(dark: dark));
   }
 
   static TextStyle h5({Color? color, bool isLight = false}) {

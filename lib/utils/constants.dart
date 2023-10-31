@@ -8,11 +8,14 @@ class TuPage {
   Widget widget;
   bool inList;
   bool isAction;
-  String name;
+  String? to;
   IconData? icon;
-  TuPage(this.name, this.widget,
-      {this.icon, this.inList = true, this.isAction = false});
+  String? label;
+  TuPage(this.to, this.widget,
+      {this.icon, this.inList = true, this.isAction = false, this.label});
 }
+
+bool backEnabled = true;
 
 const String tag = "Tunedbass";
 const String package = "com.tb.tmeta";
@@ -22,7 +25,7 @@ const double sidebarW = 45;
 const double iconSize = 25;
 const double splashRadius = iconSize;
 
-final bool isMobile = Platform.isAndroid || Platform.isIOS;
+final bool isMobile = Platform.isAndroid || Platform.isIOS || true;
 const defaultPadding = EdgeInsets.all(8);
 Size screenSize(BuildContext context) {
   return MediaQuery.of(context).size;
@@ -46,3 +49,9 @@ final defaultMenu = [
 ];
 
 const double appBarH = kToolbarHeight;
+
+class SelectItem {
+  final String label;
+  final dynamic value;
+  SelectItem(this.label, this.value);
+}
