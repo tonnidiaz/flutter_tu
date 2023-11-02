@@ -15,7 +15,7 @@ ThemeData tuTheme({bool dark = true}) {
           centerTitle: false,
           toolbarHeight: appBarH,
           titleTextStyle: GoogleFonts.inclusiveSans(
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.w500,
               color: TuColors.text2(dark: dark)),
           backgroundColor: TuColors.bg1(dark: dark),

@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -105,7 +106,7 @@ void handleDioException(
     showToast("${exception.response!.data.split("tuned:").last}", isErr: true)
         .show(context ?? Get.overlayContext!);
   } else {
-    showToast(msg ?? "${exception.message}", isErr: true)
+    showToast(msg ?? "${exception.message ?? exception.response}", isErr: true)
         .show(context ?? Get.overlayContext!);
   }
 }
@@ -161,4 +162,10 @@ sleep(int ms) async {
 void showProgressSheet({String? msg, bool dismissable = false}) {
   Get.bottomSheet(ProgressSheet(msg: msg, dismissable: dismissable),
       isDismissible: false);
+}
+
+Future copyToClipboard(String text) async {
+  ClipboardData data = ClipboardData(text: text);
+  await Clipboard.setData(data);
+  clog('Copied');
 }

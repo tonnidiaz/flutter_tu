@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class TuIconBtn extends StatelessWidget {
   final double size;
+  final double radius;
   final double elevation;
   final Widget icon;
   final Function()? onPressed;
@@ -10,6 +11,7 @@ class TuIconBtn extends StatelessWidget {
       this.size = 50,
       required this.icon,
       this.onPressed,
+      this.radius = 100,
       this.elevation = 0});
 
   @override
@@ -17,7 +19,7 @@ class TuIconBtn extends StatelessWidget {
     return Material(
       elevation: elevation,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(100),
+        borderRadius: BorderRadius.circular(radius),
       ),
       child: SizedBox(
         width: size,

@@ -14,10 +14,17 @@ Widget mX(double h) {
   return SizedBox(height: h);
 }
 
-Widget h3(String txt) {
+Widget h3(String txt, {Color? color, bool isLight = false}) {
   return Text(
     txt,
-    style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w500),
+    style: Styles.h3(color: color, isLight: isLight),
+  );
+}
+
+Widget h4(String txt, {Color? color, bool isLight = false}) {
+  return Text(
+    txt,
+    style: Styles.h4(color: color, isLight: isLight),
   );
 }
 
@@ -276,6 +283,18 @@ class TuCard extends StatelessWidget {
         ),
         child: child,
       ),
+    );
+  }
+}
+
+class TuSliver extends StatelessWidget {
+  final Widget? child;
+  const TuSliver({super.key, this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: child,
     );
   }
 }

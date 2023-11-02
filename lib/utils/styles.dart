@@ -17,7 +17,7 @@ class Styles {
     return GoogleFonts.poppins(
         fontSize: 18,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w700,
-        color: color ?? TuColors.text0);
+        color: color ?? TuColors.text());
   }
 
   static TextStyle label(

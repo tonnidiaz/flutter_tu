@@ -24,6 +24,7 @@ const double bottomSheetH = 150;
 const double bottomBarH = 45;
 const double sidebarW = 45;
 const double iconSize = 25;
+const double topMargin = 5;
 const double splashRadius = iconSize;
 bool dev = kDebugMode;
 
