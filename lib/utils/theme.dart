@@ -15,7 +15,7 @@ ThemeData tuTheme({bool dark = true}) {
           centerTitle: false,
           toolbarHeight: appBarH,
           titleTextStyle: GoogleFonts.inclusiveSans(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.w500,
               color: TuColors.text2(dark: dark)),
           backgroundColor: TuColors.bg1(dark: dark),
@@ -38,7 +38,7 @@ ThemeData tuTheme({bool dark = true}) {
       ),
       textTheme: GoogleFonts.inclusiveSansTextTheme(
         TextTheme(
-          bodyMedium: TextStyle(color: TuColors.text(dark: dark), fontSize: 16),
+          bodyMedium: TextStyle(color: TuColors.text(dark: dark), fontSize: 18),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -57,7 +57,10 @@ ThemeData tuTheme({bool dark = true}) {
       listTileTheme: const ListTileThemeData(
         contentPadding: EdgeInsets.only(right: 0, left: 14),
       ),
-      inputDecorationTheme: const InputDecorationTheme(),
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(),
+        floatingLabelStyle: TextStyle(color: TuColors.text(), fontSize: 18),
+      ),
       dialogTheme: DialogTheme(
           backgroundColor: TuColors.bg1(dark: dark),
           titleTextStyle: Styles.h4(isLight: true, dark: dark)),

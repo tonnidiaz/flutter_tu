@@ -224,3 +224,50 @@ class _ProgressSheetState extends State<ProgressSheet> {
             )));
   }
 }
+
+class TuCard extends StatelessWidget {
+  final double radius;
+  final double padding;
+  final double my;
+  final double borderSize;
+  final double mx;
+  final Widget? child;
+  final Function()? onTap;
+  final Function()? onLongPress;
+  final double? width;
+  final double? height;
+  final Color? color;
+  const TuCard(
+      {super.key,
+      this.radius = 0,
+      this.padding = 8,
+      this.my = 0,
+      this.mx = 0,
+      this.borderSize = 1.6,
+      this.child,
+      this.onTap,
+      this.onLongPress,
+      this.height,
+      this.color,
+      this.width = double.infinity});
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      onLongPress: onLongPress,
+      borderRadius: BorderRadius.circular(radius),
+      //hoverColor: Colors.black,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: my, horizontal: mx),
+        height: height,
+        width: width,
+        padding: EdgeInsets.all(padding),
+        decoration: BoxDecoration(
+          color: color ?? TuColors.bg1(),
+          borderRadius: BorderRadius.circular(radius),
+        ),
+        child: child,
+      ),
+    );
+  }
+}

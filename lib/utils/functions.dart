@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:another_flushbar/flushbar.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:tu/utils/colors.dart';
 import 'package:via_logger/log_record.dart';
 import 'package:via_logger/logger.dart';
 import 'package:via_logger/output.dart';
@@ -18,7 +20,8 @@ void clog(dynamic p) {
 }
 
 void setupWindowManager() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  if (Platform.isAndroid) return;
+
   // Must add this line.
   await windowManager.ensureInitialized();
 
@@ -63,8 +66,8 @@ Flushbar showToast(String msg,
     {bool isErr = false, int duration = 2, bool autoDismiss = true}) {
   // final appCtrl = MainApp.appCtrl;
   return Flushbar(
-    backgroundColor: const Color.fromARGB(255, 236, 236, 236),
-    messageColor: isErr ? Colors.red : Colors.black87,
+    backgroundColor: TuColors.bg(dark: false),
+    messageColor: isErr ? Colors.red : TuColors.text(dark: false),
     message: msg,
     duration: autoDismiss ? Duration(seconds: duration) : null,
     animationDuration: const Duration(milliseconds: 500),
@@ -94,26 +97,25 @@ double roundDouble(double value, int places) {
 
 void handleDioException(
     {BuildContext? context, required DioException exception, String? msg}) {
-  Logger.info("ERROR RESP: ${exception.response}");
+  clog(exception.response);
   if (exception.response != null &&
       "${exception.response!.data}".startsWith("tuned")) {
     showToast("${exception.response!.data.split("tuned:").last}", isErr: true)
         .show(context ?? Get.overlayContext!);
   } else {
-    showToast(msg ?? "Something went wrong!", isErr: true)
+    showToast(msg ?? "${exception}", isErr: true)
         .show(context ?? Get.overlayContext!);
   }
 }
 
 void errorHandler({required e, BuildContext? context, String? msg}) {
-  if (!(context?.mounted == true)) return;
+  Logger.info(e);
+  // if (!(context?.mounted == true)) return;
   if (e.runtimeType == DioException) {
     handleDioException(
         context: context, exception: e as DioException, msg: msg);
   } else {
-    Logger.info(e);
-    showToast(msg ?? "Something went wrong!", isErr: true)
-        .show(context ?? Get.overlayContext!);
+    showToast(msg ?? "$e", isErr: false).show(context ?? Get.overlayContext!);
   }
 }
 

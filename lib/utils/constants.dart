@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -24,8 +25,9 @@ const double bottomBarH = 45;
 const double sidebarW = 45;
 const double iconSize = 25;
 const double splashRadius = iconSize;
+bool dev = kDebugMode;
 
-final bool isMobile = Platform.isAndroid || Platform.isIOS;
+final bool isMobile = Platform.isAndroid || Platform.isIOS || dev;
 const defaultPadding = EdgeInsets.all(8);
 Size screenSize(BuildContext context) {
   return MediaQuery.of(context).size;

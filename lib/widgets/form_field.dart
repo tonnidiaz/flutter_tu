@@ -226,11 +226,9 @@ class _TuFormFieldState extends State<TuFormField> {
                       : null,
 
                   hintText: widget.hint,
-                  hintStyle: const TextStyle(fontSize: 12.5),
+
                   floatingLabelAlignment: widget.labelAlignment,
-                  floatingLabelStyle: GoogleFonts.inclusiveSans(
-                      color: TuColors.text(dark: _appCtrl.darkMode.value),
-                      fontSize: 18),
+
                   enabledBorder: border,
                   focusedBorder: focusedBorder,
                   focusedErrorBorder: focusedBorder,
