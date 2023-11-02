@@ -11,7 +11,7 @@ import 'package:tu/utils/colors.dart';
 import 'package:via_logger/log_record.dart';
 import 'package:via_logger/logger.dart';
 import 'package:via_logger/output.dart';
-import '../widgets/tu.dart';
+import '../widgets.dart';
 import '/utils/constants.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -39,9 +39,11 @@ void setupWindowManager() async {
   });
 }
 
-String formatDate(String dateString) {
+String formatDate(dynamic date) {
   final DateFormat formatter = DateFormat("yyyy-MM-dd").add_jm();
-  return formatter.format(DateTime.parse(dateString).toLocal());
+  final DateTime mDate =
+      date.runtimeType == String ? DateTime.parse(date) : date;
+  return formatter.format(mDate.toLocal());
 }
 
 String camelToSentence(String text) {

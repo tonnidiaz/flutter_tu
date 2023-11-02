@@ -58,7 +58,7 @@ ThemeData tuTheme({bool dark = true}) {
         contentPadding: EdgeInsets.only(right: 0, left: 14),
       ),
       inputDecorationTheme: InputDecorationTheme(
-        hintStyle: TextStyle(),
+        hintStyle: const TextStyle(),
         floatingLabelStyle: TextStyle(color: TuColors.text(), fontSize: 18),
       ),
       dialogTheme: DialogTheme(

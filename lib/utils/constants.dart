@@ -57,3 +57,7 @@ class SelectItem {
   final dynamic value;
   SelectItem(this.label, this.value);
 }
+
+double keyboardPadding(BuildContext context) {
+  return MediaQuery.of(context).viewInsets.bottom;
+}
