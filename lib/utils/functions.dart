@@ -103,7 +103,7 @@ void handleDioException(
     showToast("${exception.response!.data.split("tuned:").last}", isErr: true)
         .show(context ?? Get.overlayContext!);
   } else {
-    showToast(msg ?? "${exception}", isErr: true)
+    showToast(msg ?? "${exception.message}", isErr: true)
         .show(context ?? Get.overlayContext!);
   }
 }
