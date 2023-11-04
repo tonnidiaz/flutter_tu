@@ -8,18 +8,23 @@ var black12 = Colors.black12;
 
 ThemeData tuTheme({bool dark = true}) {
   return ThemeData(
-      useMaterial3: false,
+      useMaterial3: true,
       scaffoldBackgroundColor: TuColors.bg(dark: dark),
+      chipTheme: ChipThemeData(
+          backgroundColor: TuColors.medium,
+          side: BorderSide.none,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
       platform: TargetPlatform.linux,
       appBarTheme: AppBarTheme(
           centerTitle: false,
           toolbarHeight: appBarH,
-          titleTextStyle: GoogleFonts.inclusiveSans(
-              fontSize: 18,
+          titleTextStyle: GoogleFonts.roboto(
+              fontSize: 20,
               fontWeight: FontWeight.w500,
               color: TuColors.text2(dark: dark)),
-          backgroundColor: TuColors.bg1(dark: dark),
-          elevation: 0.5,
+          backgroundColor: TuColors.bg(dark: dark),
+          elevation: 0.0,
           foregroundColor: TuColors.text2(dark: dark)),
       colorScheme: ColorScheme.fromSeed(
           primary: TuColors.primary,

@@ -19,7 +19,7 @@ class TuColors {
   static Color text0 = const Color.fromRGBO(50, 50, 50, 1);
   static Color surface600 = const Color.fromRGBO(89, 89, 89, 1);
   static Color text({bool? dark}) => dark ?? Tu.appCtrl.darkMode.value
-      ? Colors.white70
+      ? const Color.fromRGBO(255, 255, 255, 0.702)
       : const Color.fromRGBO(0, 0, 0, 1);
 
   static Color text2({bool? dark}) => dark ?? Tu.appCtrl.darkMode.value
@@ -31,7 +31,7 @@ class TuColors {
       : const Color.fromRGBO(15, 15, 15, 0.8);
 
   static Color note({bool? dark}) => const Color.fromRGBO(102, 102, 102, 1);
-  static Color medium = const Color.fromARGB(255, 111, 115, 117);
+  static Color medium = Color.fromARGB(125, 111, 115, 117);
   static Color danger = const Color.fromRGBO(248, 114, 114, 1);
   static Color success = const Color.fromRGBO(45, 211, 111, 1);
 

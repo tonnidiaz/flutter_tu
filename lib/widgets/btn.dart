@@ -91,7 +91,7 @@ class TuButton extends HookWidget {
                         backgroundColor, //const Color.fromRGBO(26, 92, 255, 1),
                     /* shadowColor:
                                 TuColors.text(), // const Color.fromRGBO(26, 92, 255, .5), */
-                    elevation: 1.5,
+                    elevation: 2,
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 10),
                     shape: RoundedRectangleBorder(

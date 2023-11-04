@@ -12,13 +12,14 @@ PreferredSizeWidget tuAppbar(
     {Widget? title,
     bool showCart = true,
     double height = appBarH,
+    double? elevation,
     List<Widget> actions = const []}) {
   final BarCtrl appBarCtrl = Get.find();
   return PreferredSize(
     preferredSize: Size.fromHeight(height),
     child: Obx(
       () => AppBar(
-        elevation: .4,
+        elevation: elevation,
 //        leadingWidth: appBarH - 5,
         //titleSpacing: 5,
         leading: appBarCtrl.selected.value.isNotEmpty
