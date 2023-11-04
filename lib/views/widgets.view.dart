@@ -83,7 +83,7 @@ class WidgetsPage extends HookWidget {
               ),
               mY(10),
               TuButton(
-                text: "SHow dialog:",
+                text: "SHow dialog",
                 onPressed: () {
                   TuFuncs.dialog(
                       context,

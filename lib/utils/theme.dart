@@ -17,18 +17,20 @@ ThemeData tuTheme({bool dark = true}) {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
       platform: TargetPlatform.linux,
       appBarTheme: AppBarTheme(
+          surfaceTintColor: Colors.transparent,
           centerTitle: false,
           toolbarHeight: appBarH,
           titleTextStyle: GoogleFonts.roboto(
               fontSize: 20,
               fontWeight: FontWeight.w500,
               color: TuColors.text2(dark: dark)),
-          backgroundColor: TuColors.bg(dark: dark),
+          backgroundColor: TuColors.bg1(dark: dark),
           elevation: 0.0,
           foregroundColor: TuColors.text2(dark: dark)),
       colorScheme: ColorScheme.fromSeed(
           primary: TuColors.primary,
           secondary: TuColors.secondary,
+          surfaceTint: TuColors.bg1(),
           seedColor: TuColors.primary,
           brightness: dark ? Brightness.dark : Brightness.light),
       progressIndicatorTheme: ProgressIndicatorThemeData(
