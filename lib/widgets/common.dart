@@ -236,10 +236,10 @@ class TuCard extends StatelessWidget {
   final double radius;
   final double padding;
   final double my;
-  final double mb;
-  final double mr;
-  final double ml;
-  final double mt;
+  final double? mb;
+  final double? mr;
+  final double? ml;
+  final double? mt;
   final double borderSize;
   final double mx;
   final Widget? child;
@@ -254,10 +254,10 @@ class TuCard extends StatelessWidget {
       this.padding = 8,
       this.my = 0,
       this.mx = 0,
-      this.ml = 0,
-      this.mr = 0,
-      this.mt = 0,
-      this.mb = 0,
+      this.ml,
+      this.mr,
+      this.mt,
+      this.mb,
       this.borderSize = 1.6,
       this.child,
       this.onTap,

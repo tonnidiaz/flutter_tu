@@ -43,7 +43,7 @@ ThemeData tuTheme({bool dark = true}) {
             dark:
                 dark), //shape: RoundedRectangleBorder(borderRadius: mFieldRadius),
       ),
-      textTheme: GoogleFonts.inclusiveSansTextTheme(
+      textTheme: GoogleFonts.robotoTextTheme(
         TextTheme(
           bodyMedium: TextStyle(color: TuColors.text(dark: dark), fontSize: 18),
         ),
