@@ -10,8 +10,8 @@ Widget mY(double h) {
   return SizedBox(height: h);
 }
 
-Widget mX(double h) {
-  return SizedBox(height: h);
+Widget mX(double w) {
+  return SizedBox(width: w);
 }
 
 Widget h3(String txt, {Color? color, bool isLight = false}) {
