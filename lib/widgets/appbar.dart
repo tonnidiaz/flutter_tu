@@ -11,6 +11,7 @@ class BarCtrl extends GetxController {
 PreferredSizeWidget tuAppbar(
     {Widget? title,
     bool showCart = true,
+    bool? centerTitle,
     double height = appBarH,
     double? elevation,
     List<Widget> actions = const []}) {
@@ -22,6 +23,7 @@ PreferredSizeWidget tuAppbar(
         elevation: elevation,
 //        leadingWidth: appBarH - 5,
         //titleSpacing: 5,
+        centerTitle: centerTitle,
         leading: appBarCtrl.selected.value.isNotEmpty
             ? IconButton(
                 padding: EdgeInsets.zero,

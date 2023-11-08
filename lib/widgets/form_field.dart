@@ -31,10 +31,12 @@ class TuFormField extends StatefulHookWidget {
   final bool isLegacy;
   final bool readOnly;
   final bool autofocus;
-  final int maxLines;
+  final int? maxLines;
   final double? width;
   final int? maxLength;
   final TextAlign textAlign;
+  final TextAlignVertical? textAlignV;
+  final bool expands;
   final FloatingLabelAlignment? labelAlignment;
   final Function()? onTap;
   final FocusNode? focusNode;
@@ -43,6 +45,7 @@ class TuFormField extends StatefulHookWidget {
       {super.key,
       this.label,
       this.my = 2.5,
+      this.textAlignV,
       this.focusNode,
       this.enabled = true,
       this.suffixIcon,
@@ -64,6 +67,7 @@ class TuFormField extends StatefulHookWidget {
       this.required = false,
       this.isLegacy = false,
       this.autofocus = false,
+      this.expands = false,
       this.readOnly = false,
       this.isPass = false,
       this.showEye = true,
@@ -132,113 +136,98 @@ class _TuFormFieldState extends State<TuFormField> {
             borderRadius: BorderRadius.circular(widget.radius),
           );
     return Obx(
-      () => Container(
-        margin: EdgeInsets.symmetric(vertical: widget.my),
-        width: widget.width,
-        child: Material(
-          elevation: widget.elevation,
-          borderRadius: BorderRadius.circular(widget.radius),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              widget.hasBorder && widget.isLegacy
-                  ? Text(widget.label!, style: Styles.label())
-                  : none(),
-              TextFormField(
-                textAlign: widget.textAlign,
-                maxLength: widget.maxLength,
-                readOnly: widget.readOnly,
-                controller: _controller,
-                autofocus: widget.autofocus,
-                onTap: widget.onTap,
-                onFieldSubmitted: widget.onSubmitted,
+      () => TextFormField(
+        textAlign: widget.textAlign,
+        maxLength: widget.maxLength,
+        readOnly: widget.readOnly,
+        controller: _controller,
+        autofocus: widget.autofocus,
+        onTap: widget.onTap,
+        expands: widget.expands,
+        onFieldSubmitted: widget.onSubmitted,
 
-                // autovalidateMode: AutovalidateMode.onUserInteraction,
-                focusNode: _focusNode,
-                onChanged: widget.onChanged,
-                obscureText: widget.isPass && !showPass.value,
-                maxLines: widget.maxLines,
+        // autovalidateMode: AutovalidateMode.onUserInteraction,
+        focusNode: _focusNode,
+        onChanged: widget.onChanged,
+        obscureText: widget.isPass && !showPass.value,
+        maxLines: widget.maxLines,
 
-                validator: widget.validator ??
-                    (val) {
-                      String? msg;
-                      if ((widget.required && val != null && val.isEmpty) ||
-                          val == null) {
-                        msg = "Field is required!";
-                      }
-                      return msg;
-                    },
-                autocorrect: true,
-                keyboardType: widget.keyboard,
-                style: const TextStyle(
-                  fontSize: 16,
-                ),
-                decoration: InputDecoration(
-                  enabled: widget.enabled,
-                  prefixIconColor: _hasFocus
-                      ? TuColors.text3(dark: _appCtrl.darkMode.value)
-                      : TuColors.note(dark: _appCtrl.darkMode.value),
-                  suffixIconColor: _hasFocus
-                      ? TuColors.text3(dark: _appCtrl.darkMode.value)
-                      : TuColors.note(dark: _appCtrl.darkMode.value),
-                  fillColor: widget.fill ??
-                      TuColors.fieldBG(dark: _appCtrl.darkMode.value),
-
-                  filled: true,
-                  isDense: false,
-                  contentPadding: EdgeInsets.only(
-                    top: widget.height,
-                    bottom: widget.height,
-                    left: 15,
-                    right: 15,
-                  ),
-
-                  prefixIcon: widget.prefixIcon,
-                  prefix: widget.prefix,
-                  suffix: widget.suffix,
-                  suffixIcon: widget.isPass && widget.showEye
-                      ? IconButton(
-                          padding: EdgeInsets.zero,
-                          onPressed: () async {
-                            //SHowHide pass
-
-                            if (!showPass.value &&
-                                widget.onShowHidePass != null) {
-                              // Pass hidden and the event handler is provided
-                              // Invoke the handler
-                              void setShowPass(bool val) {
-                                showPass.value = val;
-                              }
-
-                              await widget.onShowHidePass!(setShowPass);
-                            } else {
-                              showPass.value = !showPass.value;
-                            }
-                          },
-                          splashRadius: 18,
-                          icon: Icon(!showPass.value
-                              ? CupertinoIcons.eye
-                              : CupertinoIcons.eye_slash))
-                      : widget.suffixIcon,
-
-                  labelText: !widget.hasBorder || !widget.isLegacy
-                      ? widget.label
-                      : null,
-
-                  hintText: widget.hint,
-
-                  floatingLabelAlignment: widget.labelAlignment,
-
-                  enabledBorder: border,
-                  focusedBorder: focusedBorder,
-                  focusedErrorBorder: focusedBorder,
-                  errorBorder: border,
-                  //border: radius != null ? border : null,
-                ),
-              ),
-            ],
-          ),
+        validator: widget.validator ??
+            (val) {
+              String? msg;
+              if ((widget.required && val != null && val.isEmpty) ||
+                  val == null) {
+                msg = "Field is required!";
+              }
+              return msg;
+            },
+        autocorrect: true,
+        keyboardType: widget.keyboard,
+        style: const TextStyle(
+          fontSize: 16,
         ),
+        decoration: InputDecoration(
+          enabled: widget.enabled,
+          prefixIconColor: _hasFocus
+              ? TuColors.text3(dark: _appCtrl.darkMode.value)
+              : TuColors.note(dark: _appCtrl.darkMode.value),
+          suffixIconColor: _hasFocus
+              ? TuColors.text3(dark: _appCtrl.darkMode.value)
+              : TuColors.note(dark: _appCtrl.darkMode.value),
+          fillColor:
+              widget.fill ?? TuColors.fieldBG(dark: _appCtrl.darkMode.value),
+
+          filled: true,
+          isDense: false,
+          contentPadding: EdgeInsets.only(
+            top: widget.height,
+            bottom: widget.height,
+            left: 15,
+            right: 15,
+          ),
+
+          prefixIcon: widget.prefixIcon,
+          prefix: widget.prefix,
+          suffix: widget.suffix,
+          suffixIcon: widget.isPass && widget.showEye
+              ? IconButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: () async {
+                    //SHowHide pass
+
+                    if (!showPass.value && widget.onShowHidePass != null) {
+                      // Pass hidden and the event handler is provided
+                      // Invoke the handler
+                      void setShowPass(bool val) {
+                        showPass.value = val;
+                      }
+
+                      await widget.onShowHidePass!(setShowPass);
+                    } else {
+                      showPass.value = !showPass.value;
+                    }
+                  },
+                  splashRadius: 18,
+                  icon: Icon(!showPass.value
+                      ? CupertinoIcons.eye
+                      : CupertinoIcons.eye_slash))
+              : widget.suffixIcon,
+
+          labelText:
+              !widget.hasBorder || !widget.isLegacy ? widget.label : null,
+
+          hintText: widget.hint,
+
+          floatingLabelAlignment: widget.labelAlignment,
+
+          enabledBorder: border,
+          focusedBorder: focusedBorder,
+          focusedErrorBorder: focusedBorder,
+          errorBorder: border,
+
+          //border: radius != null ? border : null,
+        ),
+        textAlignVertical: widget.textAlignV,
       ),
     );
   }
