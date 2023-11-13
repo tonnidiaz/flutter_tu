@@ -4,8 +4,13 @@ import "./colors.dart";
 import "package:google_fonts/google_fonts.dart";
 
 class Styles {
-  static TextStyle h1 =
-      GoogleFonts.inclusiveSans(fontSize: 22, fontWeight: FontWeight.w900);
+  static TextStyle h1({Color? color, bool isLight = false}) {
+    return GoogleFonts.poppins(
+        fontSize: 30,
+        fontWeight: isLight ? FontWeight.w500 : FontWeight.w800,
+        color: color ?? TuColors.text());
+  }
+
   static TextStyle h2({Color? color, bool isLight = false}) {
     return GoogleFonts.poppins(
         fontSize: 24,

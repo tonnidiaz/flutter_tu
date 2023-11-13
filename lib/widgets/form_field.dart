@@ -139,6 +139,7 @@ class _TuFormFieldState extends State<TuFormField> {
       () => TextFormField(
         textAlign: widget.textAlign,
         maxLength: widget.maxLength,
+
         readOnly: widget.readOnly,
         controller: _controller,
         autofocus: widget.autofocus,

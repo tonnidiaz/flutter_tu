@@ -39,7 +39,9 @@ class TuColors {
   static Color bg({bool? dark}) => dark ?? Tu.appCtrl.darkMode.value
       ? const Color.fromRGBO(48, 48, 48, 1)
       : const Color.fromRGBO(239, 234, 230, 1);
-  static Color bg0 = const Color.fromRGBO(46, 46, 46, 1);
+  static Color bg0({bool? dark}) => dark ?? Tu.appCtrl.darkMode.value
+      ? const Color.fromRGBO(36, 36, 36, 1)
+      : const Color.fromRGBO(250, 247, 245, 1);
   static Color bg1({bool? dark}) => dark ?? Tu.appCtrl.darkMode.value
       ? const Color.fromRGBO(56, 56, 56, 1)
       : const Color.fromRGBO(250, 247, 245, 1);

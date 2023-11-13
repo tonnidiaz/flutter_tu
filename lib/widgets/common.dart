@@ -21,6 +21,13 @@ Widget h3(String txt, {Color? color, bool isLight = false}) {
   );
 }
 
+Widget h1(String txt, {Color? color, bool isLight = false}) {
+  return Text(
+    txt,
+    style: Styles.h1(color: color, isLight: isLight),
+  );
+}
+
 Widget h4(String txt, {Color? color, bool isLight = false}) {
   return Text(
     txt,
@@ -144,7 +151,8 @@ class InfoItem extends StatelessWidget {
   }
 }
 
-Widget devider() => Container(height: 1, color: Colors.black12);
+Widget devider({Color? color}) =>
+    Container(height: 1, color: color ?? Colors.black12);
 Widget svgIcon(
         {required String name,
         Color? color,

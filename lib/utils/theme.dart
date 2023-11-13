@@ -39,7 +39,8 @@ ThemeData tuTheme({bool dark = true}) {
       tabBarTheme: TabBarTheme(
           labelColor: TuColors.text2(dark: dark), indicatorColor: Colors.red),
       popupMenuTheme: PopupMenuThemeData(
-        color: TuColors.bg2(), //shape: RoundedRectangleBorder(borderRadius: mFieldRadius),
+        color: TuColors
+            .bg2(), //shape: RoundedRectangleBorder(borderRadius: mFieldRadius),
       ),
       textTheme: GoogleFonts.robotoTextTheme(
         TextTheme(
@@ -66,6 +67,7 @@ ThemeData tuTheme({bool dark = true}) {
         hintStyle: const TextStyle(),
         floatingLabelStyle: TextStyle(color: TuColors.text(), fontSize: 18),
       ),
+      drawerTheme: DrawerThemeData(backgroundColor: TuColors.bg0()),
       dialogTheme: DialogTheme(
           backgroundColor: TuColors.bg1(dark: dark),
           titleTextStyle: Styles.h4(isLight: true, dark: dark)),
