@@ -6,6 +6,7 @@ export 'widgets/checkbox.dart';
 export 'widgets/popup_btn.dart';
 export 'widgets/ic_btn.dart';
 export 'widgets/appbar.dart';
+export 'widgets/dialog.dart';
 export 'widgets/form.dart';
 export 'widgets/inkwell.dart';
 export 'widgets/selectable.dart';
