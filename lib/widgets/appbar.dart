@@ -15,27 +15,25 @@ PreferredSizeWidget tuAppbar(
     double height = appBarH,
     double? elevation,
     List<Widget> actions = const []}) {
-  final BarCtrl appBarCtrl = Get.find();
+  final BarCtrl barCtrl = Get.find();
   return PreferredSize(
     preferredSize: Size.fromHeight(height),
     child: Obx(
       () => AppBar(
         elevation: elevation,
-//        leadingWidth: appBarH - 5,
-        //titleSpacing: 5,
-        centerTitle: centerTitle,
-        leading: appBarCtrl.selected.value.isNotEmpty
+        centerTitle: barCtrl.selected.value.isNotEmpty ? false : centerTitle,
+        leading: barCtrl.selected.value.isNotEmpty
             ? IconButton(
                 padding: EdgeInsets.zero,
                 splashRadius: 20,
                 onPressed: () {
-                  appBarCtrl.setSelected([]);
+                  barCtrl.setSelected([]);
                 },
                 icon: const Icon(Icons.close))
             : null,
-        title: appBarCtrl.selected.value.isNotEmpty
+        title: barCtrl.selected.value.isNotEmpty
             ? Text(
-                "${appBarCtrl.selected.value.length}",
+                "${barCtrl.selected.value.length}",
               )
             : title,
         actions: [

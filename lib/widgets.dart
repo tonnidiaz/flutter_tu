@@ -8,3 +8,4 @@ export 'widgets/ic_btn.dart';
 export 'widgets/appbar.dart';
 export 'widgets/form.dart';
 export 'widgets/inkwell.dart';
+export 'widgets/selectable.dart';

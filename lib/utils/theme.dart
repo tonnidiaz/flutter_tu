@@ -39,9 +39,7 @@ ThemeData tuTheme({bool dark = true}) {
       tabBarTheme: TabBarTheme(
           labelColor: TuColors.text2(dark: dark), indicatorColor: Colors.red),
       popupMenuTheme: PopupMenuThemeData(
-        color: TuColors.bg1(
-            dark:
-                dark), //shape: RoundedRectangleBorder(borderRadius: mFieldRadius),
+        color: TuColors.bg2(), //shape: RoundedRectangleBorder(borderRadius: mFieldRadius),
       ),
       textTheme: GoogleFonts.robotoTextTheme(
         TextTheme(
