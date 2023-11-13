@@ -9,3 +9,4 @@ export 'widgets/appbar.dart';
 export 'widgets/form.dart';
 export 'widgets/inkwell.dart';
 export 'widgets/selectable.dart';
+export 'widgets/sliver_appbar_delegate.dart';

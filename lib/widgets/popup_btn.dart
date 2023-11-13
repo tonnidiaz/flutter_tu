@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class TuPopupBtn extends StatelessWidget {
   final List<PopupMenuEntry<Object?>?> items;
-  const TuPopupBtn({super.key, this.items = const []});
+  final Function()? onOpened;
+  const TuPopupBtn({super.key, this.items = const [], this.onOpened});
 
   List<PopupMenuEntry<Object?>> parseItems() {
     List<PopupMenuEntry<Object?>> its = [];
@@ -15,6 +16,8 @@ class TuPopupBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
-        splashRadius: 20, itemBuilder: (context) => parseItems());
+        onOpened: onOpened,
+        splashRadius: 20,
+        itemBuilder: (context) => parseItems());
   }
 }

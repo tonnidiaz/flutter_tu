@@ -66,11 +66,20 @@ setupLogger() {
 }
 
 Flushbar showToast(String msg,
-    {bool isErr = false, int duration = 2, bool autoDismiss = true}) {
+    {bool isErr = false, int duration = 3, bool autoDismiss = true}) {
   // final appCtrl = MainApp.appCtrl;
   return Flushbar(
-    backgroundColor: TuColors.bg(dark: false),
-    messageColor: isErr ? Colors.red : TuColors.text(dark: false),
+    backgroundColor: const Color.fromRGBO(28, 28, 28, 1),
+    margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+    borderRadius: BorderRadius.circular(5),
+    boxShadows: const [
+      BoxShadow(
+          color: Color.fromRGBO(36, 36, 36, 0.438),
+          offset: Offset(0, -2),
+          blurRadius: 2,
+          spreadRadius: 4)
+    ],
+    messageColor: isErr ? Colors.red : TuColors.text(),
     message: msg,
     duration: autoDismiss ? Duration(seconds: duration) : null,
     animationDuration: const Duration(milliseconds: 500),
