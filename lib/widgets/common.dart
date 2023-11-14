@@ -185,8 +185,13 @@ class ProgressSheet extends StatefulWidget {
   final Color? color;
   final String? msg;
   final bool dismissable;
+  final Function()? onDismiss;
   const ProgressSheet(
-      {super.key, this.color, this.msg, required this.dismissable});
+      {super.key,
+      this.color,
+      this.msg,
+      required this.dismissable,
+      this.onDismiss});
 
   @override
   State<ProgressSheet> createState() => _ProgressSheetState();
@@ -201,7 +206,9 @@ class _ProgressSheetState extends State<ProgressSheet> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _ctrl.setProgress(null);
     });
-
+    if (widget.onDismiss != null) {
+      widget.onDismiss!();
+    }
     super.dispose();
   }
 
@@ -224,6 +231,7 @@ class _ProgressSheetState extends State<ProgressSheet> {
               children: [
                 Obx(() => LinearProgressIndicator(
                       value: _ctrl.progress.value,
+                      color: TuColors.primaryFade,
                     )),
                 Expanded(
                   child: Padding(

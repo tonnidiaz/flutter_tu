@@ -168,9 +168,12 @@ sleep(int ms) async {
   return await Future.delayed(Duration(milliseconds: ms));
 }
 
-void showProgressSheet({String? msg, bool dismissable = false}) {
-  Get.bottomSheet(ProgressSheet(msg: msg, dismissable: dismissable),
-      isDismissible: false);
+void showProgressSheet(
+    {String? msg, bool dismissable = false, Function()? onDismiss}) {
+  Get.bottomSheet(
+    ProgressSheet(msg: msg, dismissable: dismissable, onDismiss: onDismiss),
+    isDismissible: false,
+  );
 }
 
 Future copyToClipboard(String text) async {

@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,6 +32,7 @@ bool dev = kDebugMode;
 
 final bool isMobile = Platform.isAndroid || Platform.isIOS || dev;
 const defaultPadding = EdgeInsets.all(8);
+const defaultPadding2 = EdgeInsets.all(14);
 Size screenSize(BuildContext context) {
   return MediaQuery.of(context).size;
 }
@@ -62,3 +65,31 @@ class SelectItem {
 double keyboardPadding(BuildContext context) {
   return MediaQuery.of(context).viewInsets.bottom;
 }
+
+final dio = Dio();
+const String githubURL =
+    "https://raw.githubusercontent.com/tonnidiaz/tunedapps/main/meta.json";
+
+const localhost = "http://172.16.10.204";
+
+Future<String> tbURL() async {
+  if (dev) return "$localhost:3000";
+  final res = await dio.get(
+    githubURL,
+  );
+  return jsonDecode(res.data)["baseURL"];
+}
+
+Future<Dio> bassDio() async {
+  return Dio(BaseOptions(baseUrl: await tbURL()));
+} 
+
+
+
+/*bool autoCheck() {
+  final acu = appBox!.get("AUTO_CHECK_UPDATES");
+  final autoCheck = acu == null || acu;
+  return autoCheck;
+}
+
+*/
