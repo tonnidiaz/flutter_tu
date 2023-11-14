@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'dart:math';
+import 'dart:convert';
+import 'package:device_info_plus/device_info_plus.dart';
 
 import 'package:another_flushbar/flushbar.dart';
 import 'package:dio/dio.dart';
@@ -94,8 +96,8 @@ bool isNumeric(dynamic s) {
   return double.tryParse("$s") != null;
 }
 
-void pushTo(Widget widget) {
-  Get.to(widget);
+Future pushTo(Widget widget) async {
+  return Get.to(widget);
 }
 
 void pushNamed(String name, {Object? arguments}) {
@@ -154,6 +156,15 @@ class TuFuncs {
 Future<String> getAppVersion() async {
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
   return packageInfo.version;
+}
+
+Future<String> getUserId() async {
+  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+  final id = Platform.isAndroid
+      ? (await deviceInfo.androidInfo).id
+      : (await deviceInfo.iosInfo).identifierForVendor!;
+  clog(id);
+  return 'nfo.data';
 }
 
 void pop(BuildContext context) {

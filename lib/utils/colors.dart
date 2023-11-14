@@ -16,7 +16,9 @@ class TuColors {
       : const Color.fromRGBO(101, 195, 200, .5);
   static Color secondary = const Color.fromRGBO(56, 128, 255, 1);
   static Color secondaryFade = const Color.fromRGBO(56, 128, 255, .3);
-  static Color text0 = const Color.fromRGBO(50, 50, 50, 1);
+  static Color text0({bool? dark}) => dark ?? Tu.appCtrl.darkMode.value
+      ? const Color.fromRGBO(255, 255, 255, 0.9)
+      : const Color.fromRGBO(0, 0, 0, 1);
   static Color surface600 = const Color.fromRGBO(89, 89, 89, 1);
   static Color text({bool? dark}) => dark ?? Tu.appCtrl.darkMode.value
       ? const Color.fromRGBO(255, 255, 255, 0.702)

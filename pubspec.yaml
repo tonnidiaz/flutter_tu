@@ -23,6 +23,7 @@ dependencies:
   package_info_plus: ^4.2.0
   flutter_downloader: ^1.11.4
   permission_handler: ^11.0.1
+  device_info_plus: ^9.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

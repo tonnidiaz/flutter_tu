@@ -5,18 +5,22 @@ class TuDialogView extends StatelessWidget {
   final bool isForm;
   final Function()? onOk;
   final Widget? content;
-  final String title;
+  final String? title;
   final List<Widget> fields;
   final String okTxt;
   final bool hasActions;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? titlePadding;
   const TuDialogView(
       {super.key,
       this.isForm = false,
+      this.padding,
       this.hasActions = true,
       this.onOk,
       this.content,
+      this.titlePadding,
       this.okTxt = "Ok",
-      this.title = "",
+      this.title,
       this.fields = const []});
 
   @override
@@ -28,11 +32,17 @@ class TuDialogView extends StatelessWidget {
      
       actionsPadding: const EdgeInsets.fromLTRB(6, 10, 15, 16), */
       //elevation: .5,
-      backgroundColor: TuColors.bg(),
+      titlePadding: titlePadding,
+      contentPadding: padding,
+      backgroundColor: TuColors.bg0(),
       insetPadding: const EdgeInsets.all(20),
-      title: Text(
-        title,
-      ),
+      elevation: 1.88,
+
+      title: title != null
+          ? Text(
+              title!,
+            )
+          : null,
       content: isForm
           ? Form(
               key: formKey,

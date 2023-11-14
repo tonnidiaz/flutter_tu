@@ -15,16 +15,18 @@ ThemeData tuTheme({bool dark = true}) {
           side: BorderSide.none,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
-      platform: TargetPlatform.linux,
+      platform: TargetPlatform.android,
       appBarTheme: AppBarTheme(
           surfaceTintColor: Colors.transparent,
           centerTitle: false,
           toolbarHeight: appBarH,
+          iconTheme: IconThemeData(color: TuColors.text0(dark: dark)),
+          actionsIconTheme: IconThemeData(color: TuColors.text0(dark: dark)),
           titleTextStyle: GoogleFonts.roboto(
               fontSize: 20,
               fontWeight: FontWeight.w500,
-              color: TuColors.text2(dark: dark)),
-          backgroundColor: TuColors.bg1(dark: dark),
+              color: TuColors.text0(dark: dark)),
+          backgroundColor: TuColors.bg(dark: dark),
           elevation: 0.0,
           foregroundColor: TuColors.text2(dark: dark)),
       colorScheme: ColorScheme.fromSeed(
@@ -44,7 +46,7 @@ ThemeData tuTheme({bool dark = true}) {
       ),
       textTheme: GoogleFonts.robotoTextTheme(
         TextTheme(
-          bodyMedium: TextStyle(color: TuColors.text(dark: dark), fontSize: 18),
+          bodyMedium: TextStyle(color: TuColors.text(dark: dark), fontSize: 20),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -71,5 +73,6 @@ ThemeData tuTheme({bool dark = true}) {
       dialogTheme: DialogTheme(
           backgroundColor: TuColors.bg1(dark: dark),
           titleTextStyle: Styles.h4(isLight: true, dark: dark)),
+      cardColor: TuColors.bg1(),
       iconTheme: IconThemeData(size: iconSize, color: TuColors.text2()));
 }

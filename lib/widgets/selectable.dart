@@ -6,6 +6,7 @@ class TuSelectable extends StatelessWidget {
   final dynamic item;
   final Widget child;
   final Function()? onTap;
+  final double elevation;
 
   /// The item's background color
   final Color? color;
@@ -17,6 +18,7 @@ class TuSelectable extends StatelessWidget {
       required this.item,
       required this.child,
       this.onTap,
+      this.elevation = .5,
       this.radius = 4,
       this.color});
 
@@ -49,26 +51,27 @@ class TuSelectable extends StatelessWidget {
           borderRadius: bradius,
           child: child,
         );
-    return Stack(
-      children: [
-        Container(
-            decoration: BoxDecoration(
-                color: color ?? TuColors.bg1(), borderRadius: bradius),
-            child: inkWell(child: child)),
-        Obx(
-          () => !barCtrl.selected.value.contains(item)
-              ? none()
-              : Positioned.fill(
-                  child: Container(
-                  decoration: BoxDecoration(
-                      color: barCtrl.selected.value.contains(item)
-                          ? TuColors.secondaryFade
-                          : null,
-                      borderRadius: bradius),
-                  child: inkWell(),
-                )),
-        ),
-      ],
-    );
+    return Material(
+        color: color ?? TuColors.bg1(),
+        borderRadius: bradius,
+        elevation: elevation,
+        child: Stack(
+          children: [
+            inkWell(child: child),
+            Obx(
+              () => !barCtrl.selected.value.contains(item)
+                  ? none()
+                  : Positioned.fill(
+                      child: Container(
+                      decoration: BoxDecoration(
+                          color: barCtrl.selected.value.contains(item)
+                              ? TuColors.secondaryFade
+                              : null,
+                          borderRadius: bradius),
+                      child: inkWell(),
+                    )),
+            ),
+          ],
+        ));
   }
 }
