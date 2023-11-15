@@ -79,7 +79,7 @@ Flushbar showToast(String msg,
           color: Color.fromRGBO(36, 36, 36, 0.438),
           offset: Offset(0, -2),
           blurRadius: 2,
-          spreadRadius: 4)
+          spreadRadius: 2)
     ],
     messageColor: isErr ? Colors.red : TuColors.text(),
     message: msg,
@@ -111,25 +111,37 @@ double roundDouble(double value, int places) {
 
 void handleDioException(
     {BuildContext? context, required DioException exception, String? msg}) {
+  clog("EXCEPTION RESPONSE:\n");
   clog(exception.response);
-  if (exception.response != null &&
-      "${exception.response!.data}".startsWith("tuned")) {
-    showToast("${exception.response!.data.split("tuned:").last}", isErr: true)
-        .show(context ?? Get.overlayContext!);
+  String? respMsg;
+  if (exception.type == DioExceptionType.connectionError) {
+    respMsg = "Connection error";
+  } else if (exception.type == DioExceptionType.connectionTimeout) {
+    respMsg = "Connection timedout";
+  } else if (exception.response != null) {
+    final resp = exception.response!;
+
+    if ("${resp.data}".startsWith("tuned")) {
+      respMsg = "${exception.response!.data.split("tuned:").last}";
+    } else if (resp.statusMessage != null) {
+      respMsg = resp.statusMessage;
+    }
   } else {
-    showToast(msg ?? "${exception.message ?? exception.response}", isErr: true)
-        .show(context ?? Get.overlayContext!);
+    respMsg = exception.message;
   }
+  showToast(respMsg ?? msg ?? "Something went wrong", isErr: true)
+      .show(context ?? Get.overlayContext!);
 }
 
 void errorHandler({required e, BuildContext? context, String? msg}) {
-  Logger.info(e);
+  clog(e);
   // if (!(context?.mounted == true)) return;
   if (e.runtimeType == DioException) {
     handleDioException(
         context: context, exception: e as DioException, msg: msg);
   } else {
-    showToast(msg ?? "$e", isErr: false).show(context ?? Get.overlayContext!);
+    showToast(msg ?? "Something went wrong", isErr: false)
+        .show(context ?? Get.overlayContext!);
   }
 }
 
@@ -145,7 +157,7 @@ class TuFuncs {
         builder: (context) => widget);
   }
 
-  static dialog(BuildContext context, Widget widget) {
+  static dialog(BuildContext context, Widget widget) async {
     return showDialog(
         useRootNavigator: false,
         context: context,
@@ -171,8 +183,8 @@ void pop(BuildContext context) {
   return Navigator.pop(context);
 }
 
-void gpop() {
-  Get.back();
+void gpop({dynamic? ret}) {
+  Get.back(result: ret);
 }
 
 sleep(int ms) async {

@@ -46,7 +46,8 @@ ThemeData tuTheme({bool dark = true}) {
       ),
       textTheme: GoogleFonts.robotoTextTheme(
         TextTheme(
-          bodyMedium: TextStyle(color: TuColors.text(dark: dark), fontSize: 20),
+          bodyMedium:
+              TextStyle(color: TuColors.text(dark: dark), fontSize: 18.5),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(

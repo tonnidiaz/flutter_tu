@@ -4,6 +4,7 @@ import "package:tu/tu.dart";
 class TuDialogView extends StatelessWidget {
   final bool isForm;
   final Function()? onOk;
+  final Function()? onCancel;
   final Widget? content;
   final String? title;
   final List<Widget> fields;
@@ -17,6 +18,7 @@ class TuDialogView extends StatelessWidget {
       this.padding,
       this.hasActions = true,
       this.onOk,
+      this.onCancel,
       this.content,
       this.titlePadding,
       this.okTxt = "Ok",
@@ -30,10 +32,12 @@ class TuDialogView extends StatelessWidget {
       /*  contentPadding: EdgeInsets.fromLTRB(15, 0, 15, hasActions ? 0 : 20),
       titlePadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
      
-      actionsPadding: const EdgeInsets.fromLTRB(6, 10, 15, 16), */
+      */
       //elevation: .5,
+      actionsPadding: const EdgeInsets.fromLTRB(6, 0, 15, 10),
       titlePadding: titlePadding,
-      contentPadding: padding,
+      contentPadding:
+          padding ?? EdgeInsets.fromLTRB(20, 15, 20, hasActions ? 5 : 20),
       backgroundColor: TuColors.bg0(),
       insetPadding: const EdgeInsets.all(20),
       elevation: 1.88,
@@ -65,7 +69,11 @@ class TuDialogView extends StatelessWidget {
                 color: TuColors.text2(dark: true), */
                 child: const Text("Cancel"),
                 onPressed: () {
-                  Navigator.pop(context);
+                  if (onCancel != null) {
+                    onCancel!();
+                  } else {
+                    gpop();
+                  }
                 },
               ),
               TextButton(

@@ -137,7 +137,7 @@ class InfoItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
           width: double.infinity,
-          height: 50,
+          height: 55,
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
           margin: const EdgeInsets.symmetric(vertical: .5),
