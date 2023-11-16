@@ -82,9 +82,7 @@ Future<String> tbURL() async {
 
 Future<Dio> bassDio() async {
   return Dio(BaseOptions(baseUrl: await tbURL()));
-} 
-
-
+}
 
 /*bool autoCheck() {
   final acu = appBox!.get("AUTO_CHECK_UPDATES");
@@ -93,3 +91,5 @@ Future<Dio> bassDio() async {
 }
 
 */
+
+List<Object> progressSheets = [];

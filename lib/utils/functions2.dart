@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:tu/tu.dart';
 import "package:permission_handler/permission_handler.dart";
@@ -18,13 +19,20 @@ Future checkUpdates({
   final context = Get.overlayContext;
 
   try {
-    showProgressSheet(msg: "Checking updates...");
-
-    final res =
-        await (await bassDio()).get("/api/app/updates/check", queryParameters: {
-      "uid": appId,
-      "v": appVersion,
-    });
+    final cancelToken = CancelToken();
+    showProgressSheet(
+        msg: "Checking updates...",
+        onDismiss: () {
+          clog('Dizmissed');
+          cancelToken.cancel("Dismissed");
+        });
+    if (dev) await sleep(2500);
+    final res = await (await bassDio()).get("/api/app/updates/check",
+        queryParameters: {
+          "uid": appId,
+          "v": appVersion,
+        },
+        cancelToken: cancelToken);
     final ret = res.data.runtimeType == String ? null : res.data;
     gpop();
     Get.bottomSheet(UpdatesView3(
@@ -32,9 +40,6 @@ Future checkUpdates({
       appName: appName,
     ));
   } catch (e) {
-    gpop();
-    if (context?.mounted == true) {
-      errorHandler(e: e, context: context);
-    }
+    errorHandler(e: e, context: context);
   }
 }

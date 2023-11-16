@@ -37,7 +37,7 @@ class TuDialogView extends StatelessWidget {
       actionsPadding: const EdgeInsets.fromLTRB(6, 0, 15, 10),
       titlePadding: titlePadding,
       contentPadding:
-          padding ?? EdgeInsets.fromLTRB(20, 15, 20, hasActions ? 5 : 20),
+          padding ?? EdgeInsets.fromLTRB(20, 20, 20, hasActions ? 0 : 20),
       backgroundColor: TuColors.bg0(),
       insetPadding: const EdgeInsets.all(20),
       elevation: 1.88,

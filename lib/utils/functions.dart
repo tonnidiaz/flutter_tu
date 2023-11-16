@@ -135,6 +135,9 @@ void handleDioException(
 
 void errorHandler({required e, BuildContext? context, String? msg}) {
   clog(e);
+  if (progressSheets.isEmpty) return;
+  gpop();
+
   // if (!(context?.mounted == true)) return;
   if (e.runtimeType == DioException) {
     handleDioException(

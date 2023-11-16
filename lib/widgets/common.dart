@@ -203,18 +203,21 @@ class _ProgressSheetState extends State<ProgressSheet> {
   @override
   void dispose() {
     backEnabled = true;
+    progressSheets.removeLast();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       _ctrl.setProgress(null);
     });
     if (widget.onDismiss != null) {
       widget.onDismiss!();
     }
+
     super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
+    progressSheets.add(DateTime.now());
     if (!widget.dismissable) {
       backEnabled = false;
     }

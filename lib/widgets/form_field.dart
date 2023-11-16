@@ -139,23 +139,20 @@ class _TuFormFieldState extends State<TuFormField> {
       () => TextFormField(
         textAlign: widget.textAlign,
         maxLength: widget.maxLength,
-        onTapOutside: (e){
+        textCapitalization: TextCapitalization.sentences,
+        onTapOutside: (e) {
           _focusNode.unfocus();
-          },
-
+        },
         readOnly: widget.readOnly,
         controller: _controller,
         autofocus: widget.autofocus,
         onTap: widget.onTap,
         expands: widget.expands,
         onFieldSubmitted: widget.onSubmitted,
-
-        // autovalidateMode: AutovalidateMode.onUserInteraction,
         focusNode: _focusNode,
         onChanged: widget.onChanged,
         obscureText: widget.isPass && !showPass.value,
         maxLines: widget.maxLines,
-
         validator: widget.validator ??
             (val) {
               String? msg;
