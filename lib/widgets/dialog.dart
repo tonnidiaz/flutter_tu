@@ -29,22 +29,17 @@ class TuDialogView extends StatelessWidget {
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
     return AlertDialog(
-      /*  contentPadding: EdgeInsets.fromLTRB(15, 0, 15, hasActions ? 0 : 20),
-      titlePadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-     
-      */
-      //elevation: .5,
       actionsPadding: const EdgeInsets.fromLTRB(6, 0, 15, 10),
       titlePadding: titlePadding,
       contentPadding:
-          padding ?? EdgeInsets.fromLTRB(20, 20, 20, hasActions ? 0 : 20),
+          padding ?? EdgeInsets.fromLTRB(25, 20, 25, hasActions ? 0 : 20),
       backgroundColor: TuColors.bg0(),
       insetPadding: const EdgeInsets.all(20),
       elevation: 1.88,
-
       title: title != null
           ? Text(
               title!,
+              style: TextStyle(color: TuColors.text2()),
             )
           : null,
       content: isForm

@@ -14,6 +14,7 @@ PreferredSizeWidget tuAppbar(
     bool? centerTitle,
     double height = appBarH,
     double? elevation,
+    PreferredSizeWidget? bottom,
     List<Widget> actions = const []}) {
   final BarCtrl barCtrl = Get.find();
   return PreferredSize(
@@ -22,6 +23,7 @@ PreferredSizeWidget tuAppbar(
       () => AppBar(
         elevation: elevation,
         centerTitle: barCtrl.selected.value.isNotEmpty ? false : centerTitle,
+        bottom: bottom,
         leading: barCtrl.selected.value.isNotEmpty
             ? IconButton(
                 padding: EdgeInsets.zero,
