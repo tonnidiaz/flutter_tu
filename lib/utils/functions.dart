@@ -68,7 +68,7 @@ setupLogger() {
 }
 
 Flushbar showToast(String msg,
-    {bool isErr = false, int duration = 3, bool autoDismiss = true}) {
+    {bool isErr = false, int duration = 2, bool autoDismiss = true}) {
   // final appCtrl = MainApp.appCtrl;
   return Flushbar(
     backgroundColor: const Color.fromRGBO(28, 28, 28, 1),

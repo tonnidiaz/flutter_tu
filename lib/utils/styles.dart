@@ -3,45 +3,47 @@ import "package:tu/tu.dart";
 import "./colors.dart";
 import "package:google_fonts/google_fonts.dart";
 
+const double fontSizeBody = 16;
+
 class Styles {
   static TextStyle h1({Color? color, bool isLight = false}) {
-    return GoogleFonts.roboto(
-        fontSize: 30,
+    return GoogleFonts.poppins(
+        fontSize: fontSizeBody + 10,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w800,
         color: color ?? TuColors.text());
   }
 
   static TextStyle h2({Color? color, bool isLight = false}) {
-    return GoogleFonts.roboto(
-        fontSize: 26,
+    return GoogleFonts.poppins(
+        fontSize: fontSizeBody + 6,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w800,
         color: color ?? TuColors.text0());
   }
 
   static TextStyle h3({Color? color, bool isLight = false}) {
-    return GoogleFonts.roboto(
-        fontSize: 24,
+    return GoogleFonts.poppins(
+        fontSize: fontSizeBody + 4,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w700,
         color: color ?? TuColors.text());
   }
 
   static TextStyle label(
       {Color? color, bool isLight = false, bool isBold = false}) {
-    return GoogleFonts.roboto(
+    return GoogleFonts.poppins(
         fontSize: 18,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w700,
         color: color);
   }
 
   static TextStyle h4({Color? color, bool isLight = false, bool dark = true}) {
-    return GoogleFonts.roboto(
-        fontSize: 18,
+    return GoogleFonts.poppins(
+        fontSize: fontSizeBody + 2,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w600,
         color: color ?? TuColors.text(dark: dark));
   }
 
   static TextStyle h5({Color? color, bool isLight = false}) {
-    return GoogleFonts.roboto(
+    return GoogleFonts.poppins(
         fontSize: 16,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w600,
         color: color ?? TuColors.text0());
@@ -58,5 +60,5 @@ class Styles {
   static TextStyle h6 = GoogleFonts.inclusiveSans(fontSize: 14);
   static BorderRadius btnRadius = BorderRadius.circular(7);
 
-  static TextStyle cardTitle = GoogleFonts.roboto(fontSize: 20);
+  static TextStyle cardTitle = GoogleFonts.poppins(fontSize: 20);
 }

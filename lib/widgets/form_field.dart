@@ -32,6 +32,7 @@ class TuFormField extends StatefulHookWidget {
   final bool readOnly;
   final bool autofocus;
   final int? maxLines;
+  final int? minLines;
   final double? width;
   final int? maxLength;
   final TextAlign textAlign;
@@ -60,7 +61,8 @@ class TuFormField extends StatefulHookWidget {
       this.radius = 4,
       this.elevation = 0,
       this.height = 12,
-      this.maxLines = 1,
+      this.maxLines,
+      this.minLines,
       this.maxLength,
       this.onChanged,
       this.onShowHidePass,
@@ -153,6 +155,7 @@ class _TuFormFieldState extends State<TuFormField> {
         onChanged: widget.onChanged,
         obscureText: widget.isPass && !showPass.value,
         maxLines: widget.maxLines,
+        minLines: widget.minLines,
         validator: widget.validator ??
             (val) {
               String? msg;

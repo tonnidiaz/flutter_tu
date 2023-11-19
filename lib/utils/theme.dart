@@ -22,7 +22,7 @@ ThemeData tuTheme({bool dark = true}) {
           toolbarHeight: appBarH,
           iconTheme: IconThemeData(color: TuColors.text0(dark: dark)),
           actionsIconTheme: IconThemeData(color: TuColors.text0(dark: dark)),
-          titleTextStyle: GoogleFonts.roboto(
+          titleTextStyle: GoogleFonts.poppins(
               fontSize: 20,
               fontWeight: FontWeight.w500,
               color: TuColors.text0(dark: dark)),
@@ -44,10 +44,10 @@ ThemeData tuTheme({bool dark = true}) {
         color: TuColors
             .bg2(), //shape: RoundedRectangleBorder(borderRadius: mFieldRadius),
       ),
-      textTheme: GoogleFonts.robotoTextTheme(
+      textTheme: GoogleFonts.poppinsTextTheme(
         TextTheme(
-          bodyMedium:
-              TextStyle(color: TuColors.text(dark: dark), fontSize: 17.0),
+          bodyMedium: TextStyle(
+              color: TuColors.text(dark: dark), fontSize: fontSizeBody),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -68,7 +68,8 @@ ThemeData tuTheme({bool dark = true}) {
       ),
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: const TextStyle(),
-        floatingLabelStyle: TextStyle(color: TuColors.text(), fontSize: 18),
+        floatingLabelStyle:
+            TextStyle(color: TuColors.text(), fontSize: fontSizeBody),
       ),
       drawerTheme: DrawerThemeData(backgroundColor: TuColors.bg0()),
       dialogTheme: DialogTheme(
