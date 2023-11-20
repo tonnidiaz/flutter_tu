@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:tu/tu.dart';
 
 class TuSelectable extends StatelessWidget {
@@ -52,7 +51,7 @@ class TuSelectable extends StatelessWidget {
           child: child,
         );
     return Material(
-        color: color ?? TuColors.bg1(),
+        color: color ?? colors.bg1,
         borderRadius: bradius,
         elevation: elevation,
         child: Stack(
@@ -65,7 +64,7 @@ class TuSelectable extends StatelessWidget {
                       child: Container(
                       decoration: BoxDecoration(
                           color: barCtrl.selected.value.contains(item)
-                              ? TuColors.secondaryFade
+                              ? colors.secondaryFade
                               : null,
                           borderRadius: bradius),
                       child: inkWell(),

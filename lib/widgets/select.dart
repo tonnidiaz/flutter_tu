@@ -1,8 +1,6 @@
 import "dart:core";
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:tu/tu.dart";
-
 
 class TuSelect extends StatelessWidget {
   final dynamic value;
@@ -35,8 +33,6 @@ class TuSelect extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appCtrl = Tu.appCtrl;
-
     List parseItems() {
       return [...items].where((element) => element != null).toList();
     }
@@ -48,7 +44,7 @@ class TuSelect extends StatelessWidget {
       child: Obx(
         () => Material(
           color: /* mFieldBG2, */
-              bgColor ?? TuColors.fieldBG(dark: appCtrl.darkMode.value),
+              bgColor ?? colors.bgField,
           elevation: elevation,
           shadowColor: Colors.black87,
           borderRadius: BorderRadius.circular(radius ?? 0),
@@ -56,15 +52,13 @@ class TuSelect extends StatelessWidget {
             alignedDropdown: true,
             child: DropdownButtonFormField(
               value: value, // ?? formats[0],
-              dropdownColor:
-                  bgColor ?? TuColors.fieldBG(dark: appCtrl.darkMode.value),
-              focusColor:
-                  bgColor ?? TuColors.fieldBG(dark: appCtrl.darkMode.value),
+              dropdownColor: bgColor ?? colors.bgField,
+              focusColor: bgColor ?? colors.bgField,
               isExpanded: true,
               isDense: true,
               icon: Icon(
                 Icons.expand_more_outlined,
-                color: TuColors.text(dark: appCtrl.darkMode.value),
+                color: colors.text,
               ),
               decoration: InputDecoration(
                 label: label == null
@@ -81,9 +75,7 @@ class TuSelect extends StatelessWidget {
                     e.label,
                     softWrap: false,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: TuColors.text(dark: appCtrl.darkMode.value)),
+                    style: TextStyle(fontSize: 16, color: colors.text),
                   ),
                 );
               }).toList(),

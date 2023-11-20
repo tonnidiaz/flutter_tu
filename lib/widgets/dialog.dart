@@ -33,13 +33,13 @@ class TuDialogView extends StatelessWidget {
       titlePadding: titlePadding,
       contentPadding:
           padding ?? EdgeInsets.fromLTRB(25, 20, 25, hasActions ? 0 : 20),
-      backgroundColor: TuColors.bg0(),
+      backgroundColor: Tu.colors.bg0,
       insetPadding: const EdgeInsets.all(20),
       elevation: 1.88,
       title: title != null
           ? Text(
               title!,
-              style: TextStyle(color: TuColors.text2()),
+              style: TextStyle(color: Tu.colors.text2),
             )
           : null,
       content: isForm
@@ -59,9 +59,9 @@ class TuDialogView extends StatelessWidget {
               TextButton(
                 /* text: "CANCEL",
                 height: 35,
-                bgColor: TuColors.medium,
+                bgColor: Tu.colors.medium,
                 radius: 5,
-                color: TuColors.text2(dark: true), */
+                color: Tu.colors.text2(dark: true), */
                 child: const Text("Cancel"),
                 onPressed: () {
                   if (onCancel != null) {
@@ -76,7 +76,7 @@ class TuDialogView extends StatelessWidget {
                 /* text: okTxt,
                 height: 35,
 
-                color: TuColors.text2(dark: true),
+                color: Tu.colors.text2(dark: true),
                 radius: 5,
                 bgColor: Colors.blue, */
                 //bgColor: Colors.black87,

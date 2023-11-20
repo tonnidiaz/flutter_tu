@@ -3,78 +3,82 @@ import "package:google_fonts/google_fonts.dart";
 
 import "index.dart";
 
-var amber = const Color.fromRGBO(255, 193, 7, 1);
-var black12 = Colors.black12;
+class TuTheme {
+  static late TuTheme instance;
+  late TuColors colors;
+  late Styles styles;
+  final bool dark;
+  TuTheme({required this.colors, this.dark = true}) {
+    instance = this;
+    styles = Styles(colors: colors);
+  }
 
-ThemeData tuTheme({bool dark = true}) {
-  return ThemeData(
-      useMaterial3: true,
-      scaffoldBackgroundColor: TuColors.bg(dark: dark),
-      chipTheme: ChipThemeData(
-          backgroundColor: TuColors.medium,
-          side: BorderSide.none,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
-      platform: TargetPlatform.android,
-      appBarTheme: AppBarTheme(
-          surfaceTintColor: Colors.transparent,
-          centerTitle: false,
-          toolbarHeight: appBarH,
-          iconTheme: IconThemeData(color: TuColors.text0(dark: dark)),
-          actionsIconTheme: IconThemeData(color: TuColors.text0(dark: dark)),
-          titleTextStyle: GoogleFonts.poppins(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-              color: TuColors.text0(dark: dark)),
-          backgroundColor: TuColors.bg(dark: dark),
-          elevation: 0.0,
-          foregroundColor: TuColors.text2(dark: dark)),
-      colorScheme: ColorScheme.fromSeed(
-          primary: TuColors.primary,
-          secondary: TuColors.secondary,
-          surfaceTint: TuColors.bg1(),
-          seedColor: TuColors.primary,
-          brightness: dark ? Brightness.dark : Brightness.light),
-      progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: TuColors.medium,
-      ),
-      tabBarTheme: TabBarTheme(
-          labelColor: TuColors.text2(dark: dark), indicatorColor: Colors.red),
-      popupMenuTheme: PopupMenuThemeData(
-        color: TuColors
-            .bg2(), //shape: RoundedRectangleBorder(borderRadius: mFieldRadius),
-      ),
-      textTheme: GoogleFonts.poppinsTextTheme(
-        TextTheme(
-          bodyMedium: TextStyle(
-              color: TuColors.text(dark: dark), fontSize: fontSizeBody),
+  ThemeData theme() {
+    return ThemeData(
+        useMaterial3: true,
+        scaffoldBackgroundColor: colors.bg,
+        chipTheme: ChipThemeData(
+            backgroundColor: colors.medium,
+            side: BorderSide.none,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100))),
+        platform: TargetPlatform.android,
+        appBarTheme: AppBarTheme(
+            surfaceTintColor: Colors.transparent,
+            centerTitle: false,
+            toolbarHeight: appBarH,
+            iconTheme: IconThemeData(color: colors.text0),
+            actionsIconTheme: IconThemeData(color: colors.text0),
+            titleTextStyle: GoogleFonts.poppins(
+                fontSize: 20, fontWeight: FontWeight.w500, color: colors.text0),
+            backgroundColor: colors.bg,
+            elevation: 0.0,
+            foregroundColor: colors.text2),
+        colorScheme: ColorScheme.fromSeed(
+            primary: colors.primary,
+            secondary: colors.secondary,
+            surfaceTint: colors.bg1,
+            seedColor: colors.primary,
+            brightness: dark ? Brightness.dark : Brightness.light),
+        progressIndicatorTheme: ProgressIndicatorThemeData(
+          color: colors.medium,
         ),
-      ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-              disabledBackgroundColor: TuColors.medium,
-              disabledForegroundColor: Colors.white,
-              foregroundColor: TuColors.text2(dark: dark)
-              //disabledForegroundColor: Colors.white,
-              )),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          backgroundColor: TuColors.bg1(),
-          selectedItemColor: TuColors.primary,
-          showUnselectedLabels: true,
-          unselectedItemColor: TuColors.text2(dark: dark),
-          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500)),
-      listTileTheme: const ListTileThemeData(
-        contentPadding: EdgeInsets.only(right: 0, left: 14),
-      ),
-      inputDecorationTheme: InputDecorationTheme(
-        hintStyle: const TextStyle(),
-        floatingLabelStyle:
-            TextStyle(color: TuColors.text(), fontSize: fontSizeBody),
-      ),
-      drawerTheme: DrawerThemeData(backgroundColor: TuColors.bg0()),
-      dialogTheme: DialogTheme(
-          backgroundColor: TuColors.bg1(dark: dark),
-          titleTextStyle: Styles.h4(isLight: true, dark: dark)),
-      cardColor: TuColors.bg1(),
-      iconTheme: IconThemeData(size: iconSize, color: TuColors.text2()));
+        tabBarTheme:
+            TabBarTheme(labelColor: colors.text2, indicatorColor: Colors.red),
+        popupMenuTheme: PopupMenuThemeData(
+          color: colors.bg2,
+        ),
+        textTheme: GoogleFonts.poppinsTextTheme(
+          TextTheme(
+            bodyMedium: TextStyle(color: colors.text, fontSize: fontSizeBody),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+                disabledBackgroundColor: colors.medium,
+                disabledForegroundColor: Colors.white,
+                foregroundColor: colors.text2)),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            backgroundColor: colors.bg2,
+            selectedItemColor: colors.primary,
+            showUnselectedLabels: true,
+            unselectedItemColor: colors.text2,
+            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500)),
+        listTileTheme: const ListTileThemeData(
+          contentPadding: EdgeInsets.only(right: 0, left: 14),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: const TextStyle(),
+          floatingLabelStyle:
+              TextStyle(color: colors.text, fontSize: fontSizeBody),
+        ),
+        drawerTheme: DrawerThemeData(backgroundColor: colors.bg0),
+        dialogTheme: DialogTheme(
+            backgroundColor: colors.bg1,
+            titleTextStyle: styles.h4(
+              isLight: true,
+            )),
+        cardColor: colors.bg1,
+        iconTheme: IconThemeData(size: iconSize, color: colors.text2));
+  }
 }

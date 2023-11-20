@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:math';
-import 'dart:convert';
 import 'package:device_info_plus/device_info_plus.dart';
 
 import 'package:another_flushbar/flushbar.dart';
@@ -8,14 +7,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:tu/utils/colors.dart';
+import 'package:tu/tu.dart';
 import 'package:via_logger/log_record.dart';
 import 'package:via_logger/logger.dart';
 import 'package:via_logger/output.dart';
-import '../widgets.dart';
-import '/utils/constants.dart';
 import 'package:window_manager/window_manager.dart';
 
 void clog(dynamic p) {
@@ -81,7 +77,7 @@ Flushbar showToast(String msg,
           blurRadius: 2,
           spreadRadius: 2)
     ],
-    messageColor: isErr ? Colors.red : TuColors.text(),
+    messageColor: isErr ? Colors.red : Tu.colors.text,
     message: msg,
     duration: autoDismiss ? Duration(seconds: duration) : null,
     animationDuration: const Duration(milliseconds: 500),
@@ -186,7 +182,7 @@ void pop(BuildContext context) {
   return Navigator.pop(context);
 }
 
-void gpop({dynamic? ret}) {
+void gpop({dynamic ret}) {
   Get.back(result: ret);
 }
 

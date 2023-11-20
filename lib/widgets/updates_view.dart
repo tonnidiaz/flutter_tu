@@ -1,14 +1,10 @@
 import "dart:io";
 import "dart:isolate";
 import "dart:ui";
-import "package:get/get.dart";
+import "package:path_provider/path_provider.dart";
 import "package:tu/controllers/commom.ctrl.dart";
 import "package:tu/widgets/common2.dart";
-import "package:via_logger/logger.dart";
 import "package:flutter/material.dart";
-import "package:flutter_downloader/flutter_downloader.dart";
-import "package:path_provider/path_provider.dart";
-
 import "../functions.dart";
 import "../tu.dart";
 
@@ -134,26 +130,30 @@ class UpdatesView3State extends State<UpdatesView3> {
     return Container(
       padding: defaultPadding2,
       width: double.infinity,
-      color: TuColors.bg(),
+      color: colors.bg,
       child: widget.update == null
           ? Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                h4(
+                Text(
                   "Your version is up-to-date ✓",
+                  style: styles.h4(),
                 ),
               ],
             )
           : SingleChildScrollView(
               child: tuColumn(min: true, children: [
-                h3("Updates available"),
+                Text(
+                  "Updates available",
+                  style: styles.h3(),
+                ),
                 mY(8),
                 tuTableRow(const Text("Version:"),
                     Text("${widget.update!["version"]}")),
                 mY(10),
                 Text(
                   "Release notes",
-                  style: Styles.h4(),
+                  style: styles.h4(),
                 ),
                 Padding(
                   padding: defaultPadding,
@@ -164,7 +164,7 @@ class UpdatesView3State extends State<UpdatesView3> {
                   ]),
                 ),
                 TuButton(
-                  bgColor: TuColors.success,
+                  bgColor: colors.success,
                   width: double.infinity,
                   text: "UPDATE NOW",
                   onPressed: () async {

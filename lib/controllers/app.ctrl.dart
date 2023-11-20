@@ -29,8 +29,7 @@ class TuAppCtrl extends GetxController {
     backEnabled.value = val;
   }
 
-  final darkMode = RxBool(true);
-  void setDarkMode(bool val) {
-    darkMode.value = val;
-  }
+  final _darkMode = Rx(true);
+  bool get darkMode => _darkMode.value;
+  set darkMode(bool val) => _darkMode.value = val;
 }

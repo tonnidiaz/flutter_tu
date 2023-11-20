@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/get.dart';
 import 'package:tu/tu.dart';
 
 class TuButton extends HookWidget {
@@ -37,8 +36,8 @@ class TuButton extends HookWidget {
     }
 
     return Obx(() {
-      Tu.appCtrl.darkMode.value;
-      final backgroundColor = bgColor ?? TuColors.bg1();
+      Tu.appCtrl.darkMode;
+      final backgroundColor = bgColor ?? Tu.colors.bg1;
       return SizedBox(
         width: width,
         height: height,
@@ -61,18 +60,15 @@ class TuButton extends HookWidget {
                           elevation: 1.5, */
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 10),
-                    side: BorderSide(
-                        color: color ??
-                            TuColors.text(dark: Tu.appCtrl.darkMode.value),
-                        width: 1.5),
+                    side:
+                        BorderSide(color: color ?? Tu.colors.text, width: 1.5),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(radius),
                     )),
                 child: child ??
                     Text(
                       text.toUpperCase(),
-                      style:
-                          TextStyle(color: color ?? TuColors.text(dark: true)),
+                      style: TextStyle(color: color ?? Tu.colors.text),
                     ),
               )
             : ElevatedButton(
@@ -90,7 +86,7 @@ class TuButton extends HookWidget {
                     backgroundColor:
                         backgroundColor, //const Color.fromRGBO(26, 92, 255, 1),
                     /* shadowColor:
-                                TuColors.text(), // const Color.fromRGBO(26, 92, 255, .5), */
+                                Tu.colors.text(), // const Color.fromRGBO(26, 92, 255, .5), */
                     elevation: 2,
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 10),

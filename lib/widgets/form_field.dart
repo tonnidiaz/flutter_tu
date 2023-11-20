@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../tu.dart';
 
 class TuFormField extends StatefulHookWidget {
@@ -88,7 +85,6 @@ class _TuFormFieldState extends State<TuFormField> {
   final _controller = TextEditingController();
   late FocusNode _focusNode;
   bool _hasFocus = false;
-  final _appCtrl = Tu.appCtrl;
   @override
   void dispose() {
     _controller.dispose();
@@ -123,7 +119,7 @@ class _TuFormFieldState extends State<TuFormField> {
     });
     final border = widget.hasBorder
         ? UnderlineInputBorder(
-            borderSide: BorderSide(color: TuColors.primaryFade, width: 2),
+            borderSide: BorderSide(color: Tu.colors.primaryFade, width: 2),
             borderRadius: BorderRadius.circular(widget.radius),
           )
         : OutlineInputBorder(
@@ -134,7 +130,7 @@ class _TuFormFieldState extends State<TuFormField> {
             borderRadius: BorderRadius.circular(widget.radius),
             borderSide: const BorderSide(color: Colors.transparent))
         : UnderlineInputBorder(
-            borderSide: BorderSide(color: TuColors.primary, width: 3),
+            borderSide: BorderSide(color: Tu.colors.primary, width: 3),
             borderRadius: BorderRadius.circular(widget.radius),
           );
     return Obx(
@@ -172,14 +168,9 @@ class _TuFormFieldState extends State<TuFormField> {
         ),
         decoration: InputDecoration(
           enabled: widget.enabled,
-          prefixIconColor: _hasFocus
-              ? TuColors.text3(dark: _appCtrl.darkMode.value)
-              : TuColors.note(dark: _appCtrl.darkMode.value),
-          suffixIconColor: _hasFocus
-              ? TuColors.text3(dark: _appCtrl.darkMode.value)
-              : TuColors.note(dark: _appCtrl.darkMode.value),
-          fillColor:
-              widget.fill ?? TuColors.fieldBG(dark: _appCtrl.darkMode.value),
+          prefixIconColor: _hasFocus ? Tu.colors.text3 : Tu.colors.note,
+          suffixIconColor: _hasFocus ? Tu.colors.text3 : Tu.colors.note,
+          fillColor: widget.fill ?? Tu.colors.bgField,
 
           filled: true,
           isDense: false,

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:get/get.dart';
 import 'package:tu/tu.dart';
-import 'package:tu/widgets/dialog.dart';
 import 'package:via_logger/logger.dart';
 
-class WidgetsPage extends HookWidget {
-  const WidgetsPage({super.key});
+class WidgetsView extends HookWidget {
+  const WidgetsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +14,15 @@ class WidgetsPage extends HookWidget {
       body: SizedBox(
         width: double.infinity,
         child: SingleChildScrollView(
+          padding: const EdgeInsets.all(10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text("I gonna be ninja"),
+              Text(
+                "I gonna be colorful ninja",
+                style: TextStyle(color: colors.color),
+              ),
               mY(6),
               TuButton(
                 text: "Click me",
@@ -75,9 +78,9 @@ class WidgetsPage extends HookWidget {
               Obx(
                 () => TuLabeledCheckbox(
                   label: "Dark mode:",
-                  value: Tu.appCtrl.darkMode.value,
+                  value: Tu.appCtrl.darkMode,
                   onChanged: (val) {
-                    Tu.appCtrl.setDarkMode(val == true);
+                    Tu.appCtrl.darkMode = val == true;
                   },
                 ),
               ),
@@ -96,9 +99,9 @@ class WidgetsPage extends HookWidget {
                             Obx(
                               () => TuLabeledCheckbox(
                                 label: "Dark mode:",
-                                value: Tu.appCtrl.darkMode.value,
+                                value: Tu.appCtrl.darkMode,
                                 onChanged: (val) {
-                                  Tu.appCtrl.setDarkMode(val == true);
+                                  Tu.appCtrl.darkMode = (val == true);
                                 },
                               ),
                             ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:tu/tu.dart';
 
 class TuLabeledCheckbox extends StatelessWidget {
@@ -27,7 +26,7 @@ class TuLabeledCheckbox extends StatelessWidget {
       width: 25,
       child: Checkbox(
           value: value,
-          activeColor: activeColor ?? TuColors.primary,
+          activeColor: activeColor ?? Tu.colors.primary,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius)),
           onChanged: onChanged),
@@ -37,9 +36,7 @@ class TuLabeledCheckbox extends StatelessWidget {
             () => Text(
               label!,
               style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: fontWeight,
-                  color: TuColors.text2(dark: Tu.appCtrl.darkMode.value)),
+                  fontSize: 14, fontWeight: fontWeight, color: Tu.colors.text2),
             ),
           )
         : none();

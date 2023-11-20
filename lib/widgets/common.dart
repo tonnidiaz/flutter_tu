@@ -14,27 +14,6 @@ Widget mX(double w) {
   return SizedBox(width: w);
 }
 
-Widget h3(String txt, {Color? color, bool isLight = false}) {
-  return Text(
-    txt,
-    style: Styles.h3(color: color, isLight: isLight),
-  );
-}
-
-Widget h1(String txt, {Color? color, bool isLight = false}) {
-  return Text(
-    txt,
-    style: Styles.h1(color: color, isLight: isLight),
-  );
-}
-
-Widget h4(String txt, {Color? color, bool isLight = false}) {
-  return Text(
-    txt,
-    style: Styles.h4(color: color, isLight: isLight),
-  );
-}
-
 class NavItem extends StatelessWidget {
   final String text;
   final Function()? onClick;
@@ -135,18 +114,20 @@ class InfoItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Container(
-          width: double.infinity,
-          height: 55,
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-          margin: const EdgeInsets.symmetric(vertical: .5),
-          decoration: BoxDecoration(
-              color: TuColors.bg1(dark: darkMode),
-              border: const Border(
-                  bottom: BorderSide(
-                      color: Color.fromRGBO(10, 10, 10, 0.05), width: 1))),
-          child: child),
+      child: Obx(
+        () => Container(
+            width: double.infinity,
+            height: 55,
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+            margin: const EdgeInsets.symmetric(vertical: .5),
+            decoration: BoxDecoration(
+                color: Tu.colors.bg1,
+                border: const Border(
+                    bottom: BorderSide(
+                        color: Color.fromRGBO(10, 10, 10, 0.05), width: 1))),
+            child: child),
+      ),
     );
   }
 }
@@ -228,13 +209,13 @@ class _ProgressSheetState extends State<ProgressSheet> {
     return Visibility(
         child: Container(
             height: 45,
-            color: widget.color ?? TuColors.bg1(),
+            color: widget.color ?? Tu.colors.bg1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Obx(() => LinearProgressIndicator(
                       value: _ctrl.progress.value,
-                      color: TuColors.primaryFade,
+                      color: Tu.colors.primaryFade,
                     )),
                 Expanded(
                   child: Padding(
@@ -297,7 +278,7 @@ class TuCard extends StatelessWidget {
         width: width,
         padding: EdgeInsets.all(padding),
         decoration: BoxDecoration(
-          color: color ?? TuColors.bg1(),
+          color: color ?? Tu.colors.bg1,
           borderRadius: BorderRadius.circular(radius),
         ),
         child: child,

@@ -48,7 +48,7 @@ class TuInkwell extends StatelessWidget {
         // ignore: avoid_unnecessary_containers
         Container(
             decoration: BoxDecoration(
-                color: color ?? TuColors.bg1(), borderRadius: bradius),
+                color: color ?? Tu.colors.bg1, borderRadius: bradius),
             child: inkWell(
               child: Padding(padding: padding, child: child),
             )),
@@ -59,7 +59,7 @@ class TuInkwell extends StatelessWidget {
                   child: Container(
                   decoration: BoxDecoration(
                       color: barCtrl.selected.value.contains(item)
-                          ? TuColors.secondaryFade
+                          ? Tu.colors.secondaryFade
                           : null,
                       borderRadius: bradius),
                   child: inkWell(),

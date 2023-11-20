@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../tu.dart';
@@ -11,15 +10,15 @@ class InfoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap, 
+      onTap: onTap,
       child: Container(
           width: double.infinity,
           height: 50,
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
           margin: const EdgeInsets.symmetric(vertical: .5),
-          decoration:  BoxDecoration(
-              color: TuColors.bg1(),
+          decoration: BoxDecoration(
+              color: Tu.colors.bg1,
               border: const Border(
                   bottom: BorderSide(
                       color: Color.fromRGBO(10, 10, 10, 0.05), width: 1))),
@@ -27,7 +26,6 @@ class InfoItem extends StatelessWidget {
     );
   }
 }
-
 
 Widget bulletItem(String text, {TextStyle? style}) => Row(children: [
       const Text(
