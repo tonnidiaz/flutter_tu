@@ -133,97 +133,94 @@ class _TuFormFieldState extends State<TuFormField> {
             borderSide: BorderSide(color: Tu.colors.primary, width: 3),
             borderRadius: BorderRadius.circular(widget.radius),
           );
-    return Obx(
-      () => TextFormField(
-        textAlign: widget.textAlign,
-        maxLength: widget.maxLength,
-        textCapitalization: TextCapitalization.sentences,
-        onTapOutside: (e) {
-          _focusNode.unfocus();
-        },
-        readOnly: widget.readOnly,
-        controller: _controller,
-        autofocus: widget.autofocus,
-        onTap: widget.onTap,
-        expands: widget.expands,
-        onFieldSubmitted: widget.onSubmitted,
-        focusNode: _focusNode,
-        onChanged: widget.onChanged,
-        obscureText: widget.isPass && !showPass.value,
-        maxLines: widget.maxLines,
-        minLines: widget.minLines,
-        validator: widget.validator ??
-            (val) {
-              String? msg;
-              if ((widget.required && val != null && val.isEmpty) ||
-                  val == null) {
-                msg = "Field is required!";
-              }
-              return msg;
-            },
-        autocorrect: true,
-        keyboardType: widget.keyboard,
-        style: const TextStyle(
-          fontSize: 16,
-        ),
-        decoration: InputDecoration(
-          enabled: widget.enabled,
-          prefixIconColor: _hasFocus ? Tu.colors.text3 : Tu.colors.note,
-          suffixIconColor: _hasFocus ? Tu.colors.text3 : Tu.colors.note,
-          fillColor: widget.fill ?? Tu.colors.bgField,
-
-          filled: true,
-          isDense: false,
-          contentPadding: EdgeInsets.only(
-            top: widget.height,
-            bottom: widget.height,
-            left: 15,
-            right: 15,
-          ),
-
-          prefixIcon: widget.prefixIcon,
-          prefix: widget.prefix,
-          suffix: widget.suffix,
-          suffixIcon: widget.isPass && widget.showEye
-              ? IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () async {
-                    //SHowHide pass
-
-                    if (!showPass.value && widget.onShowHidePass != null) {
-                      // Pass hidden and the event handler is provided
-                      // Invoke the handler
-                      void setShowPass(bool val) {
-                        showPass.value = val;
-                      }
-
-                      await widget.onShowHidePass!(setShowPass);
-                    } else {
-                      showPass.value = !showPass.value;
-                    }
-                  },
-                  splashRadius: 18,
-                  icon: Icon(!showPass.value
-                      ? CupertinoIcons.eye
-                      : CupertinoIcons.eye_slash))
-              : widget.suffixIcon,
-
-          labelText:
-              !widget.hasBorder || !widget.isLegacy ? widget.label : null,
-
-          hintText: widget.hint,
-
-          floatingLabelAlignment: widget.labelAlignment,
-
-          enabledBorder: border,
-          focusedBorder: focusedBorder,
-          focusedErrorBorder: focusedBorder,
-          errorBorder: border,
-
-          //border: radius != null ? border : null,
-        ),
-        textAlignVertical: widget.textAlignV,
+    return TextFormField(
+      textAlign: widget.textAlign,
+      maxLength: widget.maxLength,
+      textCapitalization: TextCapitalization.sentences,
+      onTapOutside: (e) {
+        _focusNode.unfocus();
+      },
+      readOnly: widget.readOnly,
+      controller: _controller,
+      autofocus: widget.autofocus,
+      onTap: widget.onTap,
+      expands: widget.expands,
+      onFieldSubmitted: widget.onSubmitted,
+      focusNode: _focusNode,
+      onChanged: widget.onChanged,
+      obscureText: widget.isPass && !showPass.value,
+      maxLines: widget.maxLines,
+      minLines: widget.minLines,
+      validator: widget.validator ??
+          (val) {
+            String? msg;
+            if ((widget.required && val != null && val.isEmpty) ||
+                val == null) {
+              msg = "Field is required!";
+            }
+            return msg;
+          },
+      autocorrect: true,
+      keyboardType: widget.keyboard,
+      style: const TextStyle(
+        fontSize: 16,
       ),
+      decoration: InputDecoration(
+        enabled: widget.enabled,
+        prefixIconColor: _hasFocus ? Tu.colors.text3 : Tu.colors.note,
+        suffixIconColor: _hasFocus ? Tu.colors.text3 : Tu.colors.note,
+        fillColor: widget.fill ?? Tu.colors.bgField,
+
+        filled: true,
+        isDense: false,
+        contentPadding: EdgeInsets.only(
+          top: widget.height,
+          bottom: widget.height,
+          left: 15,
+          right: 15,
+        ),
+
+        prefixIcon: widget.prefixIcon,
+        prefix: widget.prefix,
+        suffix: widget.suffix,
+        suffixIcon: widget.isPass && widget.showEye
+            ? IconButton(
+                padding: EdgeInsets.zero,
+                onPressed: () async {
+                  //SHowHide pass
+
+                  if (!showPass.value && widget.onShowHidePass != null) {
+                    // Pass hidden and the event handler is provided
+                    // Invoke the handler
+                    void setShowPass(bool val) {
+                      showPass.value = val;
+                    }
+
+                    await widget.onShowHidePass!(setShowPass);
+                  } else {
+                    showPass.value = !showPass.value;
+                  }
+                },
+                splashRadius: 18,
+                icon: Icon(!showPass.value
+                    ? CupertinoIcons.eye
+                    : CupertinoIcons.eye_slash))
+            : widget.suffixIcon,
+
+        labelText: !widget.hasBorder || !widget.isLegacy ? widget.label : null,
+
+        hintText: widget.hint,
+
+        floatingLabelAlignment: widget.labelAlignment,
+
+        enabledBorder: border,
+        focusedBorder: focusedBorder,
+        focusedErrorBorder: focusedBorder,
+        errorBorder: border,
+
+        //border: radius != null ? border : null,
+      ),
+      textAlignVertical: widget.textAlignV,
     );
   }
 }

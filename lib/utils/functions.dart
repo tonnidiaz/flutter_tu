@@ -67,16 +67,16 @@ Flushbar showToast(String msg,
     {bool isErr = false, int duration = 2, bool autoDismiss = true}) {
   // final appCtrl = MainApp.appCtrl;
   return Flushbar(
-    backgroundColor: const Color.fromRGBO(28, 28, 28, 1),
+    backgroundColor: Tu.colors.bg0,
     margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
     borderRadius: BorderRadius.circular(5),
-    boxShadows: const [
+    /* boxShadows: const [
       BoxShadow(
-          color: Color.fromRGBO(36, 36, 36, 0.438),
+          //color: Color.fromRGBO(36, 36, 36, 0.438),
           offset: Offset(0, -2),
-          blurRadius: 2,
-          spreadRadius: 2)
-    ],
+          blurRadius: 1,
+          spreadRadius: 1)
+    ], */
     messageColor: isErr ? Colors.red : Tu.colors.text,
     message: msg,
     duration: autoDismiss ? Duration(seconds: duration) : null,

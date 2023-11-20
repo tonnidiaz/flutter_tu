@@ -24,11 +24,11 @@ class TuColors {
   final Color secondary = const Color.fromRGBO(56, 128, 255, 1);
   final Color secondaryFade = const Color.fromRGBO(56, 128, 255, .3);
   final Color _text0Dark = const Color.fromRGBO(255, 255, 255, 0.9);
-  final Color _text0 = const Color.fromRGBO(0, 0, 0, 1);
+  final Color _text0 = const Color.fromRGBO(10, 10, 10, 1);
   Color get text0 => dark ? _text0Dark : _text0;
   final Color surface600 = const Color.fromRGBO(89, 89, 89, 1);
   final Color _textDark = const Color.fromRGBO(255, 255, 255, 0.702);
-  final Color _text = const Color.fromRGBO(0, 0, 0, 1);
+  final Color _text = const Color.fromRGBO(20, 20, 20, 1);
 
   Color get text => dark ? _textDark : _text;
   final Color _text2Dark = const Color.fromRGBO(255, 255, 255, .8);

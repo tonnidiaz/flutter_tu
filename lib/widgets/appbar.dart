@@ -13,7 +13,7 @@ PreferredSizeWidget tuAppbar(
     bool showCart = true,
     bool? centerTitle,
     double height = appBarH,
-    double? elevation,
+    double elevation = 1,
     PreferredSizeWidget? bottom,
     List<Widget> actions = const []}) {
   final BarCtrl barCtrl = Get.find();

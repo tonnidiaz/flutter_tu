@@ -209,7 +209,7 @@ class _ProgressSheetState extends State<ProgressSheet> {
     return Visibility(
         child: Container(
             height: 45,
-            color: widget.color ?? Tu.colors.bg1,
+            color: widget.color ?? Tu.colors.bg,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -248,6 +248,7 @@ class TuCard extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? color;
+  final double elevation;
   const TuCard(
       {super.key,
       this.radius = 0,
@@ -264,24 +265,27 @@ class TuCard extends StatelessWidget {
       this.onLongPress,
       this.height,
       this.color,
+      this.elevation = .3,
       this.width = double.infinity});
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      onLongPress: onLongPress,
-      borderRadius: BorderRadius.circular(radius),
-      //hoverColor: Colors.black,
-      child: Container(
-        margin: EdgeInsets.fromLTRB(ml ?? mx, mt ?? my, mr ?? mx, mb ?? my),
-        height: height,
-        width: width,
-        padding: EdgeInsets.all(padding),
-        decoration: BoxDecoration(
-          color: color ?? Tu.colors.bg1,
+    return Container(
+      margin: EdgeInsets.fromLTRB(ml ?? mx, mt ?? my, mr ?? mx, mb ?? my),
+      height: height,
+      width: width,
+      child: Material(
+        color: color ?? Tu.colors.bg1,
+        borderRadius: BorderRadius.circular(radius),
+        elevation: elevation,
+        child: InkWell(
+          onTap: onTap,
+          onLongPress: onLongPress,
           borderRadius: BorderRadius.circular(radius),
+          child: Padding(
+            padding: EdgeInsets.all(padding),
+            child: child,
+          ),
         ),
-        child: child,
       ),
     );
   }
