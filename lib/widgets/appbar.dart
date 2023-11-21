@@ -12,13 +12,12 @@ PreferredSizeWidget tuAppbar(
     {Widget? title,
     bool showCart = true,
     bool? centerTitle,
-    double height = appBarH,
     double elevation = 1,
     PreferredSizeWidget? bottom,
     List<Widget> actions = const []}) {
   final BarCtrl barCtrl = Get.find();
   return PreferredSize(
-    preferredSize: Size.fromHeight(height),
+    preferredSize: Size.fromHeight(appBarH),
     child: Obx(
       () => AppBar(
         elevation: elevation,

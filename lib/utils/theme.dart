@@ -1,14 +1,13 @@
 import "package:flutter/material.dart";
-import "package:google_fonts/google_fonts.dart";
-
-import "index.dart";
+import "package:tu/tu.dart";
 
 class TuTheme {
   static late TuTheme instance;
   late TuColors colors;
   late Styles styles;
   final bool dark;
-  TuTheme({required this.colors, this.dark = true}) {
+  final BuildContext context;
+  TuTheme({required this.colors, this.dark = true, required this.context}) {
     instance = this;
     styles = Styles(colors: colors);
   }
@@ -24,15 +23,16 @@ class TuTheme {
                 borderRadius: BorderRadius.circular(100))),
         platform: TargetPlatform.android,
         appBarTheme: AppBarTheme(
-            surfaceTintColor: Colors.transparent,
+            //surfaceTintColor: Colors.transparent,
+            shadowColor: Theme.of(context).shadowColor,
             centerTitle: false,
             toolbarHeight: appBarH,
             iconTheme: IconThemeData(color: colors.text0),
             actionsIconTheme: IconThemeData(color: colors.text0),
-            titleTextStyle: GoogleFonts.poppins(
+            titleTextStyle: GoogleFonts.roboto(
                 fontSize: 20, fontWeight: FontWeight.w500, color: colors.text0),
             backgroundColor: colors.bg,
-            elevation: 0.0,
+            elevation: 1,
             foregroundColor: colors.text2),
         colorScheme: ColorScheme.fromSeed(
             primary: colors.primary,
@@ -48,7 +48,7 @@ class TuTheme {
         popupMenuTheme: PopupMenuThemeData(
           color: colors.bg2,
         ),
-        textTheme: GoogleFonts.poppinsTextTheme(
+        textTheme: GoogleFonts.robotoTextTheme(
           TextTheme(
             bodyMedium: TextStyle(color: colors.text, fontSize: fontSizeBody),
           ),

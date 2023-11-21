@@ -54,7 +54,9 @@ final defaultMenu = [
   ),
 ];
 
-const double appBarH = kToolbarHeight;
+double statusBarH(BuildContext context) =>
+    MediaQuery.of(context).viewPadding.top;
+double appBarH = kToolbarHeight;
 
 class SelectItem {
   final String label;
