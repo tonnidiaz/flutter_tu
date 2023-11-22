@@ -11,11 +11,14 @@ class TuPage {
   Widget widget;
   bool inList;
   bool isAction;
-  String? to;
-  IconData? icon;
+  String to;
+  Widget icon;
   String? label;
   TuPage(this.to, this.widget,
-      {this.icon, this.inList = true, this.isAction = false, this.label});
+      {required this.icon,
+      this.inList = true,
+      this.isAction = false,
+      this.label});
 }
 
 bool backEnabled = true;
