@@ -57,30 +57,18 @@ class TuDialogView extends StatelessWidget {
           ? null
           : [
               TextButton(
-                /* text: "CANCEL",
-                height: 35,
-                bgColor: Tu.colors.medium,
-                radius: 5,
-                color: Tu.colors.text2(dark: true), */
                 child: const Text("Cancel"),
                 onPressed: () {
                   if (onCancel != null) {
                     onCancel!();
                   } else {
+                    clog('GPOP');
                     gpop();
                   }
                 },
               ),
               TextButton(
                 child: Text(okTxt),
-                /* text: okTxt,
-                height: 35,
-
-                color: Tu.colors.text2(dark: true),
-                radius: 5,
-                bgColor: Colors.blue, */
-                //bgColor: Colors.black87,
-                // height: 35,
                 onPressed: () async {
                   if (isForm) {
                     if (formKey.currentState!.validate()) {
