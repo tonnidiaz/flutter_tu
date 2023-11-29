@@ -208,7 +208,7 @@ class _ProgressSheetState extends State<ProgressSheet> {
   Widget build(BuildContext context) {
     return Visibility(
         child: Container(
-            height: 45,
+            height: appBarH,
             color: widget.color ?? Tu.colors.bg,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

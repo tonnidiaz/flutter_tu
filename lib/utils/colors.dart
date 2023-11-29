@@ -21,10 +21,10 @@ class TuColors {
 
   final Color primary = const Color.fromRGBO(
       101, 195, 200, 1); //const Color.fromRGBO(220, 184, 255, 1);
-  final Color onPrimary = Color.fromRGBO(255, 255, 255, 1);
+  final Color onPrimary = const Color.fromRGBO(255, 255, 255, 1);
   final Color primaryContainer = const Color.fromRGBO(
-      25, 72, 75, 1); //const Color.fromRGBO(95, 43, 146, 1);
-  final Color onPrimaryContainer = const Color.fromARGB(255, 105, 245, 255);
+      31, 107, 112, 1); //const Color.fromRGBO(95, 43, 146, 1);
+  final Color onPrimaryContainer = const Color.fromARGB(255, 216, 252, 255);
 
   final Color primaryFade = const Color.fromRGBO(38, 155, 161, .5);
   final Color secondary = const Color.fromRGBO(56, 128, 255, 1);
@@ -45,7 +45,7 @@ class TuColors {
   Color get text3 => dark ? _text3Dark : _text3; */
   final Color note = const Color.fromRGBO(102, 102, 102, 1);
   final Color medium = const Color.fromARGB(125, 111, 115, 117);
-  final Color danger = Color.fromARGB(255, 255, 0, 0);
+  final Color danger = const Color.fromARGB(255, 255, 0, 0);
   final Color success = const Color.fromRGBO(45, 211, 111, 1);
   final Color _bgDark = const Color.fromRGBO(33, 33, 33, 1);
   final Color _bg = const Color.fromRGBO(239, 234, 230, 1);

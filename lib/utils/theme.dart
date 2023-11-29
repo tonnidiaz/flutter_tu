@@ -24,6 +24,8 @@ class TuTheme {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100))),
         platform: TargetPlatform.android,
+        bottomSheetTheme: BottomSheetThemeData(
+            shape: RoundedRectangleBorder(borderRadius: defaultBorderRadius)),
         appBarTheme: AppBarTheme(
             shadowColor: Theme.of(context).shadowColor,
             centerTitle: false,
@@ -35,7 +37,7 @@ class TuTheme {
                 fontWeight: FontWeight.w500,
                 color: colors.onSurface),
             backgroundColor: colors.surface,
-            elevation: .8,
+            elevation: .0,
             foregroundColor: colors.onSurface),
         colorScheme: ColorScheme.fromSeed(
             primary: colors.primary,
