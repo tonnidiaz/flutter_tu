@@ -37,7 +37,7 @@ class TuButton extends HookWidget {
 
     return Obx(() {
       Tu.appCtrl.darkMode;
-      final backgroundColor = bgColor ?? Tu.colors.bg1;
+      final backgroundColor = bgColor ?? Tu.colors.surface;
       return SizedBox(
         width: width,
         height: height,
@@ -60,15 +60,15 @@ class TuButton extends HookWidget {
                           elevation: 1.5, */
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 10),
-                    side:
-                        BorderSide(color: color ?? Tu.colors.text, width: 1.5),
+                    side: BorderSide(
+                        color: color ?? Tu.colors.onBackground, width: 1.5),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(radius),
                     )),
                 child: child ??
                     Text(
                       text.toUpperCase(),
-                      style: TextStyle(color: color ?? Tu.colors.text),
+                      style: TextStyle(color: color ?? Tu.colors.onBackground),
                     ),
               )
             : ElevatedButton(
@@ -86,7 +86,7 @@ class TuButton extends HookWidget {
                     backgroundColor:
                         backgroundColor, //const Color.fromRGBO(26, 92, 255, 1),
                     /* shadowColor:
-                                Tu.colors.text(), // const Color.fromRGBO(26, 92, 255, .5), */
+                                Tu.colors.onBackground(), // const Color.fromRGBO(26, 92, 255, .5), */
                     elevation: 2,
                     padding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 10),

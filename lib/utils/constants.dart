@@ -40,6 +40,8 @@ Size screenSize(BuildContext context) {
   return MediaQuery.of(context).size;
 }
 
+BorderRadius defaultBorderRadius = BorderRadius.circular(7);
+
 final defaultMenu = [
   MenuItemButton(
     onPressed: () {

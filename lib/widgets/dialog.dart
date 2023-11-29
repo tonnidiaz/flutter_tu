@@ -39,7 +39,7 @@ class TuDialogView extends StatelessWidget {
       title: title != null
           ? Text(
               title!,
-              style: TextStyle(color: Tu.colors.text2),
+              style: TextStyle(color: Tu.colors.onSurface),
             )
           : null,
       content: isForm

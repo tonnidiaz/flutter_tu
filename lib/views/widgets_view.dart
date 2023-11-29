@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:tu/tu.dart';
@@ -10,7 +11,11 @@ class WidgetsView extends HookWidget {
   Widget build(BuildContext context) {
     final username = useState("");
     return Scaffold(
-      appBar: AppBar(title: const Text("Widgets")),
+      appBar: tuAppbar(title: const Text("Widgets")),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
       body: SizedBox(
         width: double.infinity,
         child: SingleChildScrollView(
@@ -19,10 +24,6 @@ class WidgetsView extends HookWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text("I gonna be ninja"),
-              Text(
-                "I gonna be colorful ninja",
-                style: TextStyle(color: colors.color),
-              ),
               mY(6),
               TuButton(
                 text: "Click me",
@@ -62,6 +63,12 @@ class WidgetsView extends HookWidget {
               mY(10),
               const Chip(label: Text("Pending")),
               mY(10),
+              const Card(
+                child: Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Text("I am card"),
+                ),
+              ),
               TextButton(onPressed: () {}, child: const Text("Text button")),
               mY(10),
               TuSelect(
@@ -88,28 +95,33 @@ class WidgetsView extends HookWidget {
               TuButton(
                 text: "SHow dialog",
                 onPressed: () {
-                  TuFuncs.dialog(
-                      context,
-                      TuDialogView(
-                        title: "Hello",
-                        content: tuColumn(
-                          min: true,
-                          children: [
-                            const Text("World"),
-                            Obx(
-                              () => TuLabeledCheckbox(
-                                label: "Dark mode:",
-                                value: Tu.appCtrl.darkMode,
-                                onChanged: (val) {
-                                  Tu.appCtrl.darkMode = (val == true);
-                                },
-                              ),
-                            ),
-                          ],
+                  Get.dialog(TuDialogView(
+                    title: "Hello",
+                    content: tuColumn(
+                      min: true,
+                      children: [
+                        const Text("World"),
+                        Obx(
+                          () => TuLabeledCheckbox(
+                            label: "Dark mode:",
+                            value: Tu.appCtrl.darkMode,
+                            onChanged: (val) {
+                              Tu.appCtrl.darkMode = (val == true);
+                            },
+                          ),
                         ),
-                      ));
+                      ],
+                    ),
+                  ));
                 },
               ),
+              mY(10),
+              const ListTile(
+                leading: Icon(Icons.person_2_outlined),
+                title: Text("List title"),
+                subtitle: Text("Subtitle"),
+                trailing: Icon(CupertinoIcons.ellipsis_vertical),
+              )
             ],
           ),
         ),

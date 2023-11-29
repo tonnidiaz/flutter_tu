@@ -26,7 +26,7 @@ class TuLabeledCheckbox extends StatelessWidget {
       width: 25,
       child: Checkbox(
           value: value,
-          activeColor: activeColor ?? Tu.colors.primary,
+          activeColor: activeColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius)),
           onChanged: onChanged),
@@ -36,7 +36,9 @@ class TuLabeledCheckbox extends StatelessWidget {
             () => Text(
               label!,
               style: TextStyle(
-                  fontSize: 14, fontWeight: fontWeight, color: Tu.colors.text2),
+                  fontSize: 14,
+                  fontWeight: fontWeight,
+                  color: Tu.colors.onSurface),
             ),
           )
         : none();

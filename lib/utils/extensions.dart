@@ -9,9 +9,16 @@ extension TuDurationExt on Duration {
 extension E on dynamic {
   /// Returns true is object is not null
   bool get isNotNull => this != null;
+  bool get isNullTu => this == null;
 
   TuTheme get theme => TuTheme.instance;
   TuColors get colors => TuTheme.instance.colors;
   Styles get styles => TuTheme.instance.styles;
   bool get dark => Tu.appCtrl.darkMode;
+}
+
+extension Ex on String {
+  /// Converts camelCase to Pascal Case
+  String toWords() => replaceAllMapped(RegExp(r"^([a-z])|[A-Z]"),
+      (Match m) => m[1] == null ? " ${m[0]}" : m[1]!.toUpperCase());
 }

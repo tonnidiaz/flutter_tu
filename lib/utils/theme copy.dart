@@ -15,9 +15,7 @@ class TuTheme {
   ThemeData theme() {
     return ThemeData(
         useMaterial3: true,
-        //scaffoldBackgroundColor: colors.bg,
-        dialogTheme: const DialogTheme(
-            titleTextStyle: TextStyle(fontSize: fontSizeBody + 5)),
+        scaffoldBackgroundColor: colors.bg,
         chipTheme: ChipThemeData(
             backgroundColor: colors.medium,
             side: BorderSide.none,
@@ -25,35 +23,23 @@ class TuTheme {
                 borderRadius: BorderRadius.circular(100))),
         platform: TargetPlatform.android,
         appBarTheme: AppBarTheme(
+            //surfaceTintColor: Colors.transparent,
             shadowColor: Theme.of(context).shadowColor,
             centerTitle: false,
             toolbarHeight: appBarH,
-            iconTheme: IconThemeData(color: colors.onSurface),
-            actionsIconTheme: IconThemeData(color: colors.onSurface),
+            iconTheme: IconThemeData(color: colors.text0),
+            actionsIconTheme: IconThemeData(color: colors.text0),
             titleTextStyle: GoogleFonts.roboto(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                color: colors.onSurface),
-            backgroundColor: colors.surface,
-            elevation: .8,
+                fontSize: 20, fontWeight: FontWeight.w500, color: colors.text0),
+            backgroundColor: colors.bg,
+            elevation: 1,
             foregroundColor: colors.onSurface),
         colorScheme: ColorScheme.fromSeed(
             primary: colors.primary,
-            onPrimary: colors.onPrimary,
             secondary: colors.secondary,
-            secondaryContainer: colors.secondary,
-            surfaceTint: colors.surface,
+            surfaceTint: colors.bg1,
             seedColor: colors.primary,
-            background: colors.background,
-            onBackground: colors.onBackground,
-            onPrimaryContainer: colors.onPrimaryContainer,
-            primaryContainer: colors.primaryContainer,
-
-            /// For cards and buttons i think
-            surface: colors.surface,
-            onSurface: colors.onSurface,
-            error: colors.danger,
-            onError: Colors.white,
+            background: Colors.red,
             brightness: dark ? Brightness.dark : Brightness.light),
         progressIndicatorTheme: ProgressIndicatorThemeData(
           color: colors.medium,
@@ -61,11 +47,12 @@ class TuTheme {
         tabBarTheme: TabBarTheme(
             labelColor: colors.onSurface, indicatorColor: Colors.red),
         popupMenuTheme: PopupMenuThemeData(
-          color: colors.bg2,
+          color: colors.surface,
         ),
-        textTheme: GoogleFonts.poppinsTextTheme(
-          const TextTheme(
-            bodyMedium: TextStyle(fontSize: fontSizeBody),
+        textTheme: GoogleFonts.robotoTextTheme(
+          TextTheme(
+            bodyMedium:
+                TextStyle(color: colors.onBackground, fontSize: fontSizeBody),
           ),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -75,24 +62,25 @@ class TuTheme {
                 foregroundColor: colors.onSurface)),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
             backgroundColor: colors.surface,
-            /*   selectedIconTheme:
-                const IconThemeData(color: Color.fromRGBO(207, 206, 206, 1)), */
-            selectedItemColor: colors.onBackground,
+            selectedItemColor: colors.primary,
             showUnselectedLabels: true,
-            unselectedItemColor: colors.onBackground,
-            selectedLabelStyle: const TextStyle(
-              fontWeight: FontWeight.w600,
-            ),
+            unselectedItemColor: colors.onSurface,
             unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500)),
-        inputDecorationTheme: InputDecorationTheme(
-          // hintStyle: const TextStyle(),
-          floatingLabelStyle:
-              TextStyle(color: colors.onBackground, fontSize: fontSizeBody),
-        ),
-        drawerTheme: const DrawerThemeData(shape: RoundedRectangleBorder()),
         listTileTheme: const ListTileThemeData(
           contentPadding: EdgeInsets.only(right: 0, left: 14),
         ),
-        iconTheme: IconThemeData(size: iconSize, color: colors.onBackground));
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: const TextStyle(),
+          floatingLabelStyle:
+              TextStyle(color: colors.onBackground, fontSize: fontSizeBody),
+        ),
+        drawerTheme: DrawerThemeData(backgroundColor: colors.bg0),
+        dialogTheme: DialogTheme(
+            backgroundColor: colors.bg1,
+            titleTextStyle: styles.h4(
+              isLight: true,
+            )),
+        cardColor: colors.bg1,
+        iconTheme: IconThemeData(size: iconSize, color: colors.onSurface));
   }
 }

@@ -58,7 +58,7 @@ class TuSelect extends StatelessWidget {
               isDense: true,
               icon: Icon(
                 Icons.expand_more_outlined,
-                color: colors.text,
+                color: colors.onBackground,
               ),
               decoration: InputDecoration(
                 label: label == null
@@ -75,7 +75,7 @@ class TuSelect extends StatelessWidget {
                     e.label,
                     softWrap: false,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 16, color: colors.text),
+                    style: TextStyle(fontSize: 16, color: colors.onBackground),
                   ),
                 );
               }).toList(),

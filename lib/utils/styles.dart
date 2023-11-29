@@ -12,7 +12,7 @@ class Styles {
     return GoogleFonts.poppins(
         fontSize: fontSizeBody + 10,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w800,
-        color: color ?? colors.text);
+        color: color ?? colors.onBackground);
   }
 
   TextStyle h2({Color? color, bool isLight = false}) {
@@ -26,7 +26,7 @@ class Styles {
     return GoogleFonts.poppins(
         fontSize: fontSizeBody + 4,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w700,
-        color: color ?? colors.text);
+        color: color ?? colors.onBackground);
   }
 
   TextStyle label({Color? color, bool isLight = false, bool isBold = false}) {
@@ -40,14 +40,14 @@ class Styles {
     return GoogleFonts.poppins(
         fontSize: fontSizeBody + 2,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w600,
-        color: color ?? (colors.text));
+        color: color ?? (colors.onBackground));
   }
 
   TextStyle h5({Color? color, bool isLight = false}) {
     return GoogleFonts.poppins(
         fontSize: 16,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w600,
-        color: color ?? colors.text);
+        color: color ?? colors.onBackground);
   }
 
   TextStyle subtitle =
