@@ -13,7 +13,6 @@ dependencies:
   cupertino_icons: ^1.0.5
   window_manager: ^0.3.5
   get: ^4.6.5
-  via_logger: ^1.0.4
   flutter_hooks: ^0.20.3
   google_fonts: ^6.1.0
   flutter_svg: ^1.1.6

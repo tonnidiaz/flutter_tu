@@ -22,19 +22,18 @@ class TuTheme {
   ThemeData theme() {
     return ThemeData(
         useMaterial3: true,
-        //scaffoldBackgroundColor: colors.bg,
         dialogTheme: const DialogTheme(
             titleTextStyle: TextStyle(fontSize: fontSizeBody + 5)),
         chipTheme: ChipThemeData(
             backgroundColor: colors.medium,
             side: BorderSide.none,
+            labelPadding: true
+                ? const EdgeInsets.fromLTRB(5, -5, 5, -3)
+                : const EdgeInsets.symmetric(horizontal: 5, vertical: -2),
             padding: EdgeInsets.symmetric(horizontal: 7, vertical: -10),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100))),
         platform: TargetPlatform.android,
-        /* bottomSheetTheme: BottomSheetThemeData(
-          backgroundColor: colors.surface,
-            shape: RoundedRectangleBorder(borderRadius: defaultBorderRadius)), */
         appBarTheme: AppBarTheme(
             shadowColor: Theme.of(context).shadowColor,
             centerTitle: false,
@@ -74,7 +73,7 @@ class TuTheme {
         popupMenuTheme: PopupMenuThemeData(
           color: colors.bg2,
         ),
-        textTheme: GoogleFonts.poppinsTextTheme(
+        textTheme: GoogleFonts.nunitoTextTheme(
           const TextTheme(
             bodyMedium: TextStyle(fontSize: fontSizeBody),
           ),
@@ -88,16 +87,18 @@ class TuTheme {
             backgroundColor: colors.surface,
             elevation: 0,
             type: BottomNavigationBarType.fixed,
-            selectedIconTheme:
+            /*  selectedIconTheme:
                 const IconThemeData(weight: 900, fill: 1, grade: 1),
-            unselectedIconTheme: const IconThemeData(weight: 100, fill: 0),
+            unselectedIconTheme: const IconThemeData(
+              weight: 100,
+              fill: 0,
+            ), */
             selectedItemColor: dark ? Colors.white : Colors.black,
             showUnselectedLabels: true,
             unselectedItemColor: colors.onBackground,
             selectedLabelStyle: const TextStyle(
-              fontWeight: FontWeight.w600,
-            ),
-            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500)),
+                fontWeight: FontWeight.w600, fontSize: fontSizeBody + .7),
+            unselectedLabelStyle: const TextStyle(fontSize: fontSizeBody)),
         inputDecorationTheme: InputDecorationTheme(
           // hintStyle: const TextStyle(),
           floatingLabelStyle:

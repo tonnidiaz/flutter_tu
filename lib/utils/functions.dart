@@ -9,9 +9,6 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:tu/tu.dart';
-import 'package:via_logger/log_record.dart';
-import 'package:via_logger/logger.dart';
-import 'package:via_logger/output.dart';
 import 'package:window_manager/window_manager.dart';
 
 void clog(dynamic p) {
@@ -48,19 +45,6 @@ String formatDate(dynamic date) {
 String camelToSentence(String text) {
   return text.replaceAllMapped(RegExp(r"^([a-z])|[A-Z]"),
       (Match m) => m[1] == null ? " ${m[0]}" : m[1]!.toUpperCase());
-}
-
-class Console extends Output {
-  @override
-  void output(LogRecord record) {
-    ///Custom print style
-    debugPrint('[${record.path}:${record.lineNumber}] ${record.message}');
-  }
-}
-
-setupLogger() {
-  final List<Output> engines = [Console()];
-  Logger.setEngines(engines);
 }
 
 Flushbar showToast(String msg,
