@@ -2,31 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../tu.dart';
 
-class InfoItem extends StatelessWidget {
-  final Function()? onTap;
-  final Widget? child;
-  const InfoItem({super.key, this.onTap, this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-          width: double.infinity,
-          height: 50,
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-          margin: const EdgeInsets.symmetric(vertical: .5),
-          decoration: BoxDecoration(
-              color: Tu.colors.bg1,
-              border: const Border(
-                  bottom: BorderSide(
-                      color: Color.fromRGBO(10, 10, 10, 0.05), width: 1))),
-          child: child),
-    );
-  }
-}
-
 Widget bulletItem(String text, {TextStyle? style}) => Row(children: [
       const Text(
         "\u2022",
@@ -57,3 +32,26 @@ Widget tuTableRow(Widget? first, Widget? last,
     ),
   );
 }
+
+class TuBottomSheet extends StatelessWidget {
+  final Widget? child;
+  const TuBottomSheet({super.key, this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: colors.bg,
+      borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+      child: child,
+    );
+  }
+}
+
+Widget cont({Color? color, String text = "", Widget? child}) => Container(
+      height: 100,
+      width: 100,
+      color: color ?? Colors.red,
+      margin: defaultPadding,
+      child: Center(child: child ?? Text(text)),
+    );

@@ -6,7 +6,7 @@ class TuLabeledCheckbox extends StatelessWidget {
   final double radius;
   final Function(bool?) onChanged;
   final String? label;
-  final Position labelPos;
+  final TuPosition labelPos;
   final Color? activeColor;
   final FontWeight? fontWeight;
   const TuLabeledCheckbox(
@@ -16,7 +16,7 @@ class TuLabeledCheckbox extends StatelessWidget {
       this.activeColor,
       this.value = false,
       this.radius = 5,
-      this.labelPos = Position.right,
+      this.labelPos = TuPosition.right,
       required this.onChanged});
 
   @override
@@ -42,12 +42,12 @@ class TuLabeledCheckbox extends StatelessWidget {
             ),
           )
         : none();
-    return labelPos == Position.right
+    return labelPos == TuPosition.right
         ? Row(
             mainAxisSize: MainAxisSize.min,
             children: [check, lbl],
           )
-        : labelPos == Position.bottom
+        : labelPos == TuPosition.bottom
             ? Column(
                 children: [check, lbl],
               )

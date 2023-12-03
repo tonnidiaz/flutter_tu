@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tu/tu.dart';
 
 import 'index.dart';
 
@@ -14,11 +15,13 @@ class TuPage {
   String to;
   Widget icon;
   String? label;
+  String? svg;
   TuPage(this.to, this.widget,
       {required this.icon,
       this.inList = true,
       this.isAction = false,
-      this.label});
+      this.label,
+      this.svg});
 }
 
 bool backEnabled = true;
@@ -31,6 +34,7 @@ const double sidebarW = 45;
 const double iconSize = 25;
 const double topMargin = 5;
 const double splashRadius = iconSize;
+double statusBarHeight() => 25;
 bool dev = kDebugMode;
 
 final bool isMobile = Platform.isAndroid || Platform.isIOS || dev;
@@ -100,3 +104,5 @@ Future<Dio> bassDio() async {
 */
 
 List<Object> progressSheets = [];
+
+BuildContext getCtx() => Get.overlayContext!;

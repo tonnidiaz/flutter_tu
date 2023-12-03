@@ -1,1 +1,1 @@
-enum Position { top, bottom, right }
+enum TuPosition { top, bottom, right }

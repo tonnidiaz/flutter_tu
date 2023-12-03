@@ -4,7 +4,7 @@ import "package:permission_handler/permission_handler.dart";
 
 import '../widgets/updates_view.dart';
 
-Future requestStoragePermission() async {
+Future<bool> requestStoragePermission() async {
   clog("Requesting...");
 
   return await Permission.storage.request().isGranted;

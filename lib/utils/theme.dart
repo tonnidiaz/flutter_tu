@@ -10,6 +10,13 @@ class TuTheme {
   TuTheme({required this.colors, this.dark = true, required this.context}) {
     instance = this;
     styles = Styles(colors: colors);
+    Tu.appCtrl.darkMode = dark;
+  }
+
+  ThemeData theme0() {
+    return ThemeData(
+        useMaterial3: true,
+        brightness: dark ? Brightness.dark : Brightness.light);
   }
 
   ThemeData theme() {
@@ -21,11 +28,13 @@ class TuTheme {
         chipTheme: ChipThemeData(
             backgroundColor: colors.medium,
             side: BorderSide.none,
+            padding: EdgeInsets.symmetric(horizontal: 7, vertical: -10),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100))),
         platform: TargetPlatform.android,
-        bottomSheetTheme: BottomSheetThemeData(
-            shape: RoundedRectangleBorder(borderRadius: defaultBorderRadius)),
+        /* bottomSheetTheme: BottomSheetThemeData(
+          backgroundColor: colors.surface,
+            shape: RoundedRectangleBorder(borderRadius: defaultBorderRadius)), */
         appBarTheme: AppBarTheme(
             shadowColor: Theme.of(context).shadowColor,
             centerTitle: false,
@@ -36,7 +45,7 @@ class TuTheme {
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
                 color: colors.onSurface),
-            backgroundColor: colors.surface,
+            backgroundColor: colors.background, //colors.surface,
             elevation: .0,
             foregroundColor: colors.onSurface),
         colorScheme: ColorScheme.fromSeed(
@@ -74,12 +83,15 @@ class TuTheme {
             style: ElevatedButton.styleFrom(
                 disabledBackgroundColor: colors.medium,
                 disabledForegroundColor: Colors.white,
-                foregroundColor: colors.onSurface)),
+                foregroundColor: dark ? colors.onSurface : Colors.white)),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
             backgroundColor: colors.surface,
-            /*   selectedIconTheme:
-                const IconThemeData(color: Color.fromRGBO(207, 206, 206, 1)), */
-            selectedItemColor: colors.onBackground,
+            elevation: 0,
+            type: BottomNavigationBarType.fixed,
+            selectedIconTheme:
+                const IconThemeData(weight: 900, fill: 1, grade: 1),
+            unselectedIconTheme: const IconThemeData(weight: 100, fill: 0),
+            selectedItemColor: dark ? Colors.white : Colors.black,
             showUnselectedLabels: true,
             unselectedItemColor: colors.onBackground,
             selectedLabelStyle: const TextStyle(

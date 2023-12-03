@@ -57,18 +57,23 @@ Widget iconText(String text, IconData icon,
     {double spacing = 4.0,
     double iconSize = 18,
     double? fontSize,
+    FontWeight? fw,
+    MainAxisAlignment? alignment,
     Function()? onClick}) {
   final child = Row(
     crossAxisAlignment: CrossAxisAlignment.center,
+    mainAxisAlignment: alignment ?? MainAxisAlignment.start,
     children: [
       Icon(
         icon,
         size: iconSize,
       ),
       mX(spacing),
-      Text(
-        text,
-        style: TextStyle(fontSize: fontSize),
+      Flexible(
+        child: Text(
+          text,
+          style: TextStyle(fontSize: fontSize, fontWeight: fw),
+        ),
       )
     ],
   );

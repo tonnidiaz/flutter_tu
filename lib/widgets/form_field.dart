@@ -60,7 +60,7 @@ class TuFormField extends StatefulHookWidget {
       this.radius = 4,
       this.elevation = 0,
       this.height = 12,
-      this.maxLines,
+      this.maxLines = 1,
       this.minLines,
       this.maxLength,
       this.onChanged,
@@ -136,8 +136,10 @@ class _TuFormFieldState extends State<TuFormField> {
             borderSide: BorderSide(color: Tu.colors.primary, width: 3),
             borderRadius: BorderRadius.circular(widget.radius),
           );
-    return Obx(
-      () => TextFormField(
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: widget.my),
+      width: widget.width,
+      child: TextFormField(
         textAlign: widget.textAlign,
         maxLength: widget.maxLength,
         textCapitalization: TextCapitalization.sentences,

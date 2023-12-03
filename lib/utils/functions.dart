@@ -15,7 +15,7 @@ import 'package:via_logger/output.dart';
 import 'package:window_manager/window_manager.dart';
 
 void clog(dynamic p) {
-  debugPrint("$tag: $p");
+  debugPrint("\n$tag: $p\n");
 }
 
 void setupWindowManager() async {
@@ -145,17 +145,6 @@ void errorHandler({required e, BuildContext? context, String? msg}) {
 }
 
 class TuFuncs {
-  static void showBottomSheet(
-      {required BuildContext context,
-      bool full = true,
-      required Widget widget}) {
-    showModalBottomSheet(
-        useSafeArea: true,
-        isScrollControlled: full,
-        context: context,
-        builder: (context) => widget);
-  }
-
   static dialog(BuildContext context, Widget widget) async {
     return showDialog(
         useRootNavigator: false,
