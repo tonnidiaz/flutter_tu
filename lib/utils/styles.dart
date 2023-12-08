@@ -9,42 +9,42 @@ class Styles {
   Styles({this.dark = true, required this.colors});
 
   TextStyle h1({Color? color, bool isLight = false}) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.nunito(
         fontSize: fontSizeBody + 10,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w800,
         color: color ?? colors.onBackground);
   }
 
   TextStyle h2({Color? color, bool isLight = false}) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.nunito(
         fontSize: fontSizeBody + 6,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w800,
         color: color ?? colors.text0);
   }
 
   TextStyle h3({Color? color, bool isLight = false}) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.nunito(
         fontSize: fontSizeBody + 4,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w700,
         color: color ?? colors.onBackground);
   }
 
   TextStyle label({Color? color, bool isLight = false, bool isBold = false}) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.nunito(
         fontSize: 18,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w700,
         color: color);
   }
 
   TextStyle h4({Color? color, bool isLight = false}) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.nunito(
         fontSize: fontSizeBody + 2,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w600,
         color: color ?? (colors.onBackground));
   }
 
   TextStyle h5({Color? color, bool isLight = false}) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.nunito(
         fontSize: 16,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w600,
         color: color ?? colors.onBackground);
@@ -61,5 +61,5 @@ class Styles {
   TextStyle h6 = GoogleFonts.inclusiveSans(fontSize: 14);
   BorderRadius btnRadius = BorderRadius.circular(7);
 
-  TextStyle cardTitle = GoogleFonts.poppins(fontSize: 20);
+  TextStyle cardTitle = GoogleFonts.nunito(fontSize: 20);
 }

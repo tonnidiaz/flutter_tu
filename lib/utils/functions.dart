@@ -155,8 +155,10 @@ void pop(BuildContext context) {
   return Navigator.pop(context);
 }
 
-void gpop({dynamic ret}) {
-  Get.back(result: ret);
+void gpop({dynamic ret, bool closeOverlays = true}) {
+  Get.back(
+    result: ret,
+  );
 }
 
 sleep(int ms) async {

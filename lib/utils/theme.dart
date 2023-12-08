@@ -27,6 +27,7 @@ class TuTheme {
         chipTheme: ChipThemeData(
             backgroundColor: colors.medium,
             side: BorderSide.none,
+            labelStyle: TextStyle(color: Colors.white),
             labelPadding: true
                 ? const EdgeInsets.fromLTRB(5, -5, 5, -3)
                 : const EdgeInsets.symmetric(horizontal: 5, vertical: -2),

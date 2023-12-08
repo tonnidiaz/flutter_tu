@@ -21,7 +21,7 @@ class TuColors {
 
   final Color primary = const Color.fromRGBO(
       101, 195, 200, 1); //const Color.fromRGBO(220, 184, 255, 1);
-  final Color onPrimary = Color.fromARGB(255, 178, 240, 243);
+  final Color onPrimary = Color.fromARGB(255, 255, 255, 255);
   final Color primaryContainer = const Color.fromRGBO(
       31, 107, 112, 1); //const Color.fromRGBO(95, 43, 146, 1);
   final Color onPrimaryContainer = const Color.fromARGB(255, 216, 252, 255);

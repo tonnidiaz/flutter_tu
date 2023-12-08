@@ -62,7 +62,7 @@ class TuDialogView extends StatelessWidget {
                   if (onCancel != null) {
                     onCancel!();
                   } else {
-                    clog('GPOP');
+                    clog('DLG GPOP');
                     gpop();
                   }
                 },

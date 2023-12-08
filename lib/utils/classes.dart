@@ -24,6 +24,22 @@ class Tu {
         useSafeArea: useSafeArea,
         enableDrag: enableDrag);
   }
+
+  static dialog(Widget sheet,
+      {bool isScrollControlled = false,
+      bool useRootNavigator = false,
+      bool isDismissible = true,
+      bool enableDrag = true,
+      bool? showDragHandle,
+      bool useSafeArea = false,
+      BuildContext? context}) {
+    showDialog(
+      useRootNavigator: false,
+      context: context ?? getCtx(),
+      builder: (_) => sheet,
+      useSafeArea: useSafeArea,
+    );
+  }
 }
 
 //final tu = Tu();

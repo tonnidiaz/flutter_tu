@@ -35,15 +35,36 @@ Widget tuTableRow(Widget? first, Widget? last,
 
 class TuBottomSheet extends StatelessWidget {
   final Widget? child;
-  const TuBottomSheet({super.key, this.child});
+  final EdgeInsetsGeometry? padding;
+  final double? elevation;
+  const TuBottomSheet({super.key, this.child, this.padding, this.elevation});
 
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: colors.bg,
+      color: colors.surface,
+      elevation: elevation ?? 0,
       borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-      child: child,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const TuCard(
+            height: 5,
+            width: 45,
+            radius: 50,
+            color: Colors.black12,
+            my: 10,
+          ),
+          Flexible(
+            child: SingleChildScrollView(
+              child: Container(
+                  padding: padding ?? const EdgeInsets.fromLTRB(14, 0, 14, 14),
+                  child: child ?? none()),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
