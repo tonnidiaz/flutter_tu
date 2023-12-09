@@ -128,53 +128,50 @@ class UpdatesView3State extends State<UpdatesView3> {
   @override
   Widget build(BuildContext context) {
     return TuBottomSheet(
-      child: Container(
-        padding: defaultPadding2,
-        width: double.infinity,
-        child: widget.update == null
-            ? Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "Your version is up-to-date ✓",
-                    style: styles.h4(),
-                  ),
-                ],
-              )
-            : SingleChildScrollView(
-                child: tuColumn(min: true, children: [
-                  Text(
-                    "Updates available",
-                    style: styles.h3(),
-                  ),
-                  mY(8),
-                  tuTableRow(const Text("Version:"),
-                      Text("${widget.update!["version"]}")),
-                  mY(10),
-                  Text(
-                    "Release notes",
-                    style: styles.h4(),
-                  ),
-                  Padding(
-                    padding: defaultPadding,
-                    child: tuColumn(children: [
-                      ...widget.update!["notes"]
-                          .map((e) => bulletItem(e))
-                          .toList()
-                    ]),
-                  ),
-                  TuButton(
-                    bgColor: colors.success,
-                    width: double.infinity,
-                    text: "UPDATE NOW",
-                    onPressed: () async {
-                      //  gpop();
-                      _downloadUpdate();
-                    },
-                  )
-                ]),
-              ),
-      ),
+      child: widget.update == null
+          ? Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Your version is up-to-date ✓",
+                  style: styles.h4(),
+                ),
+              ],
+            )
+          : SingleChildScrollView(
+              child: tuColumn(min: true, children: [
+                Text(
+                  "Updates available",
+                  style: styles.h3(),
+                ),
+                mY(8),
+                tuTableRow(const Text("Version:"),
+                    Text("${widget.update!["version"]}")),
+                mY(10),
+                Text(
+                  "Release notes",
+                  style: styles.h4(),
+                ),
+                Padding(
+                  padding: defaultPadding,
+                  child: tuColumn(children: [
+                    ...widget.update!["notes"]
+                        .map((e) => bulletItem(e))
+                        .toList()
+                  ]),
+                ),
+                TuButton(
+                  bgColor: colors.success,
+                  width: double.infinity,
+                  color: Colors.white,
+                  text: "UPDATE NOW",
+                  onPressed: () async {
+                    //  gpop();
+                    _downloadUpdate();
+                  },
+                )
+              ]),
+            ),
     );
   }
 }

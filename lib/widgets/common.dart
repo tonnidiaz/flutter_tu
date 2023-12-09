@@ -203,6 +203,7 @@ class _ProgressSheetState extends State<ProgressSheet> {
   @override
   void initState() {
     super.initState();
+    clog("NEW SHEET");
     progressSheets.add(DateTime.now());
     if (!widget.dismissable) {
       backEnabled = false;
@@ -220,7 +221,7 @@ class _ProgressSheetState extends State<ProgressSheet> {
               children: [
                 Obx(() => LinearProgressIndicator(
                       value: _ctrl.progress.value,
-                      color: Tu.colors.primaryFade,
+                      color: Tu.colors.primary,
                     )),
                 Expanded(
                   child: Padding(

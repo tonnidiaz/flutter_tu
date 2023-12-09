@@ -81,7 +81,7 @@ final dio = Dio();
 const String githubURL =
     "https://raw.githubusercontent.com/tonnidiaz/tunedapps/main/meta.json";
 
-const localhost = "http://172.16.10.204";
+const localhost = "http://192.168.58.1";
 
 Future<String> tbURL() async {
   if (dev) return "$localhost:3000";

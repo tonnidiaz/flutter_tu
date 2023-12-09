@@ -8,20 +8,18 @@ class Tu {
   static TuProgressCtrl progressCtrl = Get.put(TuProgressCtrl());
   static TuColors colors = TuTheme.instance.colors;
   static Styles styles = TuTheme.instance.styles;
+
   static bottomSheet(Widget sheet,
-      {bool isScrollControlled = false,
-      bool useRootNavigator = false,
+      {bool fullScreen = false,
       bool isDismissible = true,
       bool enableDrag = true,
       bool? showDragHandle,
       bool useSafeArea = false,
       BuildContext? context}) {
-    showModalBottomSheet(
-        context: context ?? getCtx(),
-        builder: (_) => sheet,
+    Get.bottomSheet(sheet,
+        isScrollControlled: fullScreen,
+        ignoreSafeArea: !fullScreen,
         isDismissible: isDismissible,
-        isScrollControlled: isScrollControlled,
-        useSafeArea: useSafeArea,
         enableDrag: enableDrag);
   }
 

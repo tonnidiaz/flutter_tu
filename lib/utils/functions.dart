@@ -115,15 +115,14 @@ void handleDioException(
 
 void errorHandler({required e, BuildContext? context, String? msg}) {
   clog(e);
-  if (progressSheets.isEmpty) return;
-  gpop();
+  if (progressSheets.isNotEmpty) gpop();
 
   // if (!(context?.mounted == true)) return;
   if (e.runtimeType == DioException) {
     handleDioException(
         context: context, exception: e as DioException, msg: msg);
   } else {
-    showToast(msg ?? "Something went wrong", isErr: false)
+    showToast(msg ?? "Something went wrong", isErr: true)
         .show(context ?? Get.overlayContext!);
   }
 }

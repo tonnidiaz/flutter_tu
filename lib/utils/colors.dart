@@ -67,7 +67,7 @@ class TuColors {
   Color get surface => dark ? _surfaceDark : _surface;
 
   final Color _onBackgroundDark = const Color.fromRGBO(207, 206, 206, 1);
-  final Color _onBackground = const Color.fromRGBO(40, 40, 40, 1);
+  final Color _onBackground = const Color.fromRGBO(30, 30, 30, 1);
   Color get onBackground => dark ? _onBackgroundDark : _onBackground;
 
   final Color _onSurfaceDark = const Color.fromRGBO(240, 240, 240, 1);
