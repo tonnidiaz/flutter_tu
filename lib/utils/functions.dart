@@ -12,7 +12,7 @@ import 'package:tu/tu.dart';
 import 'package:window_manager/window_manager.dart';
 
 void clog(dynamic p) {
-  debugPrint("\n$tag: $p\n");
+  debugPrint("\n[${StackTrace.current}]$tag: $p\n");
 }
 
 void setupWindowManager() async {

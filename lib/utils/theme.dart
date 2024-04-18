@@ -74,11 +74,15 @@ class TuTheme {
         popupMenuTheme: PopupMenuThemeData(
           color: colors.bg2,
         ),
-        textTheme: GoogleFonts.nunitoTextTheme(
-          const TextTheme(
-            bodyMedium: TextStyle(fontSize: fontSizeBody),
-          ),
-        ),
+        textTheme: isMobile
+            ? GoogleFonts.nunitoTextTheme(
+                const TextTheme(
+                  bodyMedium: TextStyle(fontSize: fontSizeBody),
+                ),
+              )
+            : GoogleFonts.ubuntuTextTheme(const TextTheme(
+                bodyMedium: TextStyle(fontSize: fontSizeBody),
+              )),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
                 disabledBackgroundColor: colors.medium,
@@ -97,9 +101,10 @@ class TuTheme {
             selectedItemColor: dark ? Colors.white : Colors.black,
             showUnselectedLabels: true,
             unselectedItemColor: colors.onBackground,
-            selectedLabelStyle: const TextStyle(
+            selectedLabelStyle: GoogleFonts.roboto(
                 fontWeight: FontWeight.w600, fontSize: fontSizeBody + .7),
-            unselectedLabelStyle: const TextStyle(fontSize: fontSizeBody)),
+            unselectedLabelStyle:
+                GoogleFonts.roboto(fontSize: fontSizeBody - .7)),
         inputDecorationTheme: InputDecorationTheme(
           // hintStyle: const TextStyle(),
           floatingLabelStyle:

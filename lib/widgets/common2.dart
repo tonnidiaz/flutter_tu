@@ -51,7 +51,7 @@ class TuBottomSheet extends StatelessWidget {
         children: [
           const TuCard(
             height: 5,
-            width: 45,
+            width: 35,
             radius: 50,
             color: Colors.black12,
             my: 10,

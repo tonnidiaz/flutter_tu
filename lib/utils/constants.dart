@@ -37,7 +37,7 @@ const double splashRadius = iconSize;
 double statusBarHeight() => 25;
 bool dev = kDebugMode;
 
-final bool isMobile = Platform.isAndroid || Platform.isIOS || dev;
+final bool isMobile = Platform.isAndroid || Platform.isIOS;
 const defaultPadding = EdgeInsets.all(8);
 const defaultPadding2 = EdgeInsets.all(14);
 Size screenSize(BuildContext context) {
