@@ -13,11 +13,11 @@ class TuPage {
   bool inList;
   bool isAction;
   String to;
-  Widget icon;
+  IconData? icon;
   String? label;
   String? svg;
   TuPage(this.to, this.widget,
-      {required this.icon,
+      {this.icon,
       this.inList = true,
       this.isAction = false,
       this.label,
@@ -29,9 +29,9 @@ bool backEnabled = true;
 const String tag = "Tu";
 const String package = "com.tb.tmeta";
 const double bottomSheetH = 150;
-const double bottomBarH = 45;
+const double bottomBarH = 95;
 const double sidebarW = 45;
-const double iconSize = 25;
+const double iconSize = 30;
 const double topMargin = 5;
 const double splashRadius = iconSize;
 double statusBarHeight() => 25;

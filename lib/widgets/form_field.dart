@@ -174,6 +174,7 @@ class _TuFormFieldState extends State<TuFormField> {
         ),
         decoration: InputDecoration(
           enabled: widget.enabled,
+
           prefixIconColor: _hasFocus ? Tu.colors.onSurface : Tu.colors.note,
           suffixIconColor: _hasFocus ? Tu.colors.onSurface : Tu.colors.note,
           fillColor: widget.fill ?? Tu.colors.bgField,

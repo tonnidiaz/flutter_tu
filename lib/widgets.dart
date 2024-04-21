@@ -12,3 +12,4 @@ export 'widgets/inkwell.dart';
 export 'widgets/selectable.dart';
 export 'widgets/common2.dart';
 export 'widgets/sliver_appbar_delegate.dart';
+export 'widgets/bottom_navbar.dart';

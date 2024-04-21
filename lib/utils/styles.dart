@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:tu/tu.dart";
 
-const double fontSizeBody = 16;
+const double fontSizeBody = 18;
 
 class Styles {
   final bool dark;

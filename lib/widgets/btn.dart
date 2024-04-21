@@ -5,8 +5,13 @@ import 'package:tu/tu.dart';
 class TuButton extends HookWidget {
   final double? width;
   final double height;
+
+  ///Vertical padding
   final double vp;
+  ///Border radius
   final double radius;
+
+  ///Horizontal padding
   final double hp;
   final Function()? onPressed;
   final Color? bgColor;
@@ -89,8 +94,8 @@ class TuButton extends HookWidget {
                     /* shadowColor:
                                 Tu.colors.onBackground(), // const Color.fromRGBO(26, 92, 255, .5), */
                     elevation: 2,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
+                    padding:  EdgeInsets.symmetric(
+                        vertical: vp, horizontal: hp),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(radius))),
                 child: child ??

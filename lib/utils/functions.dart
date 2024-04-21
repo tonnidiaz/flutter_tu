@@ -12,7 +12,7 @@ import 'package:tu/tu.dart';
 import 'package:window_manager/window_manager.dart';
 
 void clog(dynamic p) {
-  debugPrint("\n[${StackTrace.current}]$tag: $p\n");
+  debugPrint("\n]$tag: $p\n");
 }
 
 void setupWindowManager() async {
@@ -80,9 +80,10 @@ Future pushTo(Widget widget) async {
   return Get.to(widget);
 }
 
-void pushNamed(String name, {Object? arguments}) {
-  Get.toNamed(name, arguments: arguments);
-}
+/* void pushNamed(String name, {Object? arguments}) {
+  //Get.toNamed(name, arguments: arguments);
+  getCtx().go(name, extra: arguments);
+} */
 
 double roundDouble(double value, int places) {
   double mod = pow(10.0, places).toDouble();
@@ -113,8 +114,9 @@ void handleDioException(
       .show(context ?? Get.overlayContext!);
 }
 
-void errorHandler({required e, BuildContext? context, String? msg}) {
+void errorHandler({required e, BuildContext? context, String? msg}) async {
   clog(e);
+  await sleep(100);
   if (progressSheets.isNotEmpty) gpop();
 
   // if (!(context?.mounted == true)) return;

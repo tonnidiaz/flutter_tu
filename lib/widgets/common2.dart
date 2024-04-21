@@ -49,11 +49,11 @@ class TuBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const TuCard(
+          TuCard(
             height: 5,
             width: 35,
             radius: 50,
-            color: Colors.black12,
+            color: dark ? Colors.white38 : Colors.black12,
             my: 10,
           ),
           Flexible(
@@ -76,3 +76,91 @@ Widget cont({Color? color, String text = "", Widget? child}) => Container(
       margin: defaultPadding,
       child: Center(child: child ?? Text(text)),
     );
+
+class TuIconText extends StatelessWidget {
+  final IconData icon;
+  final double size;
+  final FontWeight? fontWeight;
+  final Color? color;
+  const TuIconText(this.icon,
+      {super.key, this.size = iconSize, this.fontWeight, this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      String.fromCharCode(icon.codePoint),
+      style: TextStyle(
+          inherit: false,
+          fontFamily: icon.fontFamily,
+          package: icon.fontPackage,
+          fontSize: size,
+          color: color,
+          fontWeight: fontWeight),
+    );
+  }
+}
+
+class TuBottomNavbarItem extends StatelessWidget {
+  final IconData? icon;
+  final bool isActive;
+  final String? label;
+  final String? iconName;
+  final double icSize;
+  final void Function()? onTap;
+  const TuBottomNavbarItem(
+      {super.key,
+      this.icon,
+      this.isActive = false,
+      this.iconName,
+      this.label,
+      this.icSize = iconSize,
+      this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(100),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            icon.isNotNull
+                ? TuIconText(
+                    icon!,
+                    size: isActive ? icSize + 10 : icSize,
+                    color: isActive
+                        ? colors.onSurface
+                        : colors.onSurface.withOpacity(.8),
+                    fontWeight: isActive ? FontWeight.w900 : FontWeight.w600,
+                  )
+                : svgIcon(
+                    name: iconName!,
+                    size: isActive ? icSize - 3.5 + 10 : icSize - 3.5,
+                    color: isActive
+                        ? colors.onSurface
+                        : colors.onSurface.withOpacity(.9),
+                  ),
+            Visibility(
+              visible: label.isNotNull,
+              child: Container(
+                margin: EdgeInsets.only(top: 4),
+                child: Text(
+                  label ?? "",
+                  style: TextStyle(
+                    fontWeight: isActive ? FontWeight.w900 : null,
+                    fontSize: icSize - 10,
+                    color: isActive
+                        ? colors.onSurface
+                        : colors.onSurface.withOpacity(.9),
+                  ),
+                ),
+              ),
+            )
+          ]),
+        ),
+      ),
+    );
+  }
+}
