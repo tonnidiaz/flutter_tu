@@ -43,7 +43,7 @@ class TuColors {
   final Color _text3Dark = const Color.fromRGBO(150, 150, 150, 1);
   final Color _text3 = const Color.fromRGBO(15, 15, 15, 0.8);
   Color get text3 => dark ? _text3Dark : _text3; */
-  final Color note = const Color.fromRGBO(102, 102, 102, 1);
+  final Color note = Color.fromRGBO(116, 116, 116, 1);
   Color get medium => dark
       ? const Color.fromARGB(125, 111, 115, 117)
       : Color.fromARGB(123, 56, 58, 59);

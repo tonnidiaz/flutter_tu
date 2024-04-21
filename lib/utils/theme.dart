@@ -74,15 +74,11 @@ class TuTheme {
         popupMenuTheme: PopupMenuThemeData(
           color: colors.bg2,
         ),
-        textTheme: isMobile
-            ? GoogleFonts.nunitoTextTheme(
-                const TextTheme(
-                  bodyMedium: TextStyle(fontSize: fontSizeBody),
-                ),
-              )
-            : GoogleFonts.ubuntuTextTheme(const TextTheme(
-                bodyMedium: TextStyle(fontSize: fontSizeBody),
-              )),
+        textTheme: Styles.textTheme(
+          const TextTheme(
+            bodyMedium: TextStyle(fontSize: fontSizeBody),
+          ),
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
                 disabledBackgroundColor: colors.medium,
