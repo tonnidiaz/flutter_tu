@@ -43,7 +43,7 @@ class TuColors {
   final Color _text3Dark = const Color.fromRGBO(150, 150, 150, 1);
   final Color _text3 = const Color.fromRGBO(15, 15, 15, 0.8);
   Color get text3 => dark ? _text3Dark : _text3; */
-  final Color note = Color.fromRGBO(116, 116, 116, 1);
+  final Color note = Color.fromARGB(255, 116, 116, 116);
   Color get medium => dark
       ? const Color.fromARGB(125, 111, 115, 117)
       : Color.fromARGB(123, 56, 58, 59);
@@ -70,7 +70,7 @@ class TuColors {
   final Color _onBackground = const Color.fromRGBO(30, 30, 30, 1);
   Color get onBackground => dark ? _onBackgroundDark : _onBackground;
 
-  final Color _onSurfaceDark = const Color.fromRGBO(240, 240, 240, 1);
+  final Color _onSurfaceDark = const Color.fromRGBO(247, 247, 247, 1);
   final Color _onSurface = const Color.fromRGBO(70, 70, 70, 1);
   Color get onSurface => dark ? _onSurfaceDark : _onSurface;
 

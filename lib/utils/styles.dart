@@ -17,7 +17,7 @@ class Styles {
     return textStyle(
         fontSize: fontSizeBody + 10,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w800,
-        color: color ?? colors.onBackground);
+        color: color ?? colors.onSurface);
   }
 
   TextStyle h2({Color? color, bool isLight = false}) {
@@ -31,7 +31,7 @@ class Styles {
     return textStyle(
         fontSize: fontSizeBody + 4,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w700,
-        color: color ?? colors.onBackground);
+        color: color ?? colors.onSurface);
   }
 
   TextStyle label({Color? color, bool isLight = false, bool isBold = false}) {
@@ -45,14 +45,14 @@ class Styles {
     return textStyle(
         fontSize: fontSizeBody + 2,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w600,
-        color: color ?? (colors.onBackground));
+        color: color ?? (colors.onSurface));
   }
 
   TextStyle h5({Color? color, bool isLight = false}) {
     return textStyle(
         fontSize: 16,
         fontWeight: isLight ? FontWeight.w500 : FontWeight.w600,
-        color: color ?? colors.onBackground);
+        color: color ?? colors.onSurface);
   }
 
   TextStyle subtitle =

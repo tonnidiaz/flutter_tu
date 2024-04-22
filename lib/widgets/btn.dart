@@ -8,6 +8,7 @@ class TuButton extends HookWidget {
 
   ///Vertical padding
   final double vp;
+
   ///Border radius
   final double radius;
 
@@ -93,9 +94,8 @@ class TuButton extends HookWidget {
                         backgroundColor, //const Color.fromRGBO(26, 92, 255, 1),
                     /* shadowColor:
                                 Tu.colors.onBackground(), // const Color.fromRGBO(26, 92, 255, .5), */
-                    elevation: 2,
-                    padding:  EdgeInsets.symmetric(
-                        vertical: vp, horizontal: hp),
+                    elevation: 3,
+                    padding: EdgeInsets.symmetric(vertical: vp, horizontal: hp),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(radius))),
                 child: child ??
