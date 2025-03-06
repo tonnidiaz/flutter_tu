@@ -12,7 +12,21 @@ import 'package:tu/tu.dart';
 import 'package:window_manager/window_manager.dart';
 
 void clog(dynamic p) {
-  debugPrint("\n]$tag: $p\n");
+  debugPrint(
+    "\n[${DateTime.now().toIso8601String()}] $tag: $p\n",
+  );
+}
+
+void clearTerminal() {
+  try {
+    clog("CLEAR_TERMINAL...");
+    if (Platform.isLinux) {
+      final o = Process.runSync("\x1Bc", [], runInShell: false).stdout;
+      clog(o);
+    }
+  } catch (e) {
+    clog("[CLEAR_T ERROR] ${e}");
+  }
 }
 
 void setupWindowManager() async {
@@ -20,7 +34,6 @@ void setupWindowManager() async {
 
   // Must add this line.
   await windowManager.ensureInitialized();
-
   WindowOptions windowOptions = WindowOptions(
     minimumSize: isMobile ? const Size(288, 533) : null,
     maximumSize: isMobile ? const Size(288, 533) : null,

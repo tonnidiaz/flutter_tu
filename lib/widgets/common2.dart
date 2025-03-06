@@ -164,3 +164,13 @@ class TuBottomNavbarItem extends StatelessWidget {
     );
   }
 }
+
+class TuObx extends StatelessWidget {
+  final Widget child;
+  const TuObx({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() => child);
+  }
+}

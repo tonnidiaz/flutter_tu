@@ -20,16 +20,14 @@ class TuButton extends HookWidget {
   final Widget? child;
   final String text;
   final bool outlined;
-  final Size? size;
   const TuButton(
       {super.key,
       this.text = "",
-      this.size,
       this.width,
-      this.height = 38,
+      this.height = 45,
       this.vp = 5,
-      this.radius = 8,
-      this.hp = 2,
+      this.radius = 3,
+      this.hp = 10,
       this.outlined = false,
       this.onPressed,
       this.bgColor,
@@ -91,16 +89,18 @@ class TuButton extends HookWidget {
                         setIsProcessing(false);
                       },
                 style: ElevatedButton.styleFrom(
-                    // fixedSize: size ?? Size(double.infinity, 45),
-                    backgroundColor: bgColor ?? colors.color_blue_700,
                     alignment: Alignment.center,
-                    elevation: 1.5,
+                    backgroundColor:
+                        backgroundColor, //const Color.fromRGBO(26, 92, 255, 1),
+                    /* shadowColor:
+                                Tu.colors.onBackground(), // const Color.fromRGBO(26, 92, 255, .5), */
+                    elevation: 3,
                     padding: EdgeInsets.symmetric(vertical: vp, horizontal: hp),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(radius))),
                 child: child ??
                     Text(
-                      text,
+                      text.toUpperCase(),
                       style: TextStyle(color: color ?? Colors.white),
                     ),
               ),

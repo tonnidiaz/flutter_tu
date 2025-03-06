@@ -45,7 +45,7 @@ class TuTheme {
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
                 color: colors.onSurface),
-            backgroundColor: colors.color_neutral_800, //colors.surface,
+            backgroundColor: colors.background, //colors.surface,
             elevation: .0,
             foregroundColor: colors.onSurface),
         colorScheme: ColorScheme.fromSeed(
@@ -102,14 +102,6 @@ class TuTheme {
             unselectedLabelStyle:
                 GoogleFonts.roboto(fontSize: fontSizeBody - .7)),
         inputDecorationTheme: InputDecorationTheme(
-          fillColor: colors.bg2,
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: colors.color_neutral_700),
-              borderRadius: BorderRadius.circular(8)),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: colors.color_neutral_500),
-              borderRadius: BorderRadius.circular(8)),
-
           // hintStyle: const TextStyle(),
           floatingLabelStyle:
               TextStyle(color: colors.onBackground, fontSize: fontSizeBody),

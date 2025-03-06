@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:tu/tu.dart';
 
 import 'index.dart';
+export 'package:window_manager/window_manager.dart';
 
 class TuPage {
   Widget widget;
@@ -33,11 +34,11 @@ const double bottomBarH = 95;
 const double sidebarW = 45;
 const double iconSize = 30;
 const double topMargin = 5;
-const double splashRadius = iconSize;
+const double splashRadius = iconSize + 10;
 double statusBarHeight() => 25;
 bool dev = kDebugMode;
 
-final bool isMobile = Platform.isAndroid || Platform.isIOS;
+final bool isMobile = kIsWeb ? false : Platform.isAndroid || Platform.isIOS;
 const defaultPadding = EdgeInsets.all(8);
 const defaultPadding2 = EdgeInsets.all(14);
 Size screenSize(BuildContext context) {
@@ -65,7 +66,7 @@ final defaultMenu = [
 
 double statusBarH(BuildContext context) =>
     MediaQuery.of(context).viewPadding.top;
-double appBarH = kToolbarHeight;
+double appBarH = 38;
 
 class SelectItem {
   final String label;
@@ -106,3 +107,24 @@ Future<Dio> bassDio() async {
 List<Object> progressSheets = [];
 
 BuildContext getCtx() => Get.overlayContext!;
+const List<String> videoExtensions = [
+  "mp4",
+  "mov",
+  "avi",
+  "wmv",
+  "flv",
+  "mkv",
+  "webm",
+  "mpeg",
+  "mpg",
+  "3gp",
+  "ogv",
+  "ts",
+  "m4v",
+  "f4v",
+  "vob",
+  "rm",
+  "rmvb",
+  "asf",
+  "divx"
+];

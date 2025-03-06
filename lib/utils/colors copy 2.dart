@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
 import 'package:tu/tu.dart';
 
@@ -58,7 +56,7 @@ class TuColors {
   final Color _bg0 = const Color.fromRGBO(250, 247, 245, 1);
   Color get bg0 => dark ? _bg0Dark : _bg0;
 
-  final Color _bg2Dark = const Color.fromRGBO(38, 38, 38, 1);
+  final Color _bg2Dark = const Color.fromRGBO(50, 50, 50, 1);
   final Color _bg2 = const Color.fromRGBO(250, 247, 245, 1);
   Color get bg2 => dark ? _bg2Dark : _bg2;
   final Color btnBG = const Color.fromRGBO(30, 30, 30, 1);
@@ -77,19 +75,4 @@ class TuColors {
   Color get onSurface => dark ? _onSurfaceDark : _onSurface;
 
   Color get bg1 => surface;
-
-  // TailwindCss
-  Color get color_neutral_800 =>
-      dark ? const Color.fromRGBO(36, 36, 36, 1) : Colors.white30;
-  Color get color_neutral_700 =>
-      dark ? const Color.fromRGBO(64, 64, 64, 1) : Colors.white30;
-  Color get color_neutral_600 =>
-      dark ? const Color.fromRGBO(74, 74, 74, 1) : Colors.white30;
-  Color get color_neutral_500 =>
-      dark ? const Color.fromRGBO(84, 84, 84, 1) : Colors.white30;
-  Color get color_neutral_400 =>
-      dark ? Color.fromARGB(255, 180, 180, 180) : Colors.black54;
-  Color get color_neutral_300 =>
-      dark ? const Color.fromRGBO(212, 212, 212, 1) : Colors.black54;
-  Color color_blue_700 = const Color.fromRGBO(37, 99, 235, 1);
 }

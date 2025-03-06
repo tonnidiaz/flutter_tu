@@ -154,15 +154,32 @@ Widget svgIcon(
       colorBlendMode: BlendMode.srcIn,
     );
 
-class TuScrollview extends StatelessWidget {
+class TuScrollview extends StatefulWidget {
   final Widget? child;
-  const TuScrollview({super.key, this.child});
+  final Axis scrollDirection;
+  const TuScrollview(
+      {super.key, this.child, this.scrollDirection = Axis.vertical});
 
   @override
+  State<TuScrollview> createState() => _TuScrollviewState();
+}
+
+class _TuScrollviewState extends State<TuScrollview> {
+  final _controller = ScrollController();
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const AlwaysScrollableScrollPhysics(),
-      child: child,
+    return Scrollbar(
+      controller: _controller,
+      thumbVisibility: true,
+      interactive: true,
+      thickness: 8,
+      radius: Radius.circular(10),
+      child: SingleChildScrollView(
+        controller: _controller,
+        scrollDirection: widget.scrollDirection,
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: widget.child,
+      ),
     );
   }
 }
