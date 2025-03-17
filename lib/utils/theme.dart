@@ -81,6 +81,7 @@ class TuTheme {
         )),
         menuBarTheme: const MenuBarThemeData(
             style: MenuStyle(
+          elevation: MaterialStatePropertyAll(0),
           padding: MaterialStatePropertyAll(EdgeInsets.zero),
         )),
         menuButtonTheme: MenuButtonThemeData(
