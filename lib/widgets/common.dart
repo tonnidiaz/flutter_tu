@@ -172,8 +172,8 @@ class _TuScrollviewState extends State<TuScrollview> {
       controller: _controller,
       thumbVisibility: true,
       interactive: true,
-      thickness: 8,
-      radius: Radius.circular(10),
+      thickness: 4,
+      radius: const Radius.circular(10),
       child: SingleChildScrollView(
         controller: _controller,
         scrollDirection: widget.scrollDirection,

@@ -25,24 +25,26 @@ void clearTerminal() {
       clog(o);
     }
   } catch (e) {
-    clog("[CLEAR_T ERROR] ${e}");
+    clog("[CLEAR_T ERROR] $e");
   }
 }
 
-void setupWindowManager() async {
-  if (Platform.isAndroid) return;
+Future<void> setupWindowManager() async {
+  if (isMobile) return;
 
   // Must add this line.
+  WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
   WindowOptions windowOptions = WindowOptions(
-    minimumSize: isMobile ? const Size(288, 533) : null,
-    maximumSize: isMobile ? const Size(288, 533) : null,
-    size: isMobile ? null : const Size(700, 400),
-    center: true,
-    //skipTaskbar: false,
-    //titleBarStyle: TitleBarStyle.hidden
-  );
-  windowManager.waitUntilReadyToShow(windowOptions, () async {
+      // minimumSize: isMobile ? const Size(288, 533) : null,
+      // maximumSize: isMobile ? const Size(288, 533) : null,
+      size: isMobile ? null : const Size(700, 500),
+      center: true,
+      skipTaskbar: false,
+      titleBarStyle: TitleBarStyle.hidden);
+  await windowManager.waitUntilReadyToShow(windowOptions, () async {
+    await windowManager.setResizable(true);
+
     await windowManager.show();
     await windowManager.focus();
   });
@@ -191,4 +193,8 @@ Future copyToClipboard(String text) async {
   ClipboardData data = ClipboardData(text: text);
   await Clipboard.setData(data);
   clog('Copied');
+}
+
+normalizeListIndex(int indexOf) {
+  return max(indexOf, 0);
 }

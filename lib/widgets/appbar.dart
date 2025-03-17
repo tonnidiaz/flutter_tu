@@ -25,7 +25,7 @@ PreferredSizeWidget tuAppbar(
     child: Obx(
       () => AppBar(
         backgroundColor: hasBg ? Tu.colors.bg1 : bgColor,
-        elevation: elevation,
+        elevation: isMobile ? elevation : 0,
         centerTitle: barCtrl.selected.value.isNotEmpty ? false : centerTitle,
         bottom: bottom,
         leading: barCtrl.selected.value.isNotEmpty

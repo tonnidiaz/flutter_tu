@@ -32,3 +32,11 @@ extension Ex on String {
   String toWords() => replaceAllMapped(RegExp(r"^([a-z])|[A-Z]"),
       (Match m) => m[1] == null ? " ${m[0]}" : m[1]!.toUpperCase());
 }
+
+extension WdExt on Widget {
+  static String _id = "";
+  String get id => _id;
+  set id(String val) {
+    _id = val;
+  }
+}

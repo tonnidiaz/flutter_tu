@@ -27,11 +27,11 @@ class TuTheme {
         chipTheme: ChipThemeData(
             backgroundColor: colors.medium,
             side: BorderSide.none,
-            labelStyle: TextStyle(color: Colors.white),
+            labelStyle: const TextStyle(color: Colors.white),
             labelPadding: true
                 ? const EdgeInsets.fromLTRB(5, -5, 5, -3)
                 : const EdgeInsets.symmetric(horizontal: 5, vertical: -2),
-            padding: EdgeInsets.symmetric(horizontal: 7, vertical: -10),
+            padding: const EdgeInsets.symmetric(horizontal: 7, vertical: -10),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(100))),
         platform: TargetPlatform.android,
@@ -42,12 +42,12 @@ class TuTheme {
             iconTheme: IconThemeData(color: colors.onSurface),
             actionsIconTheme: IconThemeData(color: colors.onSurface),
             titleTextStyle: GoogleFonts.roboto(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
+                fontSize: appBarTextSize,
+                fontWeight: FontWeight.w400,
                 color: colors.onSurface),
             backgroundColor: colors.color_neutral_800, //colors.surface,
-            elevation: .0,
-            foregroundColor: colors.onSurface),
+            elevation: 0,
+            foregroundColor: colors.color_neutral_400),
         colorScheme: ColorScheme.fromSeed(
             primary: colors.primary,
             onPrimary: colors.onPrimary,
@@ -74,6 +74,23 @@ class TuTheme {
         popupMenuTheme: PopupMenuThemeData(
           color: colors.bg2,
         ),
+        iconButtonTheme: IconButtonThemeData(
+            style: IconButton.styleFrom(
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          visualDensity: VisualDensity.compact,
+        )),
+        menuBarTheme: const MenuBarThemeData(
+            style: MenuStyle(
+          padding: MaterialStatePropertyAll(EdgeInsets.zero),
+        )),
+        menuButtonTheme: MenuButtonThemeData(
+            style: ButtonStyle(
+                padding: const MaterialStatePropertyAll(
+                    EdgeInsets.fromLTRB(10, 10, 10, 10)),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                minimumSize: const MaterialStatePropertyAll(Size(1, 1)),
+                textStyle: MaterialStatePropertyAll(
+                    TextStyle(fontSize: appBarTextSize)))),
         textTheme: Styles.textTheme(
           const TextTheme(
             bodyMedium: TextStyle(fontSize: fontSizeBody),
