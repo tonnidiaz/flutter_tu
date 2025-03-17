@@ -49,7 +49,7 @@ class TuResizableWin extends StatefulWidget {
 }
 
 class _TuResizableWinState extends State<TuResizableWin> {
-  final double borderSize = 5.0;
+  final double borderSize = 5.5;
   final Color borderColor = Colors.transparent;
   @override
   Widget build(BuildContext context) {
