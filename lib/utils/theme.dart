@@ -95,6 +95,7 @@ class TuTheme {
                     TextStyle(fontSize: appBarTextSize)))),
         textTheme: Styles.textTheme(
           const TextTheme(
+            labelLarge: TextStyle(fontSize: fontSizeBody),
             bodyMedium: TextStyle(fontSize: fontSizeBody),
           ),
         ),

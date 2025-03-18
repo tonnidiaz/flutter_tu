@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:tu/tu.dart";
 
-const double fontSizeBody = 15;
+const double fontSizeBody = 13;
 
 class Styles {
   final bool dark;
