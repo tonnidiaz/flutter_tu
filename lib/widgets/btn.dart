@@ -30,7 +30,7 @@ class TuButton extends HookWidget {
       this.height = 38,
       this.vp = 5,
       this.radius = 8,
-      this.hp = 2,
+      this.hp = 10,
       this.outlined = false,
       this.onPressed,
       this.bgColor,

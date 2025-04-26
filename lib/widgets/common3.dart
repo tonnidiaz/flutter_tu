@@ -197,3 +197,28 @@ class _TuResizableWinState extends State<TuResizableWin> {
     );
   }
 }
+
+class TuSliderTheme extends StatelessWidget {
+  final Widget child;
+  final double? trackHeight;
+  final double thumbRadius;
+  const TuSliderTheme(
+      {super.key,
+      required this.child,
+      this.trackHeight,
+      this.thumbRadius = 10});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliderTheme(
+      data: SliderTheme.of(context).copyWith(
+        trackHeight: trackHeight, // Makes track smaller
+        thumbShape: RoundSliderThumbShape(
+            enabledThumbRadius: thumbRadius), // Custom thumb
+        overlayShape:
+            SliderComponentShape.noOverlay, // Removes extra hover area
+      ),
+      child: child,
+    );
+  }
+}

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 class TuPopupBtn extends StatelessWidget {
@@ -7,12 +9,10 @@ class TuPopupBtn extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   const TuPopupBtn(
       {super.key,
-
       this.items = const [],
       this.onOpened,
       this.padding = const EdgeInsets.all(8.0),
-      this.child
-      });
+      this.child});
 
   List<PopupMenuEntry<Object?>> parseItems() {
     List<PopupMenuEntry<Object?>> its = [];
@@ -25,10 +25,24 @@ class TuPopupBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
-        padding: padding,
+        tooltip: "",
+        padding: EdgeInsets.zero,
         onOpened: onOpened,
-        splashRadius: 20,
+        splashRadius: 5,
         child: child,
         itemBuilder: (context) => parseItems());
   }
+}
+
+PopupMenuEntry<Object?> TuPopupMenuItem({
+  required final Widget child,
+  final void Function()? onTap,
+  final bool enabled = true,
+}) {
+  return PopupMenuItem(
+    height: 30,
+    onTap: onTap,
+    enabled: enabled,
+    child: child,
+  );
 }

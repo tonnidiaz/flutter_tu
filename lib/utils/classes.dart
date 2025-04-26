@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:tu/controllers/app.ctrl.dart';
 import 'package:tu/controllers/commom.ctrl.dart';
@@ -41,4 +43,14 @@ class Tu {
   }
 }
 
-//final tu = Tu();
+class TuDebouncer {
+  final Duration delay;
+  Timer? _timer;
+
+  TuDebouncer({required this.delay});
+
+  void run(void Function() action) {
+    _timer?.cancel(); // Cancel any previous timer
+    _timer = Timer(delay, action); // Start a new timer
+  }
+}

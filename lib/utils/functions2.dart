@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:tu/tu.dart';
 import "package:permission_handler/permission_handler.dart";
 import 'package:get/get.dart';
+import 'dart:io';
+import 'package:path/path.dart' as path;
 
 Future<bool> requestStoragePermission() async {
   clog("Requesting...");
@@ -47,4 +49,25 @@ Future checkUpdates(
       clog(e);
     }
   }
+}
+
+String getAssetsDir() => path.join(path.dirname(Platform.resolvedExecutable),
+    "data", "flutter_assets", "assets");
+
+String getBinariesDir() {
+  final assetsDir = getAssetsDir();
+
+  String platFold = "";
+  if (Platform.isLinux) {
+    platFold = "linux";
+  } else if (Platform.isWindows) {
+    platFold = "win";
+  } else if (Platform.isMacOS) {
+    platFold = "macos";
+  }
+  return path.join(assetsDir, "bin", platFold);
+}
+
+String getFilename(String fullpath) {
+  return path.basename(fullpath);
 }

@@ -73,8 +73,9 @@ class TuTheme {
         tabBarTheme: TabBarTheme(
             labelColor: colors.onSurface, indicatorColor: Colors.red),
         popupMenuTheme: PopupMenuThemeData(
-          color: colors.bg2,
-        ),
+            color: colors.bg2,
+            shape:
+                BeveledRectangleBorder(borderRadius: BorderRadius.circular(0))),
         iconButtonTheme: IconButtonThemeData(
             style: IconButton.styleFrom(
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -85,6 +86,11 @@ class TuTheme {
           elevation: MaterialStatePropertyAll(0),
           padding: MaterialStatePropertyAll(EdgeInsets.zero),
         )),
+        menuTheme: MenuBarThemeData(
+          style: MenuStyle(
+            padding: MaterialStatePropertyAll(EdgeInsets.zero),
+          ),
+        ),
         menuButtonTheme: MenuButtonThemeData(
             style: ButtonStyle(
                 padding: const MaterialStatePropertyAll(

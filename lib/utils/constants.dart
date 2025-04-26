@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:tu/tu.dart';
 import 'package:get/get.dart';
 import 'index.dart';
@@ -129,3 +130,11 @@ const List<String> videoExtensions = [
   "asf",
   "divx"
 ];
+
+final platExt = Platform.isWindows ? ".exe" : "";
+Directory? tempDir;
+getTempDir() async {
+  tempDir = await getTemporaryDirectory();
+}
+
+final tuDebouncer = TuDebouncer(delay: const Duration(milliseconds: 500));
