@@ -46,3 +46,21 @@ PopupMenuEntry<Object?> TuPopupMenuItem({
     child: child,
   );
 }
+
+class TuMenuAnchor extends StatelessWidget {
+  final List<Widget> menuChildren;
+  final Widget? child;
+  const TuMenuAnchor({super.key, required this.menuChildren, this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return MenuAnchor(
+        menuChildren: menuChildren,
+        builder: (c, ctrl, _) => InkWell(
+              onTap: () {
+                ctrl.isOpen ? ctrl.close() : ctrl.open();
+              },
+              child: child ?? const Icon(Icons.more_vert_sharp),
+            ));
+  }
+}

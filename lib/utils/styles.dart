@@ -2,15 +2,15 @@ import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:tu/tu.dart";
 
-const double fontSizeBody = 13;
+const double fontSizeBody = 13.5;
 
 class Styles {
   final bool dark;
   final TuColors colors;
 
-  static final textStyle = isMobile ? GoogleFonts.nunito : GoogleFonts.ubuntu;
+  static final textStyle = isMobile ? GoogleFonts.nunito : GoogleFonts.sail;
   static final textTheme =
-      isMobile ? GoogleFonts.nunitoTextTheme : GoogleFonts.ubuntuTextTheme;
+      isMobile ? GoogleFonts.nunitoTextTheme : GoogleFonts.sailTextTheme;
 
   Styles({this.dark = true, required this.colors});
 

@@ -138,3 +138,4 @@ getTempDir() async {
 }
 
 final tuDebouncer = TuDebouncer(delay: const Duration(milliseconds: 500));
+List<String> appArgs = [];

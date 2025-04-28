@@ -13,6 +13,7 @@ import 'package:window_manager/window_manager.dart';
 import 'package:get/get.dart';
 
 void clog(dynamic p) {
+  if (!dev) return;
   debugPrint(
     "\n[${DateTime.now().toIso8601String()}] $tag: $p\n",
   );
@@ -198,4 +199,14 @@ Future copyToClipboard(String text) async {
 
 normalizeListIndex(int indexOf) {
   return max(indexOf, 0);
+}
+
+showCtxMenu(BuildContext context,
+    {required Offset offset, required List<PopupMenuEntry> items}) {
+  showMenu(
+    context: context,
+    position: RelativeRect.fromLTRB(
+        offset.dx, offset.dy, offset.dx + 1, offset.dy + 1),
+    items: items,
+  );
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:tu/tu.dart';
 
 class TuAppCtrl extends GetxController {
   var count = 0.obs;
@@ -32,4 +33,18 @@ class TuAppCtrl extends GetxController {
   final _darkMode = Rx(true);
   bool get darkMode => _darkMode.value;
   set darkMode(bool val) => _darkMode.value = val;
+
+  _onDarkMode(bool p0) {
+    if (!isMobile) {
+      clog("[dark_mode] $p0");
+      windowManager.setBrightness(p0 ? Brightness.dark : Brightness.light);
+    }
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    _onDarkMode(_darkMode.value);
+    _darkMode.listen(_onDarkMode);
+  }
 }

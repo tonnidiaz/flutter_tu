@@ -17,13 +17,13 @@ class TuColors {
   final Color _color = Colors.yellow;
   Color get color => dark ? _colorDark : _color;
 
-  final Color _bgFieldDark = Color.fromRGBO(39, 39, 39, 1);
+  final Color _bgFieldDark = const Color.fromRGBO(39, 39, 39, 1);
   final Color _bgField = const Color.fromRGBO(234, 240, 239, 1);
   Color get bgField => dark ? _bgFieldDark : _bgField;
 
   final Color primary = const Color.fromRGBO(
       101, 195, 200, 1); //const Color.fromRGBO(220, 184, 255, 1);
-  final Color onPrimary = Color.fromARGB(255, 255, 255, 255);
+  final Color onPrimary = const Color.fromARGB(255, 255, 255, 255);
   final Color primaryContainer = const Color.fromRGBO(
       31, 107, 112, 1); //const Color.fromRGBO(95, 43, 146, 1);
   final Color onPrimaryContainer = const Color.fromARGB(255, 216, 252, 255);
@@ -45,14 +45,14 @@ class TuColors {
   final Color _text3Dark = const Color.fromRGBO(150, 150, 150, 1);
   final Color _text3 = const Color.fromRGBO(15, 15, 15, 0.8);
   Color get text3 => dark ? _text3Dark : _text3; */
-  final Color note = Color.fromARGB(255, 116, 116, 116);
+  final Color note = const Color.fromARGB(255, 116, 116, 116);
   Color get medium => dark
       ? const Color.fromARGB(125, 111, 115, 117)
-      : Color.fromARGB(123, 56, 58, 59);
+      : const Color.fromARGB(123, 56, 58, 59);
   final Color danger = const Color.fromRGBO(248, 114, 114, 1);
   final Color success = const Color.fromRGBO(45, 211, 111, 1);
   final Color _bgDark = const Color.fromRGBO(30, 30, 30, 1);
-  final Color _bg = Color.fromRGBO(245, 245, 250, 1);
+  final Color _bg = const Color.fromRGBO(245, 245, 250, 1);
   Color get bg => dark ? _bgDark : _bg;
   final Color _bg0Dark = const Color.fromRGBO(28, 28, 28, 1);
   final Color _bg0 = const Color.fromRGBO(250, 247, 245, 1);
@@ -72,7 +72,8 @@ class TuColors {
   final Color _onBackground = const Color.fromRGBO(30, 30, 30, 1);
   Color get onBackground => dark ? _onBackgroundDark : _onBackground;
 
-  final Color _onSurfaceDark = const Color.fromRGBO(247, 247, 247, 1);
+  late final Color _onSurfaceDark =
+      color_neutral_200; //const Color.fromRGBO(247, 247, 247, 1);
   final Color _onSurface = const Color.fromRGBO(70, 70, 70, 1);
   Color get onSurface => dark ? _onSurfaceDark : _onSurface;
 
@@ -88,8 +89,10 @@ class TuColors {
   Color get color_neutral_500 =>
       dark ? const Color.fromRGBO(84, 84, 84, 1) : Colors.white30;
   Color get color_neutral_400 =>
-      dark ? Color.fromARGB(255, 180, 180, 180) : Colors.black54;
+      dark ? const Color.fromARGB(255, 180, 180, 180) : Colors.black54;
   Color get color_neutral_300 =>
       dark ? const Color.fromRGBO(212, 212, 212, 1) : Colors.black54;
+  Color get color_neutral_200 =>
+      dark ? const Color.fromARGB(255, 219, 219, 219) : Colors.black54;
   Color color_blue_700 = const Color.fromRGBO(37, 99, 235, 1);
 }

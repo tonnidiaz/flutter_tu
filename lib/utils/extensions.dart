@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:isar/isar.dart';
+import 'package:tu/models.dart';
 import 'package:tu/tu.dart';
 
 extension TuDurationExt on Duration {
@@ -38,5 +40,22 @@ extension WdExt on Widget {
   String get id => _id;
   set id(String val) {
     _id = val;
+  }
+}
+
+extension IsarExt on TuRootIsarSchema {
+  save(Isar isar, IsarCollection collection) async {
+    touch();
+    await isar.writeTxn(() async {
+      await collection.put(this);
+    });
+  }
+}
+
+extension IsarCollExt on IsarCollection {
+  tuClear(Isar isar) async {
+    await isar.writeTxn(() async {
+      await clear();
+    });
   }
 }

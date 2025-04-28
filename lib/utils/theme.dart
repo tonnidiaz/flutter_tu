@@ -7,22 +7,21 @@ class TuTheme {
   late TuColors colors;
   late Styles styles;
   final bool dark;
+  final bool? useMaterial3;
   final BuildContext context;
-  TuTheme({required this.colors, this.dark = true, required this.context}) {
+  TuTheme(
+      {required this.colors,
+      this.dark = true,
+      required this.context,
+      this.useMaterial3}) {
     instance = this;
     styles = Styles(colors: colors);
     Tu.appCtrl.darkMode = dark;
   }
 
-  ThemeData theme0() {
-    return ThemeData(
-        useMaterial3: true,
-        brightness: dark ? Brightness.dark : Brightness.light);
-  }
-
   ThemeData theme() {
     return ThemeData(
-        useMaterial3: true,
+        useMaterial3: useMaterial3,
         dialogTheme: const DialogTheme(
             titleTextStyle: TextStyle(fontSize: fontSizeBody + 5)),
         chipTheme: ChipThemeData(
@@ -42,10 +41,11 @@ class TuTheme {
             toolbarHeight: appBarH,
             iconTheme: IconThemeData(color: colors.onSurface),
             actionsIconTheme: IconThemeData(color: colors.onSurface),
-            titleTextStyle: GoogleFonts.roboto(
+            titleTextStyle: TextStyle(
                 fontSize: appBarTextSize,
                 fontWeight: FontWeight.w400,
-                color: colors.onSurface),
+                color: colors.onSurface,
+                fontFamily: "Arial"),
             backgroundColor: colors.color_neutral_800, //colors.surface,
             elevation: 0,
             foregroundColor: colors.color_neutral_400),
@@ -86,7 +86,7 @@ class TuTheme {
           elevation: MaterialStatePropertyAll(0),
           padding: MaterialStatePropertyAll(EdgeInsets.zero),
         )),
-        menuTheme: MenuBarThemeData(
+        menuTheme: const MenuBarThemeData(
           style: MenuStyle(
             padding: MaterialStatePropertyAll(EdgeInsets.zero),
           ),
@@ -99,11 +99,9 @@ class TuTheme {
                 minimumSize: const MaterialStatePropertyAll(Size(1, 1)),
                 textStyle: MaterialStatePropertyAll(
                     TextStyle(fontSize: appBarTextSize)))),
-        textTheme: Styles.textTheme(
-          const TextTheme(
-            labelLarge: TextStyle(fontSize: fontSizeBody),
-            bodyMedium: TextStyle(fontSize: fontSizeBody),
-          ),
+        textTheme: const TextTheme(
+          labelLarge: TextStyle(fontSize: fontSizeBody, fontFamily: "Arial"),
+          bodyMedium: TextStyle(fontSize: fontSizeBody, fontFamily: "Arial"),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(

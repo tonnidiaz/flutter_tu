@@ -54,3 +54,16 @@ class TuDebouncer {
     _timer = Timer(delay, action); // Start a new timer
   }
 }
+
+class TuRoute {
+  final String name;
+  final String label;
+  final Widget child;
+  final IconData? icon;
+  final bool isAction;
+  TuRoute(this.name,
+      {required this.label,
+      required this.child,
+      this.icon,
+      this.isAction = false});
+}
