@@ -8,7 +8,10 @@ Page<dynamic> _buildPage(Widget child) {
     child: child,
     transitionDuration: Duration.zero,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      return child;
+      return FadeTransition(
+        opacity: animation,
+        child: child,
+      );
     },
   );
 }

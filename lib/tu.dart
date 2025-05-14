@@ -11,6 +11,7 @@ export 'package:get/get.dart' hide Response;
 // export 'package:google_fonts/google_fonts.dart';
 export 'package:go_router/go_router.dart';
 export './widgets/updates_view.dart';
+export 'utils/mixins.dart';
 
 /// A Calculator.
 class Calculator {

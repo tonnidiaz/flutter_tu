@@ -60,6 +60,7 @@ class TuMenuAnchor extends StatelessWidget {
               onTap: () {
                 ctrl.isOpen ? ctrl.close() : ctrl.open();
               },
+              borderRadius: BorderRadius.circular(100),
               child: child ?? const Icon(Icons.more_vert_sharp),
             ));
   }

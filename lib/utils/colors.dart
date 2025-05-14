@@ -95,4 +95,6 @@ class TuColors {
   Color get color_neutral_200 =>
       dark ? const Color.fromARGB(255, 219, 219, 219) : Colors.black54;
   Color color_blue_700 = const Color.fromRGBO(37, 99, 235, 1);
+
+  late Color appBarBg = color_neutral_800;
 }

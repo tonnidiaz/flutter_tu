@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../tu.dart';
 
-class Ctrl extends GetxController {
+class TuResizableWinCtrl extends GetxController {
   final _isMaximized = Rx<bool>(false);
   bool get isMaximized => _isMaximized.value;
   set isMaximized(bool val) => _isMaximized.value = val;
@@ -27,6 +27,12 @@ class Ctrl extends GetxController {
     } else {
       windowManager.maximize();
     }
+  }
+
+  @override
+  void dispose() {
+    clog("[resizable_win_ctrl: dispose]");
+    super.dispose();
   }
 }
 
@@ -81,7 +87,7 @@ class TuResizableWin extends StatefulWidget {
       this.leading,
       this.trailing});
 
-  static final Ctrl ctrl = Get.put(Ctrl());
+  static final TuResizableWinCtrl ctrl = Get.put(TuResizableWinCtrl());
   @override
   State<TuResizableWin> createState() => _TuResizableWinState();
 }
@@ -112,17 +118,20 @@ class _TuResizableWinState extends State<TuResizableWin> with WindowListener {
   @override
   void onWindowEnterFullScreen() {
     super.onWindowEnterFullScreen();
+    clog('[resizable_win] enter_fullscreen');
     ctrl.isFullscreen = true;
   }
 
   @override
   void onWindowLeaveFullScreen() {
     super.onWindowLeaveFullScreen();
+    clog('[resizable_win] exit_fullscreen');
     ctrl.isFullscreen = false;
   }
 
   @override
   void dispose() {
+    clog('[resizable_win] dispose');
     windowManager.removeListener(this);
     super.dispose();
   }
@@ -154,6 +163,7 @@ class _TuResizableWinState extends State<TuResizableWin> with WindowListener {
                         children: [
                           IconButton(
                               splashRadius: 1,
+                              padding: EdgeInsets.zero,
                               onPressed: () {
                                 windowManager.popUpWindowMenu();
                               },

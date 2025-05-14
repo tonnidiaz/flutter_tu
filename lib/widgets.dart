@@ -15,5 +15,5 @@ export 'widgets/common3.dart';
 export 'widgets/sliver_appbar_delegate.dart';
 export 'widgets/bottom_navbar.dart';
 export 'widgets/flex.dart';
-export 'widgets/resizable_win.dart' hide Ctrl;
+export 'widgets/resizable_win.dart' hide TuResizableWinCtrl;
 // export "package:menu_bar/menu_bar.dart";

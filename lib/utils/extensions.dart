@@ -5,7 +5,11 @@ import 'package:tu/tu.dart';
 
 extension TuDurationExt on Duration {
   String format() {
-    return toString().split('.').first.padLeft(8, "0");
+    return toString()
+        .split('.')
+        .first
+        .padLeft(8, "0")
+        .replaceFirst(inHours == 0 ? "00:" : "", "");
   }
 }
 
@@ -59,3 +63,5 @@ extension IsarCollExt on IsarCollection {
     });
   }
 }
+
+extension GetxCtrlExt on GetxController {}

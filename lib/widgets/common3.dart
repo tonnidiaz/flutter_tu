@@ -74,13 +74,17 @@ class _TuImageState extends State<TuImage> {
     return GestureDetector(
       onDoubleTapDown: _handleDoubleTap,
       onPanUpdate: _handlePanUpdate,
-      child: Center(
-        child: ClipRect(
-          child: Transform(
-            transform: Matrix4.identity()
-              ..translate(_offset.dx, _offset.dy)
-              ..scale(_scale),
-            child: widget.child, // or Image.network()
+      child: Container(
+        color: Colors.blue,
+        padding: EdgeInsets.all(8),
+        child: Center(
+          child: ClipRect(
+            child: Transform(
+              transform: Matrix4.identity()
+                ..translate(_offset.dx, _offset.dy)
+                ..scale(_scale),
+              child: widget.child, // or Image.network()
+            ),
           ),
         ),
       ),

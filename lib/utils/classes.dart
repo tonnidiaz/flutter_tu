@@ -67,3 +67,10 @@ class TuRoute {
       this.icon,
       this.isAction = false});
 }
+
+class TuGetxController extends GetxController {
+  bool isInitialized = false;
+  TuGetxController() {
+    clog("[ctrl:${toString()}]");
+  }
+}

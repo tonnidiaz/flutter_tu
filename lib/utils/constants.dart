@@ -32,7 +32,6 @@ const String tag = "Tu";
 const String package = "com.tb.tmeta";
 const double bottomSheetH = 150;
 const double bottomBarH = 95;
-const double sidebarW = 45;
 const double iconSize = 24; //30;
 const double topMargin = 5;
 const double splashRadius = iconSize + 10;
@@ -67,8 +66,9 @@ final defaultMenu = [
 
 double statusBarH(BuildContext context) =>
     MediaQuery.of(context).viewPadding.top;
-double appBarH = 38;
-double appBarTextSize = 12;
+const double appBarH = 35;
+const double appBarTextSize = 12;
+double sidebarW = appBarH + 5;
 
 class SelectItem {
   final String label;

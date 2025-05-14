@@ -46,7 +46,7 @@ class TuTheme {
                 fontWeight: FontWeight.w400,
                 color: colors.onSurface,
                 fontFamily: "Arial"),
-            backgroundColor: colors.color_neutral_800, //colors.surface,
+            backgroundColor: colors.appBarBg, //colors.surface,
             elevation: 0,
             foregroundColor: colors.color_neutral_400),
         colorScheme: ColorScheme.fromSeed(
@@ -78,6 +78,7 @@ class TuTheme {
                 BeveledRectangleBorder(borderRadius: BorderRadius.circular(0))),
         iconButtonTheme: IconButtonThemeData(
             style: IconButton.styleFrom(
+          padding: EdgeInsets.zero,
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           visualDensity: VisualDensity.compact,
         )),

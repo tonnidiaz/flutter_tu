@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dio/dio.dart';
 import 'package:tu/tu.dart';
 import "package:permission_handler/permission_handler.dart";
@@ -71,3 +73,10 @@ String getBinariesDir() {
 String getFilename(String fullpath) {
   return path.basename(fullpath);
 }
+
+String getDirname(String fullpath) {
+  return path.dirname(fullpath);
+}
+
+/// Converts degrees to radians
+double degToRad(double deg) => deg * pi / 180;
